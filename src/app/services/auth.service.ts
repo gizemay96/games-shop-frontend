@@ -10,9 +10,9 @@ export class AuthService {
 
   constructor(private http: HttpClient, private userService: UserService) {}
 
-  register (registerData) {
-    return this.http.post(`${this.baseUrl}/local/register`, registerData)
-   }
+  register(registerData) {
+    return this.http.post(`${this.baseUrl}/local/register`, registerData);
+  }
 
   logout() {
     window.localStorage.removeItem('token');

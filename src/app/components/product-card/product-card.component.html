@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="card-case col-3"  *ngFor="let bla of data">
+    <h4 class="price">{{ bla.price | currency }}</h4>
+    <div class="b-game-card">
+      <div class="b-game-card__cover">
+        <p class="title">{{ bla.name }}</p>
+        <img [src]="'http://localhost:1337' + bla.img[0].url" alt="" />
+      </div>
+    </div>
+        <div class="buttons">
+          <div class="row justify-content-between">
+            <button class="btn btn-detail">Detail</button>
+            <button class="btn btn-cart">Add Cart</button>
+          </div>
+        </div>
+</div>
+</div>

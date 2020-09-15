@@ -9,6 +9,8 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
+import { ProductTitleComponent } from './components/product-title/product-title.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
     HomePageComponent,
     LoginPageComponent,
     NavbarComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
+    ProductCardComponent,
+    ProductTitleComponent
   ],
   imports: [
     BrowserModule,

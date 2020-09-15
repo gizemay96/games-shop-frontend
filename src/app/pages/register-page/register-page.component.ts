@@ -7,7 +7,7 @@ import { AuthResponse } from 'src/app/types/authResponse.type';
 @Component({
   selector: 'app-register-page',
   templateUrl: './register-page.component.html',
-  styleUrls: ['./register-page.component.scss']
+  styleUrls: ['./register-page.component.scss'],
 })
 export class RegisterPageComponent implements OnInit {
   isLoading: boolean = false;
@@ -20,15 +20,14 @@ export class RegisterPageComponent implements OnInit {
   };
 
   constructor(
-    private authService : AuthService,
-    private userService : UserService,
-    private router : Router
-  ) { }
+    private authService: AuthService,
+    private userService: UserService,
+    private router: Router
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  register(){
+  register() {
     this.isLoading = true;
     const registerData = {
       username: this.regForm.username,
@@ -51,5 +50,4 @@ export class RegisterPageComponent implements OnInit {
         this.router.navigateByUrl('/');
       });
   }
-
 }
