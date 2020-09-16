@@ -77,9 +77,10 @@ body {
   .buttons-action {
     margin: 15px 0;
     .btn-detail {
+      border-radius: 0px 15px 0px 15px;
       padding: 5px 20px;
-      background-color: gray;
-      border: none;
+      background-color: transparent;
+      border: 1px solid gray;
       color: white;
       outline: none;
 
@@ -89,9 +90,10 @@ body {
     }
 
     .btn-cart {
-      padding: 5px 10px;
-      background-color: gray;
-      border: none;
+      border-radius: 15px 0px 15px 0px;
+      padding: 5px 15px;
+      background-color: transparent;
+      border: 1px solid gray;
       color: white;
       outline: none;
 
@@ -248,12 +250,12 @@ $color-secondary-ice: rgba(29, 96, 240, 1);
       transparentize($color-primary-fire, 0.4),
       transparentize($color-secondary-fire, 0.4)
     );
-    box-shadow: 0 0 70px transparentize($color-primary-fire, 0.4),
-      0 5px 20px transparentize($color-primary-fire, 0.4),
+    box-shadow: 0 0 10px transparentize($color-primary-fire, 0.4),
+      0 0px 10px transparentize($color-primary-fire, 0.4),
       inset 0 1px $color-highlight-fire, inset 0 -1px $color-highlight-fire;
     color: white;
     &:before {
-      box-shadow: inset 0 0 30px 0 $color-highlight-fire;
+      box-shadow: inset 0 0 10px 0 $color-highlight-fire;
     }
   }
   &.ice {
@@ -264,12 +266,12 @@ $color-secondary-ice: rgba(29, 96, 240, 1);
       transparentize($color-primary-ice, 0.5),
       transparentize($color-secondary-ice, 0.5)
     );
-    box-shadow: 0 0 70px transparentize($color-primary-ice, 0.5),
+    box-shadow: 0 0 10px transparentize($color-primary-ice, 0.5),
       0 5px 20px transparentize($color-primary-ice, 0.5),
       inset 0 1px $color-highlight-fire, inset 0 -1px $color-highlight-fire;
     color: white;
     &:before {
-      box-shadow: inset 0 0 30px 0 $color-highlight-ice;
+      box-shadow: inset 0 0 5px 0 $color-highlight-ice;
     }
   }
   &:hover {
@@ -334,3 +336,6 @@ $color-secondary-ice: rgba(29, 96, 240, 1);
 
 
 // -----------------------------    PAGINATION BUTTONS FINISH -----------------------------
+
+
+

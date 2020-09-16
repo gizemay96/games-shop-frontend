@@ -1,3 +1,9 @@
-body {
-  background-color: #101010;
-}
+
+/* Importing Bootstrap SCSS file. */
+  body {
+    background-color: #101010 !important;
+  }
+
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

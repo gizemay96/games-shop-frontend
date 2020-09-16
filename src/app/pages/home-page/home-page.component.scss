@@ -1,1 +1,81 @@
+$gray-text: #c5c5c5;
+.modal-dialog {
+  max-width: 800px;
+}
+.modal-content {
+  background-color: rgb(35 35 35 / 83%);
+  border-radius: 50px;
+  overflow: hidden;
+}
 
+.card {
+  background-color: transparent;
+  max-height: 500px;
+  overflow: hidden;
+
+  .image {
+    width: 100%;
+    height: 100%;
+    /* object-fit: cover; */
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .body {
+    ::-webkit-scrollbar {
+      width: 3px ;
+    }
+    
+    /* Track */
+    ::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 5px grey ; 
+      border-radius: 10px ;
+    }
+     
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: $gray-text ; 
+      border-radius: 10px ;
+    }
+    
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: #b30000; 
+    }
+    .title,
+    .description {
+      margin-top: 20px;
+      color: $gray-text;
+      /* width */
+
+      &.description {
+        max-height: 170px;
+        overflow: auto;
+        
+      }
+    }
+
+    .price {
+      margin-top: 15px;
+    }
+  }
+}
+
+.star {
+  font-size: 1.5rem;
+  color: #b0c4de;
+}
+.filled {
+  color: #1e90ff;
+}
+.bad {
+  color: #deb0b0;
+}
+.filled.bad {
+  color: #ff1e1e;
+}

@@ -8,7 +8,7 @@ import { environment as env } from '../environments/environment';
   providedIn: 'root',
 })
 export class ProductService {
-  // private products: Product[] = [];
+  private products: Product[] = [];
   // private categories: Category[] = [];
   // private filteredProducts: Product[];
 
@@ -26,12 +26,12 @@ export class ProductService {
 
 // -----------------------------    FETCH ALL PRODUCTS AND FILTER PRODUCTS FUNCTIONS -----------------------------
 
-  // fetchProducts() {
-  //   this.http.get(env.productsApiURL).subscribe((response: Product[]) => {
-  //     console.log(response);
-  //     this.products = response;
-  //   });
-  // }
+  fetchProducts() {
+    this.http.get(env.productsApiURL).subscribe((response: Product[]) => {
+      console.log(response);
+      this.products = response;
+    });
+  }
 
   // fetchCategories() {
   //   this.http.get(env.categoriesApiURL).subscribe((response: Category[]) => {
@@ -45,9 +45,9 @@ export class ProductService {
   //     );
   // }
 
-  // getProducts() {
-  //   return this.products;
-  // }
+  getProducts() {
+    return this.products;
+  }
 
   // getFilteredProducts() {
   //   return this.filteredProducts;
@@ -108,6 +108,7 @@ export class ProductService {
       .get(`${env.productsApiURL}?categories=9&_start=${s}&_limit=4`)
       .subscribe((response: Product[]) => {
         if (response.length != 0) {
+          console.log(response)
           this.pcGames = response;
           this.PcCounts[0].startingNumber = s;
           this.PcCounts[0].pageCount = p;

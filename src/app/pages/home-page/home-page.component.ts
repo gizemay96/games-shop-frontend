@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
+import { Product } from 'src/app/types/product.type';
 
 @Component({
   selector: 'app-home-page',
@@ -7,9 +8,19 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent implements OnInit {
+
+  selectedProduct:Product;
+  currentRate:number;
+
+
   constructor(private productService: ProductService) {}
 
-// ------- GET DATA ---------- 
+  // ------- GET DATA ----------
+
+  get allProducts() {
+    return this.productService.getProducts();
+  }
+
   get psGames() {
     return this.productService.getPsGames();
   }
@@ -22,9 +33,9 @@ export class HomePageComponent implements OnInit {
   get pcGames() {
     return this.productService.getPcGames();
   }
-// ---
+  // ---
 
-// ------- GET COUNTS ---------- 
+  // ------- GET COUNTS ----------
 
   get pcCounts() {
     return this.productService.getStartPcCount();
@@ -44,6 +55,7 @@ export class HomePageComponent implements OnInit {
   // ---
 
   ngOnInit(): void {
+    this.productService.fetchProducts();
     this.productService.fetchPsGames();
     this.productService.fetchXboxGames();
     this.productService.fetchNintendoGames();
@@ -108,5 +120,11 @@ export class HomePageComponent implements OnInit {
       const pageNum = this.nintendoCounts.pageCount + 1;
       this.productService.fetchNintendoGames(startNum, pageNum);
     }
+  }
+
+  selectedProd(productId) {
+    this.selectedProduct =  this.allProducts.find(p => p.id == productId);
+    this.currentRate = this.selectedProduct.rating;
+    console.log(this.selectedProduct)
   }
 }

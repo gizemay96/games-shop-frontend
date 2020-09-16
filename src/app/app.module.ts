@@ -11,6 +11,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductTitleComponent } from './components/product-title/product-title.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ProductTitleComponent } from './components/product-title/product-title.
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

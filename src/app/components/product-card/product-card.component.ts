@@ -11,6 +11,7 @@ export class ProductCardComponent implements OnInit {
   @Input() dataCount;
   @Output() previous = new EventEmitter();
   @Output() next = new EventEmitter();
+  @Output() selectedProd = new EventEmitter();
 
   constructor() {}
 
