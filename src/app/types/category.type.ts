@@ -8,4 +8,5 @@ export type Category = {
   updated_at?: string;
   img?: object;
   products: Product[];
+  pagination:number;
 };

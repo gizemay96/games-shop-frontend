@@ -1,17 +1,45 @@
-<div class="row">
-  <div class="card-case col-3"  *ngFor="let bla of data">
-    <h4 class="price">{{ bla.price | currency }}</h4>
-    <div class="b-game-card">
-      <div class="b-game-card__cover">
-        <p class="title">{{ bla.name }}</p>
-        <img [src]="'http://localhost:1337' + bla.img[0].url" alt="" />
+<div class="product-list">
+  <!-- ---------- PAGINATION BUTTONS AND PAGE NUM -----------  -->
+  <div class="buttons-pagination">
+    <div class="row justify-content-around">
+      <button
+        class="button-pag fire"
+        (click)="previous.emit(data[0].categories[0].id)"
+      >
+        <i class="fas fa-long-arrow-alt-left"></i>
+      </button>
+      <h5 class="text-light">Page {{ page }}</h5>
+      <button class="button-pag ice" (click)="next.emit(data[0].categories[0].id)">
+        <i class="fas fa-long-arrow-alt-right"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- ---------- PRODUCT CARD -----------  -->
+
+  <div class="row">
+    <div class="card-case col-3" *ngFor="let bla of data">
+      <div *ngIf="bla.imgName" class="gameName">
+        <div class="image">
+          <img [src]="'http://localhost:1337' + bla.imgName.url" alt="" />
+        </div>
+        <div class="price-case">
+          <h4 class="price">{{ bla.price | currency }}</h4>
+        </div>
+      </div>
+      <div class="b-game-card">
+        <div class="b-game-card__cover">
+          <img [src]="'http://localhost:1337' + bla.img[0].url" alt="" />
+        </div>
+      </div>
+
+      <!-- ---------- ACTION BUTTONS -----------  -->
+      <div class="buttons-action">
+        <div class="row justify-content-between">
+          <button class="btn btn-detail">Detail</button>
+          <button class="btn btn-cart">Add Cart</button>
+        </div>
       </div>
     </div>
-        <div class="buttons">
-          <div class="row justify-content-between">
-            <button class="btn btn-detail">Detail</button>
-            <button class="btn btn-cart">Add Cart</button>
-          </div>
-        </div>
-</div>
+  </div>
 </div>

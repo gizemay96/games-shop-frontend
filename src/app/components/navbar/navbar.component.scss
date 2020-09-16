@@ -1,6 +1,10 @@
+$gray-text: #c5c5c5;
+
 nav {
+  background-color: black;
   padding: 30px 0;
   .navbar-brand {
+    transform: translateY(-9px);
     max-width: 90px;
     max-height: 90px;
 
@@ -11,6 +15,9 @@ nav {
   }
 
   .collapse {
+    .nav-link {
+      color: $gray-text;
+    }
     ul {
       li {
         font-size: 20px;
@@ -30,7 +37,7 @@ nav {
 .seperator-wrapper {
   width: 100%;
   .seperator {
-    height: 3px;
+    height: 1px;
     animation: rotate 8s infinite linear;
     -webkit-animation: rotate 8s infinite linear;
   }
@@ -101,9 +108,9 @@ nav {
   background: linear-gradient(
     to right,
     rgb(209, 132, 45) 0%,
-    rgb(133, 133, 133) 25%,
-    rgb(255, 178, 105) 50%,
-    rgb(75, 75, 75) 75%,
+    rgb(106, 183, 255) 25%,
+    rgb(0, 0, 0) 50%,
+    rgb(0, 0, 0) 75%,
     rgb(255, 131, 48) 100%
   ); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#30ff90', endColorstr='#30ff90',GradientType=1 ); /* IE6-9 */

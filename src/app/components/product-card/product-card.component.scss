@@ -1,9 +1,54 @@
+.product-list {
+  margin: 80px 0;
+
+  .gameName {
+    max-width: 300px;
+    height: 70px;
+    border: 1px solid gray;
+    text-align: center;
+    margin: 20px 0 10px 0;
+    /* background: white; */
+    border-radius: 15px;
+
+    display: grid;
+    grid-template-columns: 9fr 3fr;
+
+    .image {
+      overflow: hidden;
+    }
+
+    img {
+      padding: 2px;
+      max-width: 70%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .price-case {
+      border-radius: 14px 14px 14px 124px;
+      width: 100%;
+      height: 100%;
+      background: #ffffff2b;
+      display: flex;
+      align-items: center;
+      border-radius: 0px 12px 12px 15px;
+
+      .price {
+        font-size: 18px;
+        padding: 9px 10px;
+        color: #d0d0d0;
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
 // Settings
 
 $c_0: #000000;
 $c_1: #353540;
 $color-orange: #d2721e;
-
+$color-blue: #4589ff;
 // Basic reset
 
 * {
@@ -20,16 +65,16 @@ body {
   background: $c_1;
 }
 
+
+// -----------------------------    PRODUCT CARD -----------------------------
+
 .card-case {
   padding: 0 15px;
+  // animation: flipInX;
+  animation: zoomIn;
+  animation-duration: 800ms; /* don't forget to set a duration! */
 
-  .price {
-    margin: 20px 0;
-    border-radius: 15px;
-    color: rgb(206, 206, 206);
-  }
-
-  .buttons {
+  .buttons-action {
     margin: 15px 0;
     .btn-detail {
       padding: 5px 20px;
@@ -51,24 +96,11 @@ body {
       outline: none;
 
       &:hover {
-        background-color: $color-orange;
+        background-color: $color-blue;
       }
     }
   }
 }
-
-// .l-container {
-//   display: grid;
-//   grid-template-columns: repeat(4, 1fr);
-//   grid-gap: 30px;
-//   width: 100%;
-//   max-width: 1200px;
-//   padding: 30px;
-
-//   @media screen and (max-width: 760px) {
-//     grid-template-columns: repeat(2, 1fr);
-//   }
-// }
 
 .b-game-card {
   position: relative;
@@ -76,16 +108,6 @@ body {
   width: 100%;
   padding-bottom: 150%;
   perspective: 1000px;
-
-  .title {
-    text-align: center;
-    padding: 5px 0;
-    position: absolute;
-    width: 100%;
-    background-color: black;
-    font-weight: 500;
-    color: $color-orange;
-  }
 
   &__cover {
     position: absolute;
@@ -95,7 +117,7 @@ body {
     width: 100%;
     height: 95%;
     overflow: hidden;
-    background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+    background-image: linear-gradient(120deg, #000000 0%, #000000 100%);
     background-size: cover;
     perspective-origin: 50% 50%;
     transform-style: preserve-3d;
@@ -105,6 +127,7 @@ body {
     transition: transform 0.35s ease-in-out;
 
     img {
+      opacity: 0.8;
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -165,3 +188,149 @@ body {
     transform: rotateX(7deg) translateY(-6px) scale(1.05);
   }
 }
+// -----------------------------    PRODUCT CARD -----------------------------
+
+
+
+
+// -----------------------------    PAGINATION BUTTONS -----------------------------
+
+$color-highlight-fire: rgba(255, 236, 168, 1);
+$color-primary-fire: rgb(255, 131, 37);
+$color-secondary-fire: rgb(201, 77, 20);
+
+$color-highlight-ice: rgba(168, 236, 255, 1);
+$color-primary-ice: rgba(48, 138, 255, 1);
+$color-secondary-ice: rgba(29, 96, 240, 1);
+
+.button-pag {
+  margin-bottom: 20px;
+  outline: none;
+  border: 1px solid green;
+  backdrop-filter: blur(10px);
+  transform: skewX(-10deg);
+  height: 35px;
+  width: 70px;
+  border-radius: 20px 5px 20px 0px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  font: 12px sans-serif;
+  font-weight: 300;
+  text-shadow: 0 0 20px rgb(0, 0, 0);
+  text-transform: uppercase;
+  animation: breath2 2s 0.5s infinite alternate;
+  transition: all 0.2s ease;
+  cursor: pointer;
+
+  &:before {
+    content: "";
+    display: block;
+    width: calc(103% - 20px);
+    height: calc(35px - 8px);
+    animation: breath 2s infinite alternate;
+    left: 10px;
+    top: 3px;
+    position: absolute;
+    background-color: transparent;
+    border: 1px solid #fff;
+    border-radius: 3px 15px 3px 15px;
+  }
+
+  &.fire {
+    border-radius: 2px 20px 2px 20px;
+    font-size: 35px;
+    border-color: $color-highlight-fire;
+    background-image: linear-gradient(
+      to bottom,
+      transparentize($color-primary-fire, 0.4),
+      transparentize($color-secondary-fire, 0.4)
+    );
+    box-shadow: 0 0 70px transparentize($color-primary-fire, 0.4),
+      0 5px 20px transparentize($color-primary-fire, 0.4),
+      inset 0 1px $color-highlight-fire, inset 0 -1px $color-highlight-fire;
+    color: white;
+    &:before {
+      box-shadow: inset 0 0 30px 0 $color-highlight-fire;
+    }
+  }
+  &.ice {
+    font-size: 35px;
+    border-color: $color-highlight-ice;
+    background-image: linear-gradient(
+      to bottom,
+      transparentize($color-primary-ice, 0.5),
+      transparentize($color-secondary-ice, 0.5)
+    );
+    box-shadow: 0 0 70px transparentize($color-primary-ice, 0.5),
+      0 5px 20px transparentize($color-primary-ice, 0.5),
+      inset 0 1px $color-highlight-fire, inset 0 -1px $color-highlight-fire;
+    color: white;
+    &:before {
+      box-shadow: inset 0 0 30px 0 $color-highlight-ice;
+    }
+  }
+  &:hover {
+    &.fire {
+      box-shadow: 0 0 70px transparentize($color-primary-fire, 0.2),
+        0 5px 20px transparentize($color-primary-fire, 0.2),
+        inset 0 1px $color-highlight-fire, inset 0 -1px $color-highlight-fire;
+      &:before {
+        box-shadow: inset 0 0 50px 0 $color-highlight-fire;
+      }
+    }
+    &.ice {
+      box-shadow: 0 0 70px transparentize($color-primary-ice, 0.2),
+        0 5px 20px transparentize($color-primary-ice, 0.2),
+        inset 0 1px $color-highlight-ice, inset 0 -1px $color-highlight-ice;
+      &:before {
+        box-shadow: inset 0 0 50px 0 $color-highlight-ice;
+      }
+    }
+  }
+
+  & + & {
+    animation-delay: 0.3s;
+  }
+
+  @keyframes breath {
+    0% {
+      transform: scaleX(1);
+    }
+    100% {
+      transform: scaleX(0.95);
+    }
+  }
+
+  @keyframes breath2 {
+    0% {
+      transform: skewX(-10deg) scaleX(1);
+    }
+    100% {
+      transform: skewX(-10deg) scaleX(0.95);
+    }
+  }
+}
+
+.ref {
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 3px;
+  padding: 5px 8px;
+  position: absolute;
+  font-size: 16px;
+  bottom: 10px;
+  right: 10px;
+  color: #fff;
+  font-weight: 300;
+  font-family: sans-serif;
+  text-decoration: none;
+  &::first-letter {
+    font-size: 12px;
+  }
+}
+
+
+// -----------------------------    PAGINATION BUTTONS FINISH -----------------------------

@@ -1,13 +1,63 @@
 <div class="container">
-  <app-product-title [categoryCount]="pcGames.length" title="PC Games"></app-product-title>
-  <app-product-card [data]="pcGames"></app-product-card>
 
-  <app-product-title [categoryCount]="psGames.length" title="Playstation"></app-product-title>
-  <app-product-card [data]="psGames"></app-product-card>
+  
+  <!-- ----------- PC GAME LIST -------------- -->
+  <app-product-title
+    [categoryCount]="pcGames.length"
+    icon="fas fa-desktop"
+    title="PC Games"
+  ></app-product-title>
+  <app-product-card
+    (next)="nextData($event)"
+    (previous)="previousData($event)"
+    [data]="pcGames"
+    [page]="pcCounts.pageCount"
+  ></app-product-card>
 
-  <app-product-title [categoryCount]="xboxGames.length" title="Xbox"></app-product-title>
-  <app-product-card [data]="xboxGames"></app-product-card>
+  <!-- ----------- PLAYSTATION GAME LIST -------------- -->
 
-  <app-product-title [categoryCount]="nintendoGames.length" title="Nintendo"></app-product-title>
-  <app-product-card [data]="nintendoGames"></app-product-card>
+  <app-product-title
+    [categoryCount]="psGames.length"
+    icon="fab fa-playstation"
+    title="Playstation"
+  ></app-product-title>
+  <app-product-card
+    (next)="nextData($event)"
+    (previous)="previousData($event)"
+    [data]="psGames"
+    [page]="psCounts.pageCount"
+  ></app-product-card>
+
+  <!-- ----------- XBOX GAME LIST -------------- -->
+
+
+  <app-product-title
+    [categoryCount]="xboxGames.length"
+    icon="fab fa-xbox"
+    title="Xbox"
+  ></app-product-title>
+  <app-product-card
+    (next)="nextData($event)"
+    (previous)="previousData($event)"
+    [data]="xboxGames"
+    [page]="xboxCounts.pageCount"
+  ></app-product-card>
+
+
+  <!-- ----------- NINTENDO GAME LIST -------------- -->
+
+  <app-product-title
+    [categoryCount]="nintendoGames.length"
+    icon="fas fa-gamepad"
+    title="Nintendo"
+  ></app-product-title>
+  <app-product-card
+    (next)="nextData($event)"
+    (previous)="previousData($event)"
+    [data]="nintendoGames"
+    [page]="nintendoCounts.pageCount"
+  ></app-product-card>
 </div>
+
+
+  <!-- ----------- END -------------- -->

@@ -1,22 +1,21 @@
-
+$gray-text: #c5c5c5;
 
 .category-header {
   margin: 50px 0;
 
   .small-line {
-    width: 5%;
-    background: white;
+    background: $gray-text;
     height: 2px;
   }
 
   h5 {
-    color: rgb(206, 206, 206) !important;
-    margin: 0 15px;
+    text-align: center;
+    color: $gray-text !important;
   }
 
   .big-line {
-    width: 80%;
     background: white;
     height: 2px;
   }
 }
+
