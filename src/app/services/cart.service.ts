@@ -19,17 +19,15 @@ export class CartService {
       .get(`${env.cartsApiURL}?user=${userId}`)
       .subscribe((response: Cart) => {
         this.userCart = response[0];
-        this.fetchCartDetailsById(this.userCart.orders)
+        this.fetchCartDetailsById(this.userCart.orders);
       });
   }
 
   fetchCartDetailsById(orders) {
     const query = orders.map((order) => `id_in=${order.product}`).join('&');
-
     this.http
       .get(`${env.productsApiURL}?${query}`)
       .subscribe((response: Product[]) => {
-        console.log(response)
         this.cartProducts = response;
       });
   }
@@ -52,9 +50,9 @@ export class CartService {
       });
   }
 
-  addToCart(newProduct: number, userId: number) {
+  addToCart(newProduct: Product, userId: number) {
     const existingOrder = this.userCart.orders.find(
-      (order) => order.product === newProduct
+      (order) => order.product === newProduct.id
     );
 
     if (existingOrder) {
@@ -65,7 +63,7 @@ export class CartService {
         });
     } else {
       this.orderService
-        .createOrder(newProduct, userId)
+        .createOrder(newProduct.id, userId)
         .subscribe((response: Order) => {
           this.updateCart(response.id, userId).subscribe((response) => {
             this.fetchUserCart(userId);
@@ -92,25 +90,25 @@ export class CartService {
     );
   }
 
-
   removeFromCart(product: Product, userId: number) {
-    const existingOrder = this.userCart.orders.find(order => order.product === product.id)
+    const existingOrder = this.userCart.orders.find(
+      (order) => order.product === product.id
+    );
 
     if (!existingOrder) return;
 
     if (existingOrder.quantity > 1) {
-      this.orderService.updateOrder(existingOrder, existingOrder.quantity - 1)
-        .subscribe(response => {
-          this.fetchUserCart(userId)
-        })
+      this.orderService
+        .updateOrder(existingOrder, existingOrder.quantity - 1)
+        .subscribe((response) => {
+          this.fetchUserCart(userId);
+        });
     } else {
-      this.orderService.deleteOrder(existingOrder.id)
-        .subscribe(response => {
-          this.fetchUserCart(userId)
-        })
+      this.orderService.deleteOrder(existingOrder.id).subscribe((response) => {
+        this.fetchUserCart(userId);
+      });
     }
   }
-  
 
   resetCart() {
     this.userCart = null;
@@ -122,7 +120,6 @@ export class CartService {
   }
 
   getCartProducts() {
-    console.log(this.cartProducts)
     return this.cartProducts;
   }
 }

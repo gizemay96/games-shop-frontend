@@ -1,4 +1,4 @@
-<div class="order row p-3 mb-3 mr-2">
+<div *ngIf="userCart && userCart.orders.length" class="order row p-3 mb-3 mr-2">
   <div class="order-img col-3 p-0">
     <img
       style="max-width: 100%"
@@ -17,11 +17,11 @@
       {{ product.price * itemQuantity | currency }}
     </h5>
     <div class="order-actions d-flex align-items-center">
-      <button class="btn-decrement">
+      <button (click)="decrementClick.emit()" class="btn-decrement">
         <i class="fas fa-caret-down dec-icon"></i>
       </button>
       <span class="text-light mr-2 ml-2"> {{ itemQuantity }} </span>
-      <button class="btn-increment">
+      <button (click)="incrementClick.emit()" class="btn-increment">
         <i class="fas fa-caret-up inc-icon"></i>
       </button>
     </div>

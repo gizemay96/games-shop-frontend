@@ -7,12 +7,18 @@
       <div class="row">
         <div class="order-list col-5">
           <h4 class="header text-light mb-4">
-            Orders ({{totalQuantity}})
+            Orders
+            <span *ngIf="cartProducts; else zeroQuantity"
+              >({{ totalQuantity }})</span
+            >
+            <ng-template #zeroQuantity>(0)</ng-template>
           </h4>
           <div class="order-items">
             <app-order-item
               *ngFor="let product of cartProducts"
               [product]="product"
+              (decrementClick)="removeFromCart(product)"
+              (incrementClick)="addToCart(product)"
             >
             </app-order-item>
           </div>
@@ -28,18 +34,26 @@
             Bill <i class="fas fa-file-invoice-dollar"></i>
           </h4>
           <p class="header">Total Price <i class="fas fa-coins"></i> :</p>
-          <h2 class="cost">{{ getTotal | currency }}</h2>
+          <h2 *ngIf="cartProducts; else zeroTotalPrice" class="cost">
+            {{ getTotal | currency }}
+          </h2>
+          <ng-template #zeroTotalPrice>
+            <h2 class="cost">{{ 0 | currency }}</h2>
+          </ng-template>
+
           <br />
           <p class="header">Name <i class="fas fa-signature"></i> :</p>
           <h2 *ngIf="user" class="seller">{{ user.username | titlecase }}</h2>
         </div>
       </div>
     </div>
-    
+
     <div class="payment-title bg-title">
-      <h1 class="title">Payment <span><i class="far fa-credit-card payment-icon "></i></span></h1>
+      <h1 class="title">
+        Payment <span><i class="far fa-credit-card payment-icon"></i></span>
+      </h1>
     </div>
-    
+
     <div class="payment d-flex mt-5">
       <div class="payment-form col-md-5 col-sm-12">
         <form autocomplete="off">

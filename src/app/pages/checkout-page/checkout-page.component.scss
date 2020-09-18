@@ -133,6 +133,10 @@ $color-blue: #4589ff;
   box-shadow: 0px 0px 15px 0px black;
 }
 
+.receipt-body{
+  min-height: 420px;
+}
+
 .header {
   color: $gray-text;
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output , EventEmitter } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { Order } from 'src/app/types/order.type';
 import { Product } from 'src/app/types/product.type';
@@ -9,8 +9,13 @@ import { Product } from 'src/app/types/product.type';
   styleUrls: ['./order-item.component.scss']
 })
 export class OrderItemComponent implements OnInit {
+  get userCart() {
+    return this.cartService.getUserCart();
+  }
 
   @Input() product:Product;
+  @Output() decrementClick = new EventEmitter();
+  @Output() incrementClick = new EventEmitter();
   order:Order
   itemQuantity:number;
 
