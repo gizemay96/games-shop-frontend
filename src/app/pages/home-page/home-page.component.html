@@ -1,6 +1,4 @@
 <div class="container">
-
-  
   <!-- ----------- PC GAME LIST -------------- -->
   <app-product-title
     [categoryCount]="pcGames.length"
@@ -11,44 +9,10 @@
     (next)="nextData($event)"
     (previous)="previousData($event)"
     (selectedProd)="selectedProd($event)"
+    (addToCart)="addToCart($event)"
     [data]="pcGames"
     [page]="pcCounts.pageCount"
   ></app-product-card>
-
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div *ngIf="selectedProduct" class="card">
-        <div class="row">
-          <div class="image col-6">
-            <img [src]="'http://localhost:1337' + selectedProduct.img[0].url" alt="" />
-          </div>
-          <div class="body col-6">
-            <div class="title">
-              <h3>{{selectedProduct.name}}</h3>
-              <ngb-rating [(rate)]="currentRate" [readonly]="true">
-                <ng-template let-fill="fill" let-index="index">
-                  <span class="star" [class.filled]="fill === 100" [class.bad]="index < 3">&#9733;</span>
-                </ng-template>
-              </ngb-rating>
-              <pre style="color: aliceblue;">Rate: <b>{{currentRate}}</b></pre>
-            </div>
-            <div class="description">
-              <p> {{selectedProduct.description}} </p>
-            </div>
-            <div class="price">
-              <h1 class="text-light"> {{selectedProduct.price | currency}} </h1>
-            </div>
-          </div>
-        </div>
-      </div>
-        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button> -->
-    </div>
-  </div>
-</div>
 
   <!-- ----------- PLAYSTATION GAME LIST -------------- -->
 
@@ -61,12 +25,12 @@
     (next)="nextData($event)"
     (previous)="previousData($event)"
     (selectedProd)="selectedProd($event)"
+    (addToCart)="addToCart($event)"
     [data]="psGames"
     [page]="psCounts.pageCount"
   ></app-product-card>
 
   <!-- ----------- XBOX GAME LIST -------------- -->
-
 
   <app-product-title
     [categoryCount]="xboxGames.length"
@@ -77,10 +41,10 @@
     (next)="nextData($event)"
     (previous)="previousData($event)"
     (selectedProd)="selectedProd($event)"
+    (addToCart)="addToCart($event)"
     [data]="xboxGames"
     [page]="xboxCounts.pageCount"
   ></app-product-card>
-
 
   <!-- ----------- NINTENDO GAME LIST -------------- -->
 
@@ -93,10 +57,16 @@
     (next)="nextData($event)"
     (previous)="previousData($event)"
     (selectedProd)="selectedProd($event)"
+    (addToCart)="addToCart($event)"
     [data]="nintendoGames"
     [page]="nintendoCounts.pageCount"
   ></app-product-card>
 </div>
 
+<app-detail-modal
+  [data]="selectedProduct"
+  [rating]="currentRate"
+  (addToCart)="addToCart($event)"
+></app-detail-modal>
+<!-- ----------- END -------------- -->
 
-  <!-- ----------- END -------------- -->

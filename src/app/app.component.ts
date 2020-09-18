@@ -17,7 +17,4 @@ export class AppComponent implements OnInit {
     this.userService.tryToLogin();
   }
 
-  get user() {
-    return this.userService.getUser();
-  }
 }

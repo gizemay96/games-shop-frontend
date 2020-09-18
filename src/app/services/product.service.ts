@@ -28,7 +28,6 @@ export class ProductService {
 
   fetchProducts() {
     this.http.get(env.productsApiURL).subscribe((response: Product[]) => {
-      console.log(response);
       this.products = response;
     });
   }
@@ -108,7 +107,6 @@ export class ProductService {
       .get(`${env.productsApiURL}?categories=9&_start=${s}&_limit=4`)
       .subscribe((response: Product[]) => {
         if (response.length != 0) {
-          console.log(response)
           this.pcGames = response;
           this.PcCounts[0].startingNumber = s;
           this.PcCounts[0].pageCount = p;

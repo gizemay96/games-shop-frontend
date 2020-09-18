@@ -1,0 +1,29 @@
+<div class="order row p-3 mb-3 mr-2">
+  <div class="order-img col-3 p-0">
+    <img
+      style="max-width: 100%"
+      [src]="'http://localhost:1337' + product.img[0].url"
+      alt=""
+      alt=""
+    />
+  </div>
+  <div class="order-info col-9 p-0 pl-3">
+    <h5 class="bought-items text-light">{{ product.name }}</h5>
+    <p class="bought-items description text-light">
+      Platform /
+      {{ product.categories[0].name }}
+    </p>
+    <h5 class="bought-items price mt-3 text-light">
+      {{ product.price * itemQuantity | currency }}
+    </h5>
+    <div class="order-actions d-flex align-items-center">
+      <button class="btn-decrement">
+        <i class="fas fa-caret-down dec-icon"></i>
+      </button>
+      <span class="text-light mr-2 ml-2"> {{ itemQuantity }} </span>
+      <button class="btn-increment">
+        <i class="fas fa-caret-up inc-icon"></i>
+      </button>
+    </div>
+  </div>
+</div>

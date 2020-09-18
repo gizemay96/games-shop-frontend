@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { CartService } from 'src/app/services/cart.service';
 import { UserService } from 'src/app/services/user.service';
 import { AuthResponse } from 'src/app/types/authResponse.type';
 
@@ -20,6 +21,7 @@ export class LoginPageComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private userService: UserService,
+    private cartService: CartService,
     private router: Router
   ) {}
 
@@ -32,6 +34,7 @@ export class LoginPageComponent implements OnInit {
       .subscribe((response: AuthResponse) => {
         this.authService.setToken(response.jwt);
         this.userService.setUser(response.user);
+        this.cartService.fetchUserCart(response.user.id)
 
         this.isLoading = false;
 

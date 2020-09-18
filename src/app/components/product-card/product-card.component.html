@@ -21,19 +21,24 @@
   <!-- ---------- PRODUCT CARD -----------  -->
 
   <div class="row">
-    <div class="card-case col-3" *ngFor="let bla of data">
-      <div *ngIf="bla.imgName" class="gameName">
+    <div class="card-case col-3" *ngFor="let product of data">
+      <div *ngIf="product.imgName" class="gameName">
         <div class="image">
-          <img [src]="'http://localhost:1337' + bla.imgName.url" alt="" />
+          <img [src]="'http://localhost:1337' + product.imgName.url" alt="" />
         </div>
         <div class="price-case">
-          <h4 class="price">{{ bla.price | currency }}</h4>
+          <h4 class="price">{{ product.price | currency }}</h4>
         </div>
       </div>
-      <a style="cursor: pointer;" data-toggle="modal" data-target="#exampleModal" (click)="selectedProd.emit(bla.id)">
+      <a
+        style="cursor: pointer"
+        data-toggle="modal"
+        data-target="#ProductdetailModal"
+        (click)="selectedProd.emit(product.id)"
+      >
         <div class="b-game-card">
           <div class="b-game-card__cover">
-            <img [src]="'http://localhost:1337' + bla.img[0].url" alt="" />
+            <img [src]="'http://localhost:1337' + product.img[0].url" alt="" />
           </div>
         </div>
       </a>
@@ -41,9 +46,18 @@
       <!-- ---------- ACTION BUTTONS -----------  -->
       <div class="buttons-action">
         <div class="row justify-content-around">
-          <button (click)="selectedProd.emit(bla.id)" type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-detail"><i class="fas fa-info"></i></button>
-          <button class="btn btn-cart"><i class="fas fa-cart-plus"></i></button>
-
+          <button
+            (click)="selectedProd.emit(product.id)"
+            type="button"
+            data-toggle="modal"
+            data-target="#ProductdetailModal"
+            class=" btn-detail"
+          >
+            <i class="fas fa-info"></i>
+          </button>
+          <button (click)="addToCart.emit(product.id)" class=" btn-cart">
+            <i class="fas fa-cart-plus"></i>
+          </button>
         </div>
       </div>
     </div>

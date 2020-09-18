@@ -1,7 +1,19 @@
-
+$gray-text: #c5c5c5;
+$color-orange: #d2721e;
+$color-blue: #4589ff;
 /* Importing Bootstrap SCSS file. */
   body {
     background-color: #101010 !important;
+  }
+
+  .text-center{
+    text-align: center;
+  }
+
+  .bg-title{
+    margin: 50px;
+    text-align: center;
+    color: $gray-text;
   }
 
 

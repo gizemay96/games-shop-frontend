@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
+import { UserService } from 'src/app/services/user.service';
 import { Product } from 'src/app/types/product.type';
 
 @Component({
@@ -13,9 +15,17 @@ export class HomePageComponent implements OnInit {
   currentRate:number;
 
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private cartService:CartService,
+    private userService:UserService
+    ) {}
 
   // ------- GET DATA ----------
+
+  get user(){
+   return this.userService.getUser();
+  }
 
   get allProducts() {
     return this.productService.getProducts();
@@ -88,7 +98,6 @@ export class HomePageComponent implements OnInit {
     // ----- Previous Nintendo games ------
     else if (categoryId == 7) {
       if (this.nintendoCounts.startingNumber != 0) {
-        console.log('click prw nintendo');
         const start = this.nintendoCounts.startingNumber - 4;
         this.productService.fetchNintendoGames(start);
       }
@@ -125,6 +134,9 @@ export class HomePageComponent implements OnInit {
   selectedProd(productId) {
     this.selectedProduct =  this.allProducts.find(p => p.id == productId);
     this.currentRate = this.selectedProduct.rating;
-    console.log(this.selectedProduct)
+  }
+
+  addToCart(productId){
+    this.cartService.addToCart(productId , this.user.id)
   }
 }
