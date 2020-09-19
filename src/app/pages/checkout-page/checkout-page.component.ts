@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AddressService } from 'src/app/services/address.service';
 import { CartService } from 'src/app/services/cart.service';
 import { OrderService } from 'src/app/services/order.service';
 import { UserService } from 'src/app/services/user.service';
@@ -15,6 +16,7 @@ export class CheckoutPageComponent implements OnInit {
   expDate: string = '';
   cvc: string = '';
   selectedAddress: number;
+  creditCartFront:boolean = true;
 
   get user() {
     return this.userService.getUser();
@@ -30,6 +32,10 @@ export class CheckoutPageComponent implements OnInit {
 
   get totalQuantity() {
     return this.userCart.orders.reduce((total, order) => order.quantity + total, 0)
+  }
+
+  get userAddresses(){
+    return this.addressService.getUserAddress()
   }
 
   get getTotal() {
@@ -50,10 +56,14 @@ export class CheckoutPageComponent implements OnInit {
   constructor(
     private userService: UserService,
     private cartService: CartService,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private addressService:AddressService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
+
+  
 
   removeFromCart(product: Product) {
     this.cartService.removeFromCart(product, this.user.id);
@@ -61,5 +71,13 @@ export class CheckoutPageComponent implements OnInit {
 
   addToCart(product: Product) {
     this.cartService.addToCart(product, this.user.id);
+  }
+
+  showCVC(){
+    this.creditCartFront = false;
+  }
+
+  hideCVC(){
+    this.creditCartFront = true;
   }
 }

@@ -5,7 +5,7 @@
   <div class="receipt">
     <div class="receipt-body">
       <div class="row">
-        <div class="order-list col-5">
+        <div class="orders col-5">
           <h4 class="header text-light mb-4">
             Orders
             <span *ngIf="cartProducts; else zeroQuantity"
@@ -13,21 +13,37 @@
             >
             <ng-template #zeroQuantity>(0)</ng-template>
           </h4>
-          <div class="order-items">
-            <app-order-item
-              *ngFor="let product of cartProducts"
-              [product]="product"
-              (decrementClick)="removeFromCart(product)"
-              (incrementClick)="addToCart(product)"
-            >
-            </app-order-item>
+          <p>Your Orders</p>
+          <div class="order-list">
+            <div class="order-items">
+              <app-order-item
+                *ngFor="let product of cartProducts"
+                [product]="product"
+                (decrementClick)="removeFromCart(product)"
+                (incrementClick)="addToCart(product)"
+              >
+              </app-order-item>
+            </div>
           </div>
         </div>
         <div class="address-list col-4">
           <h4 class="header text-light mb-4">
             Addresses <i class="fas fa-map-marked-alt"></i>
           </h4>
-          <h1>address</h1>
+          <p>Select Delivery Address</p>
+          <div class="address-card" *ngFor="let address of userAddresses">
+            <div class="addressName">
+              <h5>{{ address.addressName }}</h5>
+            </div>
+            <div class="address">
+              <p>
+                {{ address.suite }}
+                {{ address.streetName }}
+                {{ address.city }}
+                {{ address.country }}
+              </p>
+            </div>
+          </div>
         </div>
         <div class="total-price col-3">
           <h4 class="header text-light mb-4">
@@ -101,6 +117,8 @@
                   class="security-code"
                   placeholder="CVC"
                   [(ngModel)]="cvc"
+                  (focus)="showCVC()"
+                  (blur)="hideCVC()"
                 />
               </div>
             </div>
@@ -108,7 +126,7 @@
         </form>
       </div>
       <div class="payment-card col-md-7 col-sm-12">
-        <div class="card">
+        <div *ngIf="creditCartFront" class="card">
           <button class="proceed">
             <svg class="sendicon" width="24" height="24" viewBox="0 0 24 24">
               <path
@@ -150,6 +168,34 @@
             <!-- <input readonly class="toleft ccv" [placeholder]="cvc" /> -->
           </form>
         </div>
+<div  *ngIf="!creditCartFront" class="card-back-case">
+  <button class="proceed">
+    <svg class="sendicon" width="24" height="24" viewBox="0 0 24 24">
+      <path
+        d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"
+      ></path>
+    </svg>
+  </button>
+  <div class="card card-back p-0">
+    <div class="top">
+    </div>
+   <div class="body">
+    <div class="form">
+      <form autocomplete="off" class="d-flex justify-content-center align-items-baseline">
+        <label>CVC:</label>
+        <input
+          readonly
+          id="user"
+          type="number"
+          class="cvc"
+          [placeholder]="cvc"
+        />
+        <!-- <input readonly class="toleft ccv" [placeholder]="cvc" /> -->
+      </form>
+     </div>
+   </div>
+  </div>
+</div>
       </div>
     </div>
   </div>

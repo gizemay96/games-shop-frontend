@@ -22,17 +22,29 @@ $color-blue: #4589ff;
 ::-webkit-scrollbar-thumb:hover {
   background: #b30000;
 }
-.order-items{
-  max-height: 555px;
-    overflow: auto;
-    
+
+.order-list {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: -2px 0px 5px 5px black;
+  padding: 10px;
+  background-color: #54545414;
+}
+.order-items {
+  max-height: 500px;
+  overflow: auto;
 }
 
-.address-list{
-  text-align: center;
+.address-card {
+  background: #54545414;
+  border-radius: 5px;
+  padding: 5px;
+  box-shadow: 0px 0px 5px 2px black;
+  margin: 15px 0;
+  color: $gray-text;
 }
 
-.total-price{
+.total-price {
   text-align: center;
 }
 
@@ -54,12 +66,11 @@ $color-blue: #4589ff;
   }
 }
 
-
-.payment-card{
-    margin-top: 20px;
+.payment-card {
+  margin-top: 20px;
 }
 
-.payment-icon{
+.payment-icon {
   margin-bottom: 3px;
   font-size: 20px;
 }
@@ -75,6 +86,8 @@ $color-blue: #4589ff;
   padding-right: 20px;
   box-shadow: 0px 3px 17px black;
   z-index: 99;
+  animation: flipInY; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 2s; /* don't forget to set a duration! */
 
   .logo-card {
     max-width: 50px;
@@ -123,6 +136,41 @@ $color-blue: #4589ff;
   }
 }
 
+.card-back-case {
+  animation: flipInY; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 2s; /* don't forget to set a duration! */
+  .card-back {
+    min-height: 215px;
+    overflow: hidden;
+
+    .top {
+      background-color: black;
+      height: 50px;
+    }
+
+    .body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .form {
+        max-width: 100px;
+        background: #272727;
+        margin-top: 50px;
+        padding: 8px 8px 0px 8px;
+      }
+
+      .cvc {
+        width: 100%;
+      }
+    }
+  }
+
+  .proceed {
+    z-index: 100;
+    transform: translate(430px, 85px);
+  }
+}
+
 .receipt {
   background: #0000005c;
   border-radius: 4px;
@@ -133,7 +181,7 @@ $color-blue: #4589ff;
   box-shadow: 0px 0px 15px 0px black;
 }
 
-.receipt-body{
+.receipt-body {
   min-height: 420px;
 }
 
