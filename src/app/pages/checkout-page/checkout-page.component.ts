@@ -17,6 +17,7 @@ export class CheckoutPageComponent implements OnInit {
   cvc: string = '';
   selectedAddress: number;
   creditCartFront:boolean = true;
+  radioButtonActive:number;
 
   get user() {
     return this.userService.getUser();
@@ -79,5 +80,10 @@ export class CheckoutPageComponent implements OnInit {
 
   hideCVC(){
     this.creditCartFront = true;
+  }
+
+  radioButtonToActive(addressId){
+    this.radioButtonActive = addressId;
+    this.selectedAddress = addressId;
   }
 }

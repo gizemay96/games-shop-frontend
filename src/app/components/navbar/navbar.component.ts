@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { CartService } from 'src/app/services/cart.service';
 import { UserService } from 'src/app/services/user.service';
@@ -26,7 +27,7 @@ export class NavbarComponent implements OnInit {
   constructor(
     private userService: UserService,
     private authService: AuthService,
-    private cartService: CartService
+    private cartService: CartService,
   ) {}
  
   

@@ -18,6 +18,11 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul *ngIf="!user; else authNav" class="navbar-nav">
           <li class="nav-item">
+            <h4 class="nav-link greeting-text">
+              Welcome Stranger !
+            </h4>
+          </li>
+          <li class="nav-item">
             <a class="nav-link text-light" routerLink="/login">Login</a>
           </li>
           <li class="nav-item">
