@@ -25,15 +25,35 @@ $color-blue: #4589ff;
 
 .checkout-page {
   margin: 70px 0;
+
+  .subtitle{
+    color: darken($gray-text ,  $amount: 20%);
+  }
 }
 
-.order-list {
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0px 2px 5px 7px black;
-  padding: 10px;
-  background-color: transparent;
+.orders{
+
+  .order-list {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0px 2px 5px 7px black;
+    padding: 10px;
+    background-color: transparent;
+  }
+  
+    .toEmpty-btn{
+      background: #d2721e96;
+      border: 1px solid $color-orange;
+      border-radius: 0px 15px 0px 15px;
+      color: $gray-text;
+      font-weight: 600;
+
+      &:hover{
+        background-color: #000000a1;
+      }
+    }
 }
+
 .order-items {
   max-height: 500px;
   overflow: auto;
@@ -42,29 +62,38 @@ $color-blue: #4589ff;
 .address-card {
   background: transparent;
   border-radius: 5px;
-  padding: 5px;
+  overflow: hidden;
+  // padding: 5px;
   box-shadow: 0px 4px 5px 5px black;
   margin: 15px 0;
   color: $gray-text;
 
-  .address-select-button{
+  .addressName{
+    padding: 5px;
+    background-color: rgb(31 31 31 / 70%);
+  }
+
+  .address{
+    padding: 5px;
+  }
+
+  .address-select-button {
     margin: 0 -1px 10px 0px;
     background: transparent;
-    border: 1px solid $color-orange;
+    border: 1px solid $gray-text;
     border-radius: 50%;
     padding: 9px;
     outline: none;
 
-    &:hover{
-      background-color: #4589ff28;
+    &:hover {
+      background-color: #000000d5;
     }
-
   }
-   .button-active{
-     background-color: #d2721e96 !important;
-     animation: jello;
-     animation-duration: 800ms;
-   }
+  .button-active {
+    background-color: #d2721e96 !important;
+    animation: jello;
+    animation-duration: 800ms;
+  }
 }
 
 .total-price {
@@ -75,132 +104,9 @@ $color-blue: #4589ff;
   padding-top: 100px;
 }
 
-.payment-form {
-  label{
-    margin-top: 10px;
-  }
-  input {
-    width: 100%;
-    font-family: "Work Sans", sans-serif;
-    background: transparent;
-    border: none;
-    box-shadow: 0px 2px 5px 3px black;
-    border-radius: 3px;
-    padding: 10px 10px;
-    color: #dbdce0;
-    transition: border-bottom 0.4s;
-    outline: none;
-    text-transform: uppercase;
-    &::placeholder {
-      padding-left: 5px;
-      text-transform: capitalize;
-    }
-  }
-}
-
-.payment-card {
-  margin-top: 20px;
-}
-
 .payment-icon {
   margin-bottom: 3px;
   font-size: 20px;
-}
-
-.card {
-  background: #16181a;
-  border-radius: 14px;
-  max-width: 360px;
-  display: block;
-  margin: auto;
-  padding: 60px 60px 0px 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  box-shadow: 0px 3px 17px black;
-  z-index: 99;
-  animation: flipInY; /* referring directly to the animation's @keyframe declaration */
-  animation-duration: 2s; /* don't forget to set a duration! */
-
-  .logo-card {
-    max-width: 50px;
-    margin-bottom: 15px;
-    margin-top: -60px;
-  }
-
-  label {
-    display: flex;
-    font-size: 12px;
-    color: white;
-    opacity: 0.7;
-  }
-
-  input {
-    font-family: "Work Sans", sans-serif;
-    background: transparent;
-    border: none;
-    border-bottom: 1px solid transparent;
-    color: #dbdce0;
-    transition: border-bottom 0.4s;
-    outline: none;
-  }
-
-  .cardnumber {
-    display: block;
-    font-size: 20px;
-    margin-bottom: 8px;
-  }
-
-  .name {
-    display: block;
-    font-size: 15px;
-    max-width: 200px;
-    float: left;
-    margin-bottom: 15px;
-  }
-
-  .toleft {
-    float: left;
-  }
-  .ccv {
-    width: 50px;
-    margin-top: -5px;
-    font-size: 15px;
-  }
-}
-
-.card-back-case {
-  animation: flipInY; /* referring directly to the animation's @keyframe declaration */
-  animation-duration: 2s; /* don't forget to set a duration! */
-  .card-back {
-    min-height: 215px;
-    overflow: hidden;
-
-    .top {
-      background-color: black;
-      height: 50px;
-    }
-
-    .body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      .form {
-        max-width: 100px;
-        background: #272727;
-        margin-top: 50px;
-        padding: 8px 8px 0px 8px;
-      }
-
-      .cvc {
-        width: 100%;
-      }
-    }
-  }
-
-  .proceed {
-    z-index: 100;
-    transform: translate(430px, 85px);
-  }
 }
 
 .receipt {
@@ -235,33 +141,4 @@ $color-blue: #4589ff;
 }
 .comprobe {
   text-align: center;
-}
-.proceed {
-  position: absolute;
-  transform: translate(310px, 25px);
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: $color-orange;
-  border: none;
-  color: white;
-  transition: box-shadow 0.2s, transform 0.4s;
-  cursor: pointer;
-}
-.proceed:active {
-  outline: none;
-}
-.proceed:focus {
-  outline: none;
-  box-shadow: inset 0px 0px 5px white;
-}
-.sendicon {
-  filter: invert(100%);
-  padding-top: 2px;
-}
-
-@media (max-width: 600px) {
-  .proceed {
-    transform: translate(250px, 10px);
-  }
 }

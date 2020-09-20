@@ -1,0 +1,169 @@
+$gray-text: #c5c5c5;
+$color-orange: #d2721e;
+$color-blue: #4589ff;
+
+.payment-form {
+  label {
+    margin-top: 10px;
+  }
+  input {
+    width: 100%;
+    font-family: "Work Sans", sans-serif;
+    background: transparent;
+    border: none;
+    box-shadow: 0px 2px 5px 3px black;
+    border-radius: 3px;
+    padding: 10px 10px;
+    color: #dbdce0;
+    transition: border-bottom 0.4s;
+    outline: none;
+    text-transform: uppercase;
+    &::placeholder {
+      padding-left: 5px;
+      text-transform: capitalize;
+    }
+  }
+}
+
+.payment-card {
+  margin-top: 20px;
+
+  .card-front {
+    background: #16181a;
+    border-radius: 14px;
+    max-width: 360px;
+    display: block;
+    margin: auto;
+    padding: 60px 60px 0px 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-shadow: 0px 3px 17px black;
+    z-index: 99;
+    animation: flipInY; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 2s; /* don't forget to set a duration! */
+
+    .logo-card {
+      max-width: 50px;
+      margin-bottom: 15px;
+      margin-top: -60px;
+    }
+
+    label {
+      display: flex;
+      font-size: 12px;
+      color: white;
+      opacity: 0.7;
+    }
+
+    input {
+      font-family: "Work Sans", sans-serif;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid transparent;
+      color: #dbdce0;
+      transition: border-bottom 0.4s;
+      outline: none;
+    }
+
+    .cardnumber {
+      display: block;
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .name {
+      display: block;
+      font-size: 15px;
+      max-width: 200px;
+      float: left;
+      margin-bottom: 15px;
+    }
+
+    .toleft {
+      float: left;
+    }
+    .ccv {
+      width: 50px;
+      margin-top: -5px;
+      font-size: 15px;
+    }
+  }
+
+  .card-back-case {
+    animation: flipInY; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 2s; /* don't forget to set a duration! */
+    margin: auto;
+    max-width: 360px;
+    display: block;
+    
+    .card-back {
+      min-height: 215px;
+      overflow: hidden;
+      background: #16181a;
+
+      .top {
+        background-color: black;
+        height: 50px;
+      }
+
+      .body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .form {
+          max-width: 100px;
+          background: #272727;
+          margin-top: 50px;
+          padding: 8px 8px 0px 8px;
+          border-radius: 3px;
+
+          label{
+            color: $gray-text;
+          }
+
+          input{
+            background: transparent;
+            border: none;
+          }
+        }
+
+        .cvc {
+          width: 100%;
+        }
+      }
+    }
+
+    .proceed {
+      z-index: 100;
+      transform: translate(335px, 85px);
+    }
+  }
+
+  .proceed {
+    position: absolute;
+    transform: translate(310px, 25px);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: $color-orange;
+    border: none;
+    color: white;
+    transition: box-shadow 0.2s, transform 0.4s;
+    cursor: pointer;
+    &:active {
+      outline: none;
+    }
+    &:focus {
+      outline: none;
+      box-shadow: inset 0px 0px 5px white;
+    }
+    .sendicon {
+      filter: invert(100%);
+      padding-top: 2px;
+    }
+    @media (max-width: 600px) {
+    transform: translate(250px, 10px);
+    }
+  }
+  
+}

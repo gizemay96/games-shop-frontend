@@ -39,10 +39,29 @@ export class UserService {
       })
       .subscribe((response: User) => {
         this.user = response;
+        this.getDetails();
         this.cartService.fetchUserCart(this.user.id)
         this.addressService.fetchUserAddress(this.user.id)
       });
   }
+
+  getDetails() {
+    const token = window.localStorage.getItem('token');
+    const httpOptions = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+    this.http
+      .get(`${env.usersApiURL}/${this.user.id}`, httpOptions)
+      .subscribe((response: any) => {
+        
+        if (response.avatar) {
+          this.user.avatarUrl = `${env.baseApiURL}${response.avatar.url}`;
+        } else {
+          this.user.avatarUrl= 'assets/avatar-placeholder.jpg';
+        }
+      });
+  }
+
 }
 
   

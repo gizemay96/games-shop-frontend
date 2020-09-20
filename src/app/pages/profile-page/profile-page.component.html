@@ -1,0 +1,78 @@
+<div class="container">
+  <h1 class="text-center bg-title">Profile</h1>
+  <div class="profile-page">
+    <div *ngIf="user" class="top">
+      <div class="row">
+        <div class="name col-4">
+          <h1 class="text-center">{{ user.fullname }}</h1>
+        </div>
+        <div class="image col-4 d-flex justify-content-center">
+          <div class="img">
+            <img [src]="user.avatarUrl" alt="" />
+          </div>
+        </div>
+        <div class="surname col-4">
+          <h1 class="text-center">{{ user.lastName }}</h1>
+        </div>
+      </div>
+    </div>
+    <div class="body">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="user-info col-6">
+            <div class="user-card">
+              <h3 class="card-title text-center">User Cart</h3>
+              <div *ngIf="user" class="card-content pl-1">
+                <div class="d-flex justify-content-around mt-3">
+                  <div class="name d-flex align-items-baseline mb-3">
+                    <h5 class="pr-1">Name</h5>
+                    :
+                    <p>{{ user.username | titlecase }}</p>
+                  </div>
+                  <div
+                    class="surname d-flex justify-content-start align-items-baseline"
+                  >
+                    <h5 class="pr-1">Surname</h5>
+                    :
+                    <p>{{ user.lastName }}</p>
+                  </div>
+                </div>
+                <div class="email d-flex justify-content-start mb-3 pl-5">
+                  <h5 class="pr-1">Email</h5>
+                  :
+                  <p>{{ user.email }}</p>
+                </div>
+                <div class="phone d-flex justify-content-start pl-5">
+                  <h5 class="pr-1">Phone</h5>
+                  :
+                  <p>{{ user.phone }}</p>
+                </div>
+                <button class="edit-user-button ml-5">Edit Profile</button>
+              </div>
+            </div>
+          </div>
+          <div class="addresses col-6">
+            <div class="addresses-card">
+              <h3 class="text-center">Addresses</h3>
+              <div class="address-list">
+                <div class="address-card row" *ngFor="let address of userAddresses">
+                  <div class="content col-10">
+                    <h5>{{ address.addressName }}</h5>
+                    <p>
+                      {{ address.suite }} {{ address.streetName }}
+                      {{ address.city }} {{ address.country }}
+                    </p>
+                  </div>
+                  <div class="actions col-2 p-0">
+                    <button class="action-button edit-address mb-2"><i class="fas fa-edit"></i></button>
+                    <button class="action-button delete"><i class="fas fa-trash-alt"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

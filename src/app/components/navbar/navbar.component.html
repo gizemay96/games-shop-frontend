@@ -1,5 +1,5 @@
 <div class="fixed-top">
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-sm">
     <div class="container">
       <a class="navbar-brand" href="#"
         ><img src="../../../assets/logo.png" alt=""
@@ -15,53 +15,52 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul *ngIf="!user; else authNav" class="navbar-nav">
-          <li class="nav-item">
-            <h4 class="nav-link greeting-text">
-              Welcome Stranger !
-            </h4>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-light" routerLink="/login">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-light" routerLink="/register">Register</a>
-          </li>
-        </ul>
-      </div>
-      <ng-template #authNav>
+      <div *ngIf="!user; else authNav" class="navB">
         <div
           class="collapse navbar-collapse justify-content-end"
           id="navbarNav"
         >
           <ul class="navbar-nav">
             <li class="nav-item">
-              <h4 class="nav-link greeting-text">
-                Welcome {{ user.username | titlecase }} !
-              </h4>
+              <a class="nav-link text-light" routerLink="/login">Login</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Profile</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" (click)="logout()">LogOut</a>
-            </li>
-            <li *ngIf="userCart" class="nav-item cart-icon">
-              <a class="nav-link" routerLink="/checkout"
-                ><i class="fas fa-shopping-basket basket-icon"></i>
-                <span
-                  [ngClass]="{
-                    'sm-padding': cartLength < 10,
-                    'lg-padding': cartLength > 9
-                  }"
-                  class="cart-length"
-                >
-                  {{ cartLength }}
-                </span>
-              </a>
+              <a class="nav-link text-light" routerLink="/register">Register</a>
             </li>
           </ul>
+        </div>
+      </div>
+
+      <ng-template #authNav>
+        <h4 class="greeting-text d-flex align-items-center">
+          Welcome {{ user.username | titlecase }} !
+          <img class="avatar ml-2" [src]="user.avatarUrl" alt="" />
+        </h4>
+        <div
+          class="collapse navbar-collapse justify-content-end colapse-activeUser"
+          id="navbarNav"
+        >
+          <div
+            class="collapse navbar-collapse justify-content-end"
+            id="navbarNav"
+          >
+            <div class="d-flex align-items-center">
+              <h5><a class="nav-link" routerLink="/profile">Profile</a></h5>
+              <h5><a class="nav-link" (click)="logout()">LogOut</a></h5>
+                <a *ngIf="userCart" class="cart mt-2 ml-2" routerLink="/checkout">
+                  <i class="fas fa-shopping-basket basket-icon"></i>
+                  <span
+                    [ngClass]="{
+                      'sm-padding': cartLength < 10,
+                      'lg-padding': cartLength > 9
+                    }"
+                    class="cart-length"
+                  >
+                    {{ cartLength }}
+                  </span>
+                </a>
+              </div>
+          </div>
         </div>
       </ng-template>
     </div>

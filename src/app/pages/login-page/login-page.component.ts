@@ -40,6 +40,8 @@ export class LoginPageComponent implements OnInit {
 
         this.loginForm.identifier = '';
         this.loginForm.password = '';
+
+        this.userService.getDetails();
         this.router.navigateByUrl('/');
       });
   }

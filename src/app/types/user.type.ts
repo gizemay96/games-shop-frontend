@@ -15,7 +15,10 @@ export type User = {
   avatarUrl: string;
   cart: Cart | number;
   address: Address;
-  fullname:string
+  fullname:string;
+  lastName:string;
+  phone:string;
+
 
 };
   

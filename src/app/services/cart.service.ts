@@ -110,9 +110,10 @@ export class CartService {
     }
   }
 
-  resetCart() {
+  resetCart(userCart?:Cart) {
     this.userCart = null;
     this.cartProducts = null;
+    this.orderService.deleteAllOrder(userCart)
   }
 
   getUserCart() {

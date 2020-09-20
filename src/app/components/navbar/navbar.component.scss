@@ -1,4 +1,6 @@
 $gray-text: #c5c5c5;
+$color-orange: #d2721e;
+$color-blue: #4589ff;
 
 nav {
   background-color: black;
@@ -16,26 +18,32 @@ nav {
 
   .collapse {
     .nav-link {
+      margin: 15px 5px 0 0;
+      padding: 5px;
       color: $gray-text;
-      
+      cursor: pointer;
     }
+  }
 
-    ul {
-      li {
-        font-size: 20px;
-        cursor: pointer;
-      }
-    }
+  .colapse-activeUser{
+    max-width: 250px;
   }
 
   .greeting-text {
     cursor: default;
-    @media (min-width: 1200px) {
-      margin-right: 300px;
-    }
-  }
+    color: $gray-text;
+    margin-left: 180px;
+    margin-top: 10px;
 
+  }
+  
 }
+    .avatar{
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid gray;
+    }
 
 .seperator-wrapper {
   width: 100%;
@@ -132,6 +140,7 @@ nav {
 
 .basket-icon{
   font-size: 25px;
+  color: $gray-text;
 }
 
 .sm-padding{

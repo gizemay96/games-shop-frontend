@@ -3,6 +3,7 @@ import { AddressService } from 'src/app/services/address.service';
 import { CartService } from 'src/app/services/cart.service';
 import { OrderService } from 'src/app/services/order.service';
 import { UserService } from 'src/app/services/user.service';
+import { Cart } from 'src/app/types/cart.type';
 import { Product } from 'src/app/types/product.type';
 
 @Component({
@@ -11,13 +12,8 @@ import { Product } from 'src/app/types/product.type';
   styleUrls: ['./checkout-page.component.scss'],
 })
 export class CheckoutPageComponent implements OnInit {
-  cardName: string = '';
-  cardNumber: string = '';
-  expDate: string = '';
-  cvc: string = '';
   selectedAddress: number;
-  creditCartFront:boolean = true;
-  radioButtonActive:number;
+  radioButtonActive: number;
 
   get user() {
     return this.userService.getUser();
@@ -32,11 +28,14 @@ export class CheckoutPageComponent implements OnInit {
   }
 
   get totalQuantity() {
-    return this.userCart.orders.reduce((total, order) => order.quantity + total, 0)
+    return this.userCart.orders.reduce(
+      (total, order) => order.quantity + total,
+      0
+    );
   }
 
-  get userAddresses(){
-    return this.addressService.getUserAddress()
+  get userAddresses() {
+    return this.addressService.getUserAddress();
   }
 
   get getTotal() {
@@ -58,13 +57,10 @@ export class CheckoutPageComponent implements OnInit {
     private userService: UserService,
     private cartService: CartService,
     private orderService: OrderService,
-    private addressService:AddressService
+    private addressService: AddressService
   ) {}
 
-  ngOnInit(): void {
-  }
-
-  
+  ngOnInit(): void {}
 
   removeFromCart(product: Product) {
     this.cartService.removeFromCart(product, this.user.id);
@@ -74,16 +70,12 @@ export class CheckoutPageComponent implements OnInit {
     this.cartService.addToCart(product, this.user.id);
   }
 
-  showCVC(){
-    this.creditCartFront = false;
-  }
-
-  hideCVC(){
-    this.creditCartFront = true;
-  }
-
-  radioButtonToActive(addressId){
+  radioButtonToActive(addressId) {
     this.radioButtonActive = addressId;
     this.selectedAddress = addressId;
+  }
+
+  resetCart(userCart: Cart) {
+    this.cartService.resetCart(userCart);
   }
 }

@@ -15,6 +15,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DetailModalComponent } from './components/detail-modal/detail-modal.component';
 import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.component';
 import { OrderItemComponent } from './components/order-item/order-item.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { OrderItemComponent } from './components/order-item/order-item.component
     ProductTitleComponent,
     DetailModalComponent,
     CheckoutPageComponent,
-    OrderItemComponent
+    OrderItemComponent,
+    PaymentComponent,
+    ProfilePageComponent
   ],
   imports: [
     BrowserModule,

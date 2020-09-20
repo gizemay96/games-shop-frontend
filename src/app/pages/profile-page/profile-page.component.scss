@@ -1,0 +1,102 @@
+$gray-text: #c5c5c5;
+$color-orange: #d2721e;
+$color-blue: #4589ff;
+
+.profile-page {
+  background: #0000005c;
+  padding: 30px;
+  box-shadow: 0px 0px 5px 5px black;
+  border-radius: 10px;
+  margin: 100px 0;
+
+  .top {
+    h1 {
+      color: $gray-text;
+    }
+    .img {
+      position: relative;
+      top: -90px;
+      width: 200px;
+      height: 200px;
+      overflow: hidden;
+      border-radius: 50%;
+      border: 4px solid gray;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+  }
+
+  .user-info {
+    padding: 30px;
+
+    .user-card {
+      padding: 10px;
+      box-shadow: 0px 0px 5px 5px black;
+      border-radius: 5px;
+      color: $gray-text;
+      height: 355px;
+
+      .card-content {
+        margin: 80px 0;
+      }
+
+      .name {
+        margin-right: 30px;
+      }
+
+      .edit-user-button{
+        padding: 5px 10px;
+        background-color: $color-orange;
+        border: none;
+        color: white;
+        border-radius: 0px 10px 0px 10px;
+      }
+    }
+  }
+
+  .addresses {
+    padding: 30px;
+    color: $gray-text;
+    .addresses-card {
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0px 0px 5px 5px black;
+      height: 355px;
+
+
+      .address-list {
+        padding: 15px;
+        .address-card {
+          padding: 6px 10px 1px 10px;
+          margin-bottom: 10px;
+          background: rgba(31, 31, 31, 0.7);
+          border-radius: 0px 15px 0 15px;
+          p{
+            font-size: 13px;
+          }
+
+          .action-button {
+            background: transparent;
+            border: none;
+            outline: none;
+          }
+          .edit-address {
+            color: $gray-text;
+            &:hover{
+              color: lighten($color: #28a745, $amount: 15%);
+            }
+          }
+          .delete{
+            color: $gray-text;
+            &:hover{
+              color: lighten($color: #dc3545, $amount: 10%);
+            }
+          }
+        }
+      }
+    }
+  }
+}

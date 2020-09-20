@@ -29,6 +29,11 @@ $color-blue: #4589ff;
       background: transparent;
       border: 1px solid gray;
       border-radius: 10px;
+      outline: none;
+
+      &:hover{
+        border-color: rgb(255, 255, 255);
+      }
     }
 
     .dec-icon {
