@@ -1,0 +1,73 @@
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="editAddressModal"
+  tabindex="-1"
+  aria-labelledby="editAddressModal"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="logo-case d-flex justify-content-center">
+          <div class="logo">
+            <img src="../../../assets/logo.png" alt="" />
+          </div>
+        </div>
+        <h4 class="text-center bg-title">Edit Form</h4>
+        <form *ngIf="editedData" (click)="editData()" autocomplete="off">
+          <div class="nameInput">
+            <label for="name">Name</label>
+            <input
+              class="edit-input"
+              type="text"
+              id="name"
+              name="name"
+              [(ngModel)]="editedData.addressName"
+            />
+          </div>
+
+          <div class="lastNameInput">
+            <label for="lastname">Last Name</label>
+            <input
+              class="edit-input"
+              type="text"
+              id="lastname"
+              name="lastname"
+              [(ngModel)]="editedData.suite"
+            />
+          </div>
+
+          <div class="emailInput">
+            <label for="email">Email</label>
+            <input
+              class="edit-input"
+              type="text"
+              id="email"
+              name="email"
+              [(ngModel)]="editedData.streetName"
+            />
+          </div>
+
+          <div class="phoneInput">
+            <label for="phone">Phone</label>
+            <input
+              class="edit-input"
+              type="text"
+              id="phone"
+              name="phone"
+              [(ngModel)]="editedData.city"
+            />
+          </div>
+
+          <button class="edit-input" type="submit" class="edit-btn">
+            Edit
+          </button>
+          <button class="edit-input" type="button" class="close-btn">
+            close
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

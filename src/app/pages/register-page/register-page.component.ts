@@ -49,6 +49,7 @@ export class RegisterPageComponent implements OnInit {
         this.regForm.confirmPassword = '';
 
         this.isLoading = false;
+        this.userService.getDetails();
         this.cartService.fetchUserCart(response.user.id);
 
         this.router.navigateByUrl('/');

@@ -1,0 +1,47 @@
+$gray-text: #c5c5c5;
+$color-orange: #d2721e;
+$color-blue: #4589ff;
+
+#editProfileModal {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+  background: transparent !important;
+}
+.modal-body {
+  .logo {
+    max-width: 150px;
+    max-height: 150px;
+    img {
+      width: 100%;
+    }
+  }
+  form {
+    width: 100%;
+    .edit-input {
+      width: 100%;
+      width: 100%;
+      padding: 15px 15px;
+      color: $color-orange;
+      background: rgba(255 255 255 / 5%);
+      border: none;
+      border-radius: 20px;
+      outline: none;
+
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.644);
+      }
+    }
+
+    .edit-btn {
+      margin: 15px 0 10px 0;
+      padding: 5px 20px;
+      background-color: $color-orange;
+      border: none;
+      color: white;
+      border-radius: 0px 10px 0px 10px;
+      float: right;
+    }
+  }
+}

@@ -4,6 +4,7 @@ import { User } from '../types/user.type';
 import { CartService } from './cart.service';
 import { environment as env } from '../environments/environment';
 import { AddressService } from './address.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -15,8 +16,8 @@ export class UserService {
   constructor(
     private http: HttpClient,
     private cartService: CartService,
-    private addressService:AddressService
-    ) {}
+    private router: Router
+  ) {}
 
   setUser(user: User = null) {
     this.user = user;
@@ -27,7 +28,7 @@ export class UserService {
   }
 
   tryToLogin() {
-    console.log("trying")
+    console.log('trying');
     const token = window.localStorage.getItem('token');
     if (!token) return;
 
@@ -39,9 +40,8 @@ export class UserService {
       })
       .subscribe((response: User) => {
         this.user = response;
+        this.cartService.fetchUserCart(this.user.id);
         this.getDetails();
-        this.cartService.fetchUserCart(this.user.id)
-        this.addressService.fetchUserAddress(this.user.id)
       });
   }
 
@@ -53,16 +53,26 @@ export class UserService {
     this.http
       .get(`${env.usersApiURL}/${this.user.id}`, httpOptions)
       .subscribe((response: any) => {
-        
         if (response.avatar) {
           this.user.avatarUrl = `${env.baseApiURL}${response.avatar.url}`;
         } else {
-          this.user.avatarUrl= 'assets/avatar-placeholder.jpg';
+          this.user.avatarUrl = 'assets/avatar-placeholder.jpg';
         }
       });
   }
 
+  editUser(editedForm) {
+    console.log(editedForm);
+    const token = window.localStorage.getItem('token');
+    const httpOptions = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+
+    this.http
+      .put(`${env.usersApiURL}/${this.user.id}`, editedForm, httpOptions)
+      .subscribe((response: User) => {
+        this.user = response;
+        this.getDetails()
+      });
+  }
 }
-
-  
-
