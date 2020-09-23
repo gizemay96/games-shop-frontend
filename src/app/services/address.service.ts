@@ -23,4 +23,31 @@ export class AddressService {
   getUserAddress() {
     return this.userAddresses;
   }
+
+  addUserAddress(address: Address) {
+    const NewAddress = {
+      user: this.userService.getUser(),
+      ...address,
+    };
+
+    return this.http
+      .post(`${env.addressApiURL}`, NewAddress)
+      .subscribe((response) => {
+        this.fetchUserAddress();
+      });
+  }
+
+  editUserAddress(address: Address, addressId: number) {
+    return this.http
+      .put(`${env.addressApiURL}/${addressId}`, address)
+      .subscribe((response) => console.log(response));
+  }
+
+  deleteAddress(addressId: number) {
+    return this.http
+      .delete(`${env.addressApiURL}/${addressId}`)
+      .subscribe((response) => {
+        this.fetchUserAddress();
+      });
+  }
 }

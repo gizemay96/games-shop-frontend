@@ -21,7 +21,7 @@
   <!-- ---------- PRODUCT CARD -----------  -->
 
   <div class="row">
-    <div class="card-case col-3" *ngFor="let product of data">
+    <div class="card-case col-md-3 col-5" *ngFor="let product of data">
       <div *ngIf="product.imgName" class="gameName">
         <div class="image">
           <img [src]="'http://localhost:1337' + product.imgName.url" alt="" />
@@ -51,11 +51,11 @@
             type="button"
             data-toggle="modal"
             data-target="#ProductdetailModal"
-            class=" btn-detail"
+            class="btn-detail"
           >
             <i class="fas fa-info"></i>
           </button>
-          <button (click)="addToCart.emit(product)" class=" btn-cart">
+          <button (click)="addToCart.emit(product)" class="btn-cart">
             <i class="fas fa-cart-plus"></i>
           </button>
         </div>

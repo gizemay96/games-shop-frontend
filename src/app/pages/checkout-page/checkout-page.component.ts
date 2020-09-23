@@ -60,7 +60,9 @@ export class CheckoutPageComponent implements OnInit {
     private addressService: AddressService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    setTimeout(() => this.addressService.fetchUserAddress(), 100);
+  }
 
   removeFromCart(product: Product) {
     this.cartService.removeFromCart(product, this.user.id);

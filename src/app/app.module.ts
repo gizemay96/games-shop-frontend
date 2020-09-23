@@ -12,13 +12,13 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductTitleComponent } from './components/product-title/product-title.component';
 import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { DetailModalComponent } from './components/detail-modal/detail-modal.component';
+import { DetailModalComponent } from './components/Modals/detail-modal/detail-modal.component';
 import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.component';
 import { OrderItemComponent } from './components/order-item/order-item.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
-import { EditProfileModalComponent } from './components/edit-profile-modal/edit-profile-modal.component';
-import { EditAddressModalComponent } from './components/edit-address-modal/edit-address-modal.component';
+import { EditProfileModalComponent } from './components/Modals/edit-profile-modal/edit-profile-modal.component';
+import { EditAddressModalComponent } from './components/Modals/edit-address-modal/edit-address-modal.component';
 
 
 @NgModule({

@@ -24,38 +24,35 @@
               <h3 class="card-title text-center">User Cart</h3>
               <div *ngIf="user" class="card-content pl-1">
                 <div class="">
-                  <div class=" user-card-item name">
+                  <div class="user-card-item name">
                     <h3 class="pr-1">Name</h3>
-                    
+
                     <p>{{ user.username | titlecase }}</p>
                   </div>
-                  <div
-                    class=" user-card-item surname"
-                  >
+                  <div class="user-card-item surname">
                     <h3 class="pr-1">Last Name</h3>
-                    
+
                     <p>{{ user.lastName }}</p>
                   </div>
                 </div>
-                <div class=" user-card-item email">
+                <div class="user-card-item email">
                   <h3 class="pr-1">Email</h3>
-                  
+
                   <p>{{ user.email }}</p>
                 </div>
                 <div class="user-card-item phone">
                   <h3 class="pr-1">Phone</h3>
-                  
+
                   <p>{{ user.phone }}</p>
                 </div>
                 <div class="actions">
                   <button
-                  (click)="openModal()"
-                  type="button"
-                  class="edit-user-button ml-5"
-                  
-                >
-                  Edit Profile
-                </button>
+                    (click)="openEditProfileModal()"
+                    type="button"
+                    class="edit-user-button ml-5"
+                  >
+                    Edit Profile
+                  </button>
                 </div>
                 <!-- <app-edit-profile-modal [user]="user"></app-edit-profile-modal> -->
               </div>
@@ -64,37 +61,35 @@
           <div class="addresses col-6">
             <div class="addresses-card">
               <h3 class="text-center">Addresses</h3>
+              <div class="add-address">
+                <button (click)="openAddAddressModal()" class="add-address-btn" [disabled]="userAddresses.length >= 3">
+                  {{userAddresses.length < 3 ? "Add New" : "FULL"}}
+                </button>
+              </div>
               <div class="address-list" *ngIf="userAddresses">
                 <div
                   class="address-card row"
                   *ngFor="let address of userAddresses"
                 >
-                  <div class="content col-11">
+                  <div class="address-card-content col-11">
                     <h5>{{ address.addressName }}</h5>
                     <p>
-                      {{ address.suite }} {{ address.streetName }}
-                      {{ address.city }} {{ address.country }}
+                      {{ address.suite }} , {{ address.streetName }} ,
+                      {{ address.city }} / {{ address.country }}
                     </p>
                   </div>
                   <div class="actions col-1 p-0">
                     <button
-                      (click)="selectForEditAddress(address.id)"
+                      (click)="openEditAddressModal(address.id)"
                       type="button"
                       class="action-button edit-address mb-2"
-                      data-toggle="modal"
-                      data-target="#editAddressModal"
                     >
                       <i class="fas fa-edit"></i>
                     </button>
-                    <button class="action-button delete">
+                    <button (click)="deleteAddress(address.id)" class="action-button delete">
                       <i class="fas fa-trash-alt"></i>
                     </button>
                   </div>
-
-                  <app-edit-address-modal
-                    *ngIf="selectedAddress && selectedAddress.id == address.id"
-                    [address]="selectedAddress"
-                  ></app-edit-address-modal>
                 </div>
               </div>
             </div>

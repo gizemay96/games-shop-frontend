@@ -19,6 +19,11 @@ $color-blue: #4589ff;
     }
     form {
     width: 100%;
+
+    label{
+      color: $gray-text;
+    }
+
     .edit-input {
       width: 100%;
       width: 100%;

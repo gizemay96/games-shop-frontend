@@ -1,0 +1,35 @@
+ <div class="modal-content">
+    <div class="modal-body">
+        <div class="logo-case d-flex justify-content-center">
+            <div class="logo">
+                <img src="../../../assets/logo.png" alt="" />
+              </div>
+          </div>
+          <h4 class="text-center bg-title">Edit Profile Form</h4>
+    <form (submit)="editData()" autocomplete="off">
+      <div class="nameInput">
+          <label for="name">Name</label>
+          <input class="edit-input" type="text" id="name" name="name" [(ngModel)]="user.username">
+        </div>
+
+        <div class="lastNameInput">
+          <label for="lastname">Last Name</label>
+          <input class="edit-input" type="text" id="lastname" name="lastname" [(ngModel)]="user.lastName">
+        </div>
+
+        <div class="emailInput">
+          <label for="email">Email</label>
+          <input class="edit-input" type="text" id="email" name="email" [(ngModel)]="user.email">
+        </div>
+
+        <div class="phoneInput">
+          <label for="phone">Phone</label>
+          <input class="edit-input" type="text" id="phone" name="phone" [(ngModel)]="user.phone">
+        </div>
+
+        <div class="footer">
+          <button type="submit" class="edit-btn">Edit</button>
+        </div>
+    </form>
+  </div>
+</div>

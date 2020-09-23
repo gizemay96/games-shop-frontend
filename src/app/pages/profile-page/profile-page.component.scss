@@ -54,7 +54,7 @@ $color-blue: #4589ff;
             margin: 0 0 0 15px;
           }
 
-          h3{
+          h3 {
             margin: 0;
             border-right: 1px solid $color-orange;
           }
@@ -86,6 +86,19 @@ $color-blue: #4589ff;
       box-shadow: 0px 0px 5px 5px black;
       height: 355px;
 
+      .add-address {
+        transform: translate(0px, -36px);
+
+        .add-address-btn {
+          background: transparent;
+          background-color: $color-blue;
+          color: white;
+          border: none;
+          border-radius: 15px 0px 15px 0px;
+          padding: 4px 15px;
+        }
+      }
+
       .address-list {
         padding: 15px;
         .address-card {
@@ -93,8 +106,18 @@ $color-blue: #4589ff;
           margin-bottom: 10px;
           background: rgba(31, 31, 31, 0.7);
           border-radius: 0px 15px 0 15px;
+          h5{
+            max-width: 380px;
+            max-height: 24px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
           p {
             font-size: 13px;
+            max-width: 380px;
+            max-height: 35px;
+            overflow: hidden;
+            text-overflow: ellipsis;
           }
 
           .action-button {
