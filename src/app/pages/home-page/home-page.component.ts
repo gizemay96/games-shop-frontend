@@ -72,6 +72,7 @@ export class HomePageComponent implements OnInit {
     this.productService.fetchPcGames();
   }
 
+  // ------------------ PREVIOUS PAGE FUNCTION ---------------- // 
   previousData(categoryId) {
     // ----- Previous PC games ------
     if (categoryId == 9) {
@@ -104,6 +105,7 @@ export class HomePageComponent implements OnInit {
     }
   }
 
+  // ------------------ NEXT PAGE FUNCTION ---------------- // 
   nextData(categoryId) {
     // ----- Fetch More PC games ------
     if (categoryId == 9) {

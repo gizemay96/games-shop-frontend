@@ -11,29 +11,37 @@
   </div>
   <h4 class="text-center bg-title">Login</h4>
   <div class="login-form">
-    <form (submit)="login()" autocomplete="off">
+    <form [formGroup]="loginForm" (submit)="login()" autocomplete="off">
       <div class="username form-item">
-        <label for="username"></label>
+        <label for="identifier"></label>
         <input
         class="email-input"
-          [(ngModel)]="loginForm.identifier"
-          name="username"
+          formControlName="identifier"
+          name="identifier"
           type="text"
-          id="username"
+          id="identifier"
           style="font-family: sans-serif , fontawesome;"
           placeholder="&#xf007; Username or Email"
         />
+        <div class="errors" *ngIf="identifierErrors.dirty && identifierErrors.errors">
+          <span *ngIf="identifierErrors.errors.required"> This Field Is Required ! </span>
+          <span *ngIf="identifierErrors.errors.minlength" >Please enter minimum {{identifierErrors.errors.minlength.requiredLength}} character.</span>
+        </div>
       </div>
       <div class="password form-item">
         <label for="password"></label>
         <input
-          [(ngModel)]="loginForm.password"
+          formControlName="password"
           name="password"
           type="password"
           id="password"
           style="font-family: sans-serif , fontawesome;"
           placeholder="&#xf084; Password"
         />
+        <div class="errors" *ngIf="passwordErrors.dirty && passwordErrors.errors">
+          <span *ngIf="passwordErrors.errors.required"> This Field Is Required ! </span>
+          <span *ngIf="passwordErrors.errors.minlength" >Please enter minimum {{passwordErrors.errors.minlength.requiredLength}} character.</span>
+        </div>
       </div>
       <div class="login-button">
         <button type="submit" class="btn btn-block">

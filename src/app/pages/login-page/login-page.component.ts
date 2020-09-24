@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { CartService } from 'src/app/services/cart.service';
 import { UserService } from 'src/app/services/user.service';
 import { AuthResponse } from 'src/app/types/authResponse.type';
+import { FormGroup, FormControl , Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login-page',
@@ -13,10 +14,10 @@ import { AuthResponse } from 'src/app/types/authResponse.type';
 export class LoginPageComponent implements OnInit {
   isLoading: boolean = false;
 
-  loginForm = {
-    identifier: '',
-    password: '',
-  };
+  loginForm = new FormGroup({
+    identifier:new FormControl("" , [Validators.required , Validators.minLength(3)]),
+    password:new FormControl("",[Validators.required , Validators.minLength(6)])
+  });
 
   constructor(
     private authService: AuthService,
@@ -27,10 +28,20 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  get identifierErrors(){
+    return this.loginForm.controls.identifier
+  }
+
+  get passwordErrors(){
+    return this.loginForm.controls.password
+  }
+
   login() {
+    console.log(this.loginForm)
+   if(this.loginForm.valid){
     this.isLoading = true;
     this.authService
-      .login(this.loginForm)
+      .login(this.loginForm.value)
       .subscribe((response: AuthResponse) => {
         this.authService.setToken(response.jwt);
         this.userService.setUser(response.user);
@@ -38,11 +49,11 @@ export class LoginPageComponent implements OnInit {
 
         this.isLoading = false;
 
-        this.loginForm.identifier = '';
-        this.loginForm.password = '';
+        this.loginForm.reset()
 
         this.userService.getDetails();
         this.router.navigateByUrl('/');
       });
+   }
   }
 }

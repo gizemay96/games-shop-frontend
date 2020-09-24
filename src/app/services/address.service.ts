@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { environment as env } from '../environments/environment';
+import { environment as env } from '../../environments/environment';
 import { Injectable } from '@angular/core';
 import { UserService } from './user.service';
 import { Address } from '../types/address.type';
@@ -40,7 +40,10 @@ export class AddressService {
   editUserAddress(address: Address, addressId: number) {
     return this.http
       .put(`${env.addressApiURL}/${addressId}`, address)
-      .subscribe((response) => console.log(response));
+      .subscribe((response) => {
+        console.log(response)
+        this.fetchUserAddress();
+      });
   }
 
   deleteAddress(addressId: number) {
@@ -50,4 +53,5 @@ export class AddressService {
         this.fetchUserAddress();
       });
   }
+
 }

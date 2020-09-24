@@ -11,6 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class NavbarComponent implements OnInit {
    
+  // ------------------ GETTER METHODS ---------------- // 
   get user() {
     return this.userService.getUser();
   }

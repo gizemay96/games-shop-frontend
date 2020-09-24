@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -18,7 +18,9 @@ import { OrderItemComponent } from './components/order-item/order-item.component
 import { PaymentComponent } from './components/payment/payment.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { EditProfileModalComponent } from './components/Modals/edit-profile-modal/edit-profile-modal.component';
-import { EditAddressModalComponent } from './components/Modals/edit-address-modal/edit-address-modal.component';
+import { EditAddressModalComponent } from './components/Modals/edit-add-address-modal/edit-add-address-modal.component';
+import { ExpDatePipe } from './pipes/exp-date.pipe';
+import { CardNumberPipe } from './pipes/card-number.pipe';
 
 
 @NgModule({
@@ -36,13 +38,17 @@ import { EditAddressModalComponent } from './components/Modals/edit-address-moda
     PaymentComponent,
     ProfilePageComponent,
     EditProfileModalComponent,
-    EditAddressModalComponent
+    EditAddressModalComponent,
+    ExpDatePipe,
+    CardNumberPipe,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     NgbModule,
   ],
   providers: [NgbActiveModal],

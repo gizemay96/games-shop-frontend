@@ -2,9 +2,26 @@ $gray-text: #c5c5c5;
 $color-orange: #d2721e;
 $color-blue: #4589ff;
 
+
+.success-payment-alert{
+  background: #4444442f;
+  text-align: center;
+  margin: 0 50px;
+  padding: 20px 0;
+  border-radius: 0 15px;
+  animation: flash;
+  animation-duration: 4s;
+  h5{
+    color: $color-orange;
+  }
+}
+
+
+
 .payment-form {
   label {
     margin-top: 10px;
+    color: $gray-text;
   }
   input {
     width: 100%;
@@ -21,6 +38,14 @@ $color-blue: #4589ff;
     &::placeholder {
       padding-left: 5px;
       text-transform: capitalize;
+    }
+  }
+
+  .errors{
+    padding-top: 7px;
+    span{
+      padding-left: 5px;
+      font-size: 11px;
     }
   }
 }
@@ -74,7 +99,7 @@ $color-blue: #4589ff;
     .name {
       display: block;
       font-size: 15px;
-      max-width: 200px;
+      width: 100%;
       float: left;
       margin-bottom: 15px;
     }
@@ -134,8 +159,8 @@ $color-blue: #4589ff;
     }
 
     .proceed {
-      z-index: 100;
-      transform: translate(335px, 85px);
+      z-index: 1;
+    transform: translate(0px, 0px);
     }
   }
 
@@ -164,6 +189,5 @@ $color-blue: #4589ff;
     @media (max-width: 600px) {
     transform: translate(250px, 10px);
     }
-  }
-  
+  } 
 }

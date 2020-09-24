@@ -12,6 +12,9 @@ $color-blue: #4589ff;
   .top {
     h1 {
       color: $gray-text;
+      max-width: 350px;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .img {
       position: relative;
@@ -26,6 +29,11 @@ $color-blue: #4589ff;
         height: 100%;
         object-fit: contain;
       }
+    }
+    .header-text{
+      -webkit-text-stroke: 1px rgba(255, 255, 255, 0.342);
+      color: transparent;
+      font-size: 90px;
     }
   }
 

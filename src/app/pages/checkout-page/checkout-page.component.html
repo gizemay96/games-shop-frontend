@@ -6,7 +6,9 @@
     <div class="receipt">
       <div class="receipt-body">
         <div class="row">
+          <!-- // ------------------ ORDERS---------------- //  -->
           <div class="orders col-lg-5">
+            <!-- // ------------------ TITLE ---------------- //  -->
             <h4 class="header text-light mb-4">
               Order List
               <span *ngIf="cartProducts; else zeroQuantity"
@@ -15,6 +17,7 @@
               <ng-template #zeroQuantity>(0)</ng-template>
             </h4>
             <p class="subtitle">Your Orders</p>
+            <!-- // ------------------ ORDER LIST ---------------- //  -->
             <div class="order-list" *ngIf="userCart && userCart.orders.length">
               <div class="order-items">
                 <app-order-item
@@ -26,8 +29,10 @@
                 </app-order-item>
               </div>
             </div>
+            <!-- // ------------------ CART RESET BUTTON ---------------- //  -->
             <button *ngIf="userCart && userCart.orders.length" (click)="resetCart(userCart)" class="toEmpty-btn btn btn-block mt-4">Empty The Cart</button>
           </div>
+          <!-- // ------------------ ADDRESS LIST ---------------- //  -->
           <div class="address-list col-lg-4">
             <h4 class="header text-light mb-4">
               Addresses <i class="fas fa-map-marked-alt"></i>
@@ -51,6 +56,7 @@
               </div>
             </div>
           </div>
+          <!-- // ------------------ BILL ---------------- //  -->
           <div class="total-price col-lg-3">
             <h4 class="header text-light mb-4">
               Bill <i class="fas fa-file-invoice-dollar"></i>
@@ -69,13 +75,15 @@
           </div>
         </div>
       </div>
-  
+      <!-- // ------------------ PAYMENT ---------------- //  -->
       <div class="payment-title bg-title">
         <h1 class="title">
           Payment <span><i class="far fa-credit-card payment-icon"></i></span>
         </h1>
       </div>
-      <app-payment></app-payment>
+      <app-payment
+      [CartProducts]="cartProducts"
+      ></app-payment>
     </div>
   </div>
 </div>

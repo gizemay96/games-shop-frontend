@@ -1,31 +1,67 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { timeoutWith } from 'rxjs/operators';
+import { Order } from 'src/app/types/order.type';
+import { Product } from 'src/app/types/product.type';
 
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
-  styleUrls: ['./payment.component.scss']
+  styleUrls: ['./payment.component.scss'],
 })
 export class PaymentComponent implements OnInit {
 
-  cardName: string = '';
-  cardNumber: string = '';
-  expDate: string = '';
-  cvc: string = '';
+  @Input() CartProducts:Product[];
+  paymentSuccess:boolean = false;
+ 
+ // ------------------ FOR FLIP CARD ---------------- // 
+  creditCartFront: boolean = true;
 
-  creditCartFront:boolean = true;
+  // ------------------ PAYMENT FORM ---------------- // 
+  paymentForm = new FormGroup({
+    cardName: new FormControl('',[Validators.required , Validators.minLength(5)]),
+    cardNumber: new FormControl('',[Validators.required , Validators.minLength(16)]),
+    expDate: new FormControl('',[Validators.required , Validators.minLength(4)]),
+    cvc: new FormControl('',[Validators.required , Validators.minLength(3)]),
+  });
 
-  constructor() { }
 
-  ngOnInit(): void {
+  // ------------------ GETTER METHODS ---------------- // 
+  get cardNameControl(){
+    return this.paymentForm.controls.cardName
+  }
+  get cardNumberControl(){
+    return this.paymentForm.controls.cardNumber
+  }
+  get expDateControl(){
+    return this.paymentForm.controls.expDate
+  }
+  get cvcControl(){
+    return this.paymentForm.controls.cvc
   }
 
-  
-  showCVC(){
+
+
+
+  constructor() {}
+
+  ngOnInit(): void {}
+
+  showCVC() {
     this.creditCartFront = false;
   }
 
-  hideCVC(){
+  hideCVC() {
     this.creditCartFront = true;
   }
 
+  send(){
+    if(this.paymentForm.valid && this.CartProducts){
+      this.paymentSuccess = true;
+
+      setTimeout(() => {
+        this.paymentSuccess = false;
+      }, 6000);
+    }
+  }
 }

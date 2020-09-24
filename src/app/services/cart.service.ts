@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Cart } from '../types/cart.type';
 import { Product } from '../types/product.type';
-import { environment as env } from '../environments/environment';
+import { environment as env } from '../../environments/environment';
 import { OrderService } from './order.service';
 import { Order } from '../types/order.type';
 

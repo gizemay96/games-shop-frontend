@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment as env } from '../environments/environment';
+import { environment as env } from '../../environments/environment';
 import { Cart } from '../types/cart.type';
 import { Order } from '../types/order.type';
 

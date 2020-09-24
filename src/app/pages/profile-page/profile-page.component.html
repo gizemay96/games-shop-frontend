@@ -4,7 +4,7 @@
     <div *ngIf="user" class="top">
       <div class="row">
         <div class="name col-4">
-          <h1 class="text-center">{{ user.username | titlecase }}</h1>
+          <h1 class="header-text text-center">{{ user.username | titlecase }}</h1>
         </div>
         <div class="image col-4 d-flex justify-content-center">
           <div class="img">
@@ -12,7 +12,7 @@
           </div>
         </div>
         <div class="surname col-4">
-          <h1 class="text-center">{{ user.lastName }}</h1>
+          <h1 class="header-text text-center">{{ user.lastName }}</h1>
         </div>
       </div>
     </div>
@@ -20,6 +20,7 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="user-info col-6">
+            <!-- -------------- USER CARD ------------- -->
             <div class="user-card">
               <h3 class="card-title text-center">User Cart</h3>
               <div *ngIf="user" class="card-content pl-1">
@@ -58,6 +59,7 @@
               </div>
             </div>
           </div>
+          <!-- -------------- ADDRESS CARD ------------- -->
           <div class="addresses col-6">
             <div class="addresses-card">
               <h3 class="text-center">Addresses</h3>
@@ -72,10 +74,10 @@
                   *ngFor="let address of userAddresses"
                 >
                   <div class="address-card-content col-11">
-                    <h5>{{ address.addressName }}</h5>
+                    <h5>{{ address.addressName | titlecase }}</h5>
                     <p>
-                      {{ address.suite }} , {{ address.streetName }} ,
-                      {{ address.city }} / {{ address.country }}
+                      {{ address.suite | titlecase }} , {{ address.streetName | titlecase}} ,
+                      {{ address.city | titlecase}} / {{ address.country | titlecase}}
                     </p>
                   </div>
                   <div class="actions col-1 p-0">

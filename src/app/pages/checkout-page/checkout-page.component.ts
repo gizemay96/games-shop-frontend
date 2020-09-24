@@ -15,6 +15,7 @@ export class CheckoutPageComponent implements OnInit {
   selectedAddress: number;
   radioButtonActive: number;
 
+  // ------------------ GETTER METHODS ---------------- // 
   get user() {
     return this.userService.getUser();
   }
@@ -63,6 +64,8 @@ export class CheckoutPageComponent implements OnInit {
   ngOnInit(): void {
     setTimeout(() => this.addressService.fetchUserAddress(), 100);
   }
+
+  // ------------------ FUNCTIONS ---------------- // 
 
   removeFromCart(product: Product) {
     this.cartService.removeFromCart(product, this.user.id);

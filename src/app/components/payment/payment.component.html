@@ -1,6 +1,11 @@
+<div *ngIf="paymentSuccess" class="success-payment-alert" type="success" >
+    <h5>Your {{CartProducts ? CartProducts.length : ""}} Order Has Been Taken !</h5>
+</div>
+
 <div class="payment row mt-5">
   <div class="payment-form col-lg-5">
-    <form autocomplete="off">
+    <!-- // ------------------ PAYMENT FORM ---------------- //  -->
+    <form [formGroup]="paymentForm" autocomplete="off">
       <div class="form-cardName">
         <label>Name:</label>
         <input
@@ -9,53 +14,75 @@
           type="text"
           class="input cardnumber"
           placeholder="Enter Card Name"
-          [(ngModel)]="cardName"
+          formControlName="cardName"
         />
+        <div class="errors" *ngIf="cardNameControl.dirty && cardNameControl.errors">
+          <span *ngIf="cardNameControl.errors.required"> This Field Is Required ! </span>
+          <span *ngIf="cardNameControl.errors.minlength" >Please enter minimum {{cardNameControl.errors.minlength.requiredLength}} character.</span>
+        </div>
       </div>
       <div class="form-cardNumber">
         <label>Card number:</label>
         <input
+          pattern="\d*"
+          maxlength="16"
           name="cardNumber"
           id="cardnumber"
-          type="text"
+          type="tel"
           class="input cardnumber"
           placeholder="Enter Random Numbers"
-          [(ngModel)]="cardNumber"
+          formControlName="cardNumber"
         />
+        <div class="errors" *ngIf="cardNumberControl.dirty && cardNumberControl.errors">
+          <span *ngIf="cardNumberControl.errors.required"> This Field Is Required ! </span>
+          <span *ngIf="cardNumberControl.errors.minlength" >Please enter minimum {{cardNumberControl.errors.minlength.requiredLength}} character.</span>
+        </div>
       </div>
       <div class="date-cvc">
         <div class="row">
           <div class="expiration col-6">
             <label>ExpDate:</label>
             <input
+              pattern="\d*" 
+              maxlength="4"
               name="expiration"
               id="expdate"
-              type="text"
+              type="tel"
               class="expiration"
-              placeholder=" (mm/yy)"
-              [(ngModel)]="expDate"
+              placeholder="(MM/YY)"
+              formControlName="expDate"
             />
+            <div class="errors" *ngIf="expDateControl.dirty && expDateControl.errors">
+              <span *ngIf="expDateControl.errors.required"> This Field Is Required ! </span>
+              <span *ngIf="expDateControl.errors.minlength" >Please enter minimum {{expDateControl.errors.minlength.requiredLength}} character.</span>
+            </div>
           </div>
           <div class="cvc col-6">
             <label>Security Code:</label>
             <input
+              maxlength="3"
               name="cvc"
               id="cvc"
               type="text"
               class="security-code"
               placeholder="CVC"
-              [(ngModel)]="cvc"
+              formControlName="cvc"
               (focus)="showCVC()"
               (blur)="hideCVC()"
             />
+            <div class="errors" *ngIf="cvcControl.dirty && cvcControl.errors">
+              <span *ngIf="cvcControl.errors.required"> This Field Is Required ! </span>
+              <span *ngIf="cvcControl.errors.minlength" >Please enter minimum {{cvcControl.errors.minlength.requiredLength}} character.</span>
+            </div>
           </div>
         </div>
       </div>
     </form>
   </div>
   <div class="payment-card col-lg-7">
+    <!-- // ------------------ CREDIT CARD FRONT ---------------- //  -->
     <div *ngIf="creditCartFront" class="card-front">
-      <button class="proceed">
+      <button (click)="send()" class="proceed">
         <svg class="sendicon" width="24" height="24" viewBox="0 0 24 24">
           <path
             d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"
@@ -73,29 +100,22 @@
           id="user"
           type="text"
           class="cardnumber"
-          [placeholder]="cardNumber"
+          [placeholder]="paymentForm.value.cardNumber | cardNumber : paymentForm.value.cvc"
         />
         <div class="bottom d-flex">
-          <div class="cardName col-6 p-0">
+          <div class="cardName col-7 p-0">
             <label>Name:</label>
-            <input readonly class="name" [placeholder]="cardName | uppercase" />
+            <input readonly class="name" [placeholder]="paymentForm.value.cardName | uppercase" />
           </div>
-          <div class="expDate col-6">
+          <div class="expDate col-5">
             <label class="toleft">expDate:</label>
-            <input readonly class="toleft expdate" [placeholder]="expDate" />
+            <input readonly class="toleft expdate" [placeholder]="paymentForm.value.expDate | expDate:paymentForm.value.expDate" />
           </div>
         </div>
-        <!-- <input readonly class="toleft ccv" [placeholder]="cvc" /> -->
       </form>
     </div>
+    <!-- // ------------------ CREDIT CARD BACK ---------------- //  -->
     <div *ngIf="!creditCartFront" class="card-back-case">
-      <button class="proceed">
-        <svg class="sendicon" width="24" height="24" viewBox="0 0 24 24">
-          <path
-            d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"
-          ></path>
-        </svg>
-      </button>
       <div class="card card-back p-0">
         <div class="top"></div>
         <div class="body">
@@ -110,7 +130,7 @@
                 id="user"
                 type="number"
                 class="cvc"
-                [placeholder]="cvc"
+                [placeholder]="paymentForm.value.cvc"
               />
               <!-- <input readonly class="toleft ccv" [placeholder]="cvc" /> -->
             </form>

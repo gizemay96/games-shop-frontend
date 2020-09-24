@@ -1,9 +1,11 @@
 <div class="fixed-top">
   <nav class="navbar navbar-expand-sm">
     <div class="container">
+      <!-- // ------------------ LOGO ---------------- //  -->
       <a class="navbar-brand" routerLink="/"
         ><img src="../../../assets/logo.png" alt=""
       /></a>
+      <!-- // ------------------ TOGGLER ICON ---------------- //  -->
       <button
         class="navbar-toggler"
         type="button"
@@ -15,6 +17,7 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
+      <!-- // ------------------ NAVBAR ITEMS ---------------- //  -->
       <div *ngIf="!user; else authNav" class="navB">
         <div
           class="collapse navbar-collapse justify-content-end"
@@ -30,7 +33,7 @@
           </ul>
         </div>
       </div>
-
+      <!-- // ------------------ USER GREETING MESSAGE WITH NAV ITEMS  ---------------- //  -->
       <ng-template #authNav>
         <h4 class="greeting-text d-flex align-items-center">
           Welcome {{ user.username | titlecase }} !
@@ -65,6 +68,7 @@
       </ng-template>
     </div>
   </nav>
+  <!-- // ------------------ RGB LINE ---------------- //  -->
   <div class="seperator-wrapper">
     <div class="seperator gradient"></div>
   </div>
