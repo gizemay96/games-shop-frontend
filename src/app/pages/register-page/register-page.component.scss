@@ -2,6 +2,7 @@ $gamefont: "Press Start 2P", cursive;
 $color-orange: #d2721e;
 
 .overlay {
+  overflow: auto;
   position: fixed;
   top: 0;
   left: 0;
@@ -9,10 +10,13 @@ $color-orange: #d2721e;
   bottom: 0;
   background-color: rgba(0 0 0 / 83%);
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
   z-index: 9999;
+
+  .register-page{
+    margin: 50px 0;
+  }
 
   .close-btn {
     width: 370px;
@@ -32,7 +36,6 @@ $color-orange: #d2721e;
 
   .register-form {
     form {
-      width: 400px;
 
       input {
         width: 100%;
@@ -49,7 +52,7 @@ $color-orange: #d2721e;
       }
 
       .form-item {
-        margin: 30px 0 50px 0;
+        margin: 20px 0;
       }
 
       .login-button {

@@ -10,6 +10,9 @@
     <img src="../../../assets/logo.png" alt="" />
   </div>
   <h4 class="text-center bg-title">Login</h4>
+  <div *ngIf="errorActive" class="server-errors">
+    <span> {{serverErrors}} !</span>
+  </div>
   <div class="login-form">
     <form [formGroup]="loginForm" (submit)="login()" autocomplete="off">
       <div class="username form-item">

@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { timeoutWith } from 'rxjs/operators';
-import { Order } from 'src/app/types/order.type';
+import { CartService } from 'src/app/services/cart.service';
+import { Address } from 'src/app/types/address.type';
 import { Product } from 'src/app/types/product.type';
+import { User } from 'src/app/types/user.type';
 
 @Component({
   selector: 'app-payment',
@@ -10,40 +11,52 @@ import { Product } from 'src/app/types/product.type';
   styleUrls: ['./payment.component.scss'],
 })
 export class PaymentComponent implements OnInit {
+  @Input() CartProducts: Product[];
+  @Input() DeliveryAddress: Address;
+  @Input() user: User;
+  paymentSuccess: boolean = false;
+  noAddress: boolean = false;
+  noOrder: boolean = false;
+  paymentErrors: boolean = false;
+  bougthOrderCount:number;
 
-  @Input() CartProducts:Product[];
-  paymentSuccess:boolean = false;
- 
- // ------------------ FOR FLIP CARD ---------------- // 
+  // ------------------ FOR FLIP CARD ---------------- //
   creditCartFront: boolean = true;
 
-  // ------------------ PAYMENT FORM ---------------- // 
+  // ------------------ PAYMENT FORM ---------------- //
   paymentForm = new FormGroup({
-    cardName: new FormControl('',[Validators.required , Validators.minLength(5)]),
-    cardNumber: new FormControl('',[Validators.required , Validators.minLength(16)]),
-    expDate: new FormControl('',[Validators.required , Validators.minLength(4)]),
-    cvc: new FormControl('',[Validators.required , Validators.minLength(3)]),
+    cardName: new FormControl('', [
+      Validators.required,
+      Validators.minLength(5),
+    ]),
+    cardNumber: new FormControl('', [
+      Validators.required,
+      Validators.minLength(16),
+    ]),
+    expDate: new FormControl('', [
+      Validators.required,
+      Validators.minLength(4),
+    ]),
+    cvc: new FormControl('', [Validators.required, Validators.minLength(3)]),
   });
 
-
-  // ------------------ GETTER METHODS ---------------- // 
-  get cardNameControl(){
-    return this.paymentForm.controls.cardName
+  // ------------------ GETTER METHODS ---------------- //
+  get cardNameControl() {
+    return this.paymentForm.controls.cardName;
   }
-  get cardNumberControl(){
-    return this.paymentForm.controls.cardNumber
+  get cardNumberControl() {
+    return this.paymentForm.controls.cardNumber;
   }
-  get expDateControl(){
-    return this.paymentForm.controls.expDate
+  get expDateControl() {
+    return this.paymentForm.controls.expDate;
   }
-  get cvcControl(){
-    return this.paymentForm.controls.cvc
+  get cvcControl() {
+    return this.paymentForm.controls.cvc;
   }
 
 
-
-
-  constructor() {}
+  constructor(private cartService: CartService,
+    ) {}
 
   ngOnInit(): void {}
 
@@ -55,13 +68,31 @@ export class PaymentComponent implements OnInit {
     this.creditCartFront = true;
   }
 
-  send(){
-    if(this.paymentForm.valid && this.CartProducts){
+  send() {
+    if (this.paymentForm.valid && !this.DeliveryAddress) {
+      this.paymentErrors = true;
+      this.noAddress = true;
+      this.bougthOrderCount = null;
+      return;
+    } else if (this.paymentForm.valid && !this.CartProducts) {
+      console.log("empty")
+      this.paymentErrors = true;
+      this.noOrder = true;
+      this.bougthOrderCount = null;
+      return;
+    } else if (this.paymentForm.valid) {
+      this.paymentErrors = false;
+      this.bougthOrderCount = this.CartProducts.length;
       this.paymentSuccess = true;
-
-      setTimeout(() => {
-        this.paymentSuccess = false;
-      }, 6000);
+      this.paymentForm.reset();
+      this.cartService.resetCart(this.user.id);
     }
+    setTimeout(() => {
+      this.paymentSuccess = false;
+      this.bougthOrderCount = null;
+    }, 6000);
   }
+
+
+
 }

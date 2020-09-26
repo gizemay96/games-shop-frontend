@@ -41,7 +41,6 @@ export class AddressService {
     return this.http
       .put(`${env.addressApiURL}/${addressId}`, address)
       .subscribe((response) => {
-        console.log(response)
         this.fetchUserAddress();
       });
   }

@@ -55,16 +55,14 @@ export class OrderService {
         Authorization: `Bearer ${token}`,
       },
     };
-
     return this.http.delete(`${env.orderApiURL}/${orderId}`, httpOptions);
   }
 
-  deleteAllOrder(userCart: Cart) {
-    userCart.orders.forEach((p) => {
-      const deleteOrder = p;
-      if (deleteOrder) {
-        this.http.delete(`${env.orderApiURL}/${p.id}`).subscribe();
-      }
-    });
+  deleteAllOrder(orderId) {
+    return this.http.delete(`${env.orderApiURL}/${orderId}`)
+  }
+
+  getOrders(){
+    return this.orders;
   }
 }

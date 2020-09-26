@@ -2,8 +2,7 @@ $gray-text: #c5c5c5;
 $color-orange: #d2721e;
 $color-blue: #4589ff;
 
-
-.success-payment-alert{
+.success-payment-alert {
   background: #4444442f;
   text-align: center;
   margin: 0 50px;
@@ -11,12 +10,13 @@ $color-blue: #4589ff;
   border-radius: 0 15px;
   animation: flash;
   animation-duration: 4s;
-  h5{
-    color: $color-orange;
+  h5 {
+    color: $gray-text;
+    span{
+      color: $color-orange;
+    }
   }
 }
-
-
 
 .payment-form {
   label {
@@ -41,9 +41,9 @@ $color-blue: #4589ff;
     }
   }
 
-  .errors{
+  .errors {
     padding-top: 7px;
-    span{
+    span {
       padding-left: 5px;
       font-size: 11px;
     }
@@ -51,7 +51,7 @@ $color-blue: #4589ff;
 }
 
 .payment-card {
-  margin-top: 20px;
+  margin-top: 35px;
 
   .card-front {
     background: #16181a;
@@ -88,6 +88,8 @@ $color-blue: #4589ff;
       color: #dbdce0;
       transition: border-bottom 0.4s;
       outline: none;
+      text-transform: uppercase;
+      width: 100%;
     }
 
     .cardnumber {
@@ -120,7 +122,7 @@ $color-blue: #4589ff;
     margin: auto;
     max-width: 360px;
     display: block;
-    
+
     .card-back {
       min-height: 215px;
       overflow: hidden;
@@ -142,11 +144,11 @@ $color-blue: #4589ff;
           padding: 8px 8px 0px 8px;
           border-radius: 3px;
 
-          label{
+          label {
             color: $gray-text;
           }
 
-          input{
+          input {
             background: transparent;
             border: none;
           }
@@ -157,37 +159,6 @@ $color-blue: #4589ff;
         }
       }
     }
-
-    .proceed {
-      z-index: 1;
-    transform: translate(0px, 0px);
-    }
   }
-
-  .proceed {
-    position: absolute;
-    transform: translate(310px, 25px);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: $color-orange;
-    border: none;
-    color: white;
-    transition: box-shadow 0.2s, transform 0.4s;
-    cursor: pointer;
-    &:active {
-      outline: none;
-    }
-    &:focus {
-      outline: none;
-      box-shadow: inset 0px 0px 5px white;
-    }
-    .sendicon {
-      filter: invert(100%);
-      padding-top: 2px;
-    }
-    @media (max-width: 600px) {
-    transform: translate(250px, 10px);
-    }
-  } 
 }
+

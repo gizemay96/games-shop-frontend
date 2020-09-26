@@ -5,8 +5,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class CardNumberPipe implements PipeTransform {
 
-  transform(value: number[]) {
-
+  transform(value?: number[] , index?) {
+    if(value){
+      
     const part1 = value.slice(0,4)
     const part2 = value.slice(4,8)
     const part3 = value.slice(8,12)
@@ -15,6 +16,9 @@ export class CardNumberPipe implements PipeTransform {
   //   const newValue = 
   //  `${(value[0] ? value[0] : "") + (value[1] ? value[1] : "")} / ${(value[2] ? value[2] : "") + (value[3] ? value[3] : "")}`
    return `${part1}  ${part2}  ${part3}  ${part4}` ;
+    }else{
+      return "";
+    }
   }
 
 }

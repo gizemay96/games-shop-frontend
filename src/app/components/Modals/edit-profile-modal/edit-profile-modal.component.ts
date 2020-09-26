@@ -3,7 +3,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from 'src/app/services/user.service';
-import { User } from 'src/app/types/user.type';
 
 @Component({
   selector: 'app-edit-profile-modal',
@@ -11,7 +10,6 @@ import { User } from 'src/app/types/user.type';
   styleUrls: ['./edit-profile-modal.component.scss'],
 })
 export class EditProfileModalComponent implements OnInit {
-  // ------------------ PROFILE FORM ---------------- //
   editForm = new FormGroup({
     username: new FormControl('', [
       Validators.required,
@@ -25,7 +23,9 @@ export class EditProfileModalComponent implements OnInit {
     phone: new FormControl('', [Validators.required]),
   });
 
-  // ------------------ GET ERRORS ---------------- //
+  errorActive: boolean = false;
+  isLoading: boolean = false;
+
   get usernameErrors() {
     return this.editForm.controls.username;
   }
@@ -42,6 +42,10 @@ export class EditProfileModalComponent implements OnInit {
     return this.editForm.controls.phone;
   }
 
+  get ServerErrors() {
+    return this.userService.getServerErrors();
+  }
+
   constructor(
     private userService: UserService,
     private router: Router,
@@ -52,8 +56,24 @@ export class EditProfileModalComponent implements OnInit {
 
   editData() {
     if (this.editForm.valid) {
+      this.isLoading = true;
       this.userService.editUser(this.editForm.value);
-      this.activeModal.close();
+      setTimeout(() => {
+        if (this.ServerErrors) {
+          this.errorActive = true;
+          this.isLoading = false;
+          return;
+        } 
+        else {
+          this.errorActive = false;
+          this.isLoading = false;
+          this.activeModal.close();
+        }
+      }, 1000);
     }
+  }
+
+  closeModal(){
+    this.activeModal.close();
   }
 }

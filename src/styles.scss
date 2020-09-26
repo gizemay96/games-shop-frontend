@@ -2,33 +2,107 @@ $gray-text: #c5c5c5;
 $color-orange: #d2721e;
 $color-blue: #4589ff;
 /* Importing Bootstrap SCSS file. */
-*{
-  font-family: 'Righteous', cursive;
+* {
+  font-family: "Nova Square", cursive;
+  // font-family: 'Righteous', cursive;
 }
-  body {
-    background-color: #101010 !important;
-  }
+body {
+  background-color: #101010 !important;
+}
 
-  .text-center{
-    text-align: center;
-  }
+.text-center {
+  text-align: center;
+}
 
-  .bg-title{
-    margin: 50px;
-    text-align: center;
-    color: $gray-text;
-  }
+.bg-title {
+  margin: 50px;
+  text-align: center;
+  color: $gray-text;
+}
 
-  .errors{
-    span{
-      color: brown;
-      padding-left: 15px;
+.errors {
+  span {
+    color: brown;
+    padding-left: 15px;
+  }
+}
+
+.server-errors {
+  border-radius: 15px 0;
+  text-align: center;
+  background: #3e3e3e7d;
+  margin: 20px 0;
+  padding: 6px 15px;
+  color: #a52a29;
+  border: 1px solid;
+}
+
+.close-modal-btn {
+  display: flex;
+  justify-content: flex-end;
+  button {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    border-radius: 50%;
+    padding: 5px 12px;
+    outline: none !important;
+    &:hover {
+      background-color: #d2721e94;
+    }
+
+    &:active {
+      background-color: #d2721ea2;
+      box-shadow: 0 5px rgba(32, 13, 0, 0.445);
+      transform: translateY(4px);
     }
   }
+}
 
+.btn-orange {
+  background-color: $color-orange;
+  border: none;
+  color: white;
+  border-radius: 0px 10px 0px 10px;
+  padding: 5px 20px;
+  outline: none !important;
+
+  &:hover {
+    background-color: #d2721e94;
+  }
+
+  &:active {
+    background-color: #d2721ea2;
+    box-shadow: 0 5px rgba(32, 13, 0, 0.445);
+    transform: translateY(4px);
+  }
+}
+
+.btn-blue {
+  background: transparent;
+  background-color: $color-blue;
+  color: white;
+  border: none;
+  border-radius: 15px 0px 15px 0px;
+  padding: 4px 15px;
+  outline: none !important;
+  &:hover {
+    background-color: #4589ff8e;
+  }
+
+  &:active {
+    background-color: #4589ff8f;
+    box-shadow: 0 5px rgba(32, 13, 0, 0.445);
+    transform: translateY(4px);
+  }
+}
+
+// .number-font{
+//   font-family: 'Nova Square', cursive;
+// }
 
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
 
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";

@@ -21,7 +21,7 @@
   <!-- ---------- PRODUCT CARD -----------  -->
 
   <div class="row">
-    <div class="card-case col-md-3 col-5" *ngFor="let product of data">
+    <div class="card-case col-md-3 col-6" *ngFor="let product of data">
       <div *ngIf="product.imgName" class="gameName">
         <div class="image">
           <img [src]="'http://localhost:1337' + product.imgName.url" alt="" />

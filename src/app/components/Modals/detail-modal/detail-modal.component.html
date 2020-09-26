@@ -1,38 +1,52 @@
 <!-- // ------------------ PRODUCT DETAIL MODAL ---------------- //  -->
-<div class="modal fade" id="ProductdetailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div *ngIf="data" class="card">
-          <div class="row">
-            <div class="image col-6">
-              <img [src]="'http://localhost:1337' + data.img[0].url" alt="" />
+<div
+  class="modal fade"
+  id="ProductdetailModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <app-navbar [positionFix]="false"></app-navbar>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div *ngIf="data" class="card">
+        <div class="row">
+          <div class="image col-6">
+            <img [src]="'http://localhost:1337' + data.img[0].url" alt="" />
+          </div>
+          <div class="body col-6">
+            <div class="title">
+              <h3>{{ data.name }}</h3>
+              <ngb-rating [(rate)]="rating" [readonly]="true">
+                <ng-template let-fill="fill" let-index="index">
+                  <span
+                    class="star"
+                    [class.filled]="fill === 100"
+                    [class.bad]="index < 3"
+                    >&#9733;</span
+                  >
+                </ng-template>
+              </ngb-rating>
+              <pre style="color: aliceblue">Rate: <b>{{rating}}</b></pre>
             </div>
-            <div class="body col-6">
-              <div class="title">
-                <h3>{{data.name}}</h3>
-                <ngb-rating [(rate)]="rating" [readonly]="true">
-                  <ng-template let-fill="fill" let-index="index">
-                    <span class="star" [class.filled]="fill === 100" [class.bad]="index < 3">&#9733;</span>
-                  </ng-template>
-                </ngb-rating>
-                <pre style="color: aliceblue;">Rate: <b>{{rating}}</b></pre>
+            <div class="description">
+              <p>{{ data.description }}</p>
+            </div>
+            <div class="card-bottom row align-items-center">
+              <div class="price col-6 mt-2">
+                <h1 class="text-light">{{ data.price | currency }}</h1>
               </div>
-              <div class="description">
-                <p> {{data.description}} </p>
-              </div>
-              <div class="card-bottom row align-items-center">
-                <div class="price col-6">
-                  <h1 class="text-light"> {{data.price | currency}} </h1>
-                </div>
-                <div class="add-cart-btn col-6">
-                  <button (click)="addToCart.emit(data.id)" class="button">Add Cart <i class="fas fa-cart-plus cart-icon"></i></button>
-                </div>
+              <div class="add-cart-btn col-6">
+                <button (click)="addToCart.emit(data)" class="button btn-orange">
+                  Add Cart <i class="fas fa-cart-plus cart-icon"></i>
+                </button>
               </div>
             </div>
           </div>
         </div>
-          <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button> -->
       </div>
+      <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button> -->
     </div>
   </div>
+</div>

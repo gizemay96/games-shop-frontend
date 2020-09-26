@@ -53,7 +53,6 @@ export class RegisterPageComponent implements OnInit {
 
 
   register() {
-    console.log(this.regForm)
     if (this.regForm.valid) {
       this.isLoading = true;
       const registerData = {

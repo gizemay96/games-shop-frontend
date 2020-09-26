@@ -138,7 +138,7 @@ export class HomePageComponent implements OnInit {
     this.currentRate = this.selectedProduct.rating;
   }
 
-  addToCart(productId){
-    this.cartService.addToCart(productId , this.user.id)
+  addToCart(product){
+    this.cartService.addToCart(product , this.user.id)
   }
 }

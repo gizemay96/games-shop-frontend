@@ -10,6 +10,7 @@ export class DetailModalComponent implements OnInit {
 
   @Input() data:Product;
   @Input() rating;
+  @Input() successAdding:boolean;
   @Output() addToCart = new EventEmitter();
 
   constructor() { }

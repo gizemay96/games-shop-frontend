@@ -20,7 +20,7 @@ export class EditAddressModalComponent implements OnInit {
     streetName: new FormControl('', [Validators.required]),
     city: new FormControl('', [Validators.required]),
     country: new FormControl('', [Validators.required]),
-    id: new FormControl('', [Validators.required]),
+    id: new FormControl(''),
   });
   
   
@@ -80,15 +80,29 @@ export class EditAddressModalComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.autocomplateAddressService.getToken();
     this.states = [];
-    this.autocomplateAddressService
+    setTimeout(() => {
+      this.autocomplateAddressService
       .getCountries()
       .subscribe((response: any) => {
         this.states.push(response.map((a) => a.country_name));
       });
+    }, 900);
   }
 
   // ------------------ FUNCTIONS ---------------- // 
+  
+    getCities() {
+      if (this.cities) {
+        this.cities = [];
+      }
+      this.autocomplateAddressService
+        .getCities(this.addressForm.get('country').value)
+        .subscribe((response: any) => {
+          this.cities.push(response.map((a) => a.state_name));
+        });
+    }
 
   editData() {
     if (this.addressForm.valid) {
@@ -101,20 +115,14 @@ export class EditAddressModalComponent implements OnInit {
   }
 
   addAddress() {
+    console.log(this.addressForm)
     if (this.addressForm.valid) {
       this.addressService.addUserAddress(this.addressForm.value);
       this.activeModal.close();
     }
   }
 
-  getCities() {
-    if (this.cities) {
-      this.cities = [];
-    }
-    this.autocomplateAddressService
-      .getCities(this.addressForm.get('country').value)
-      .subscribe((response: any) => {
-        this.cities.push(response.map((a) => a.state_name));
-      });
+  closeModal(){
+    this.activeModal.close();
   }
 }

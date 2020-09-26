@@ -3,46 +3,44 @@
   <div class="profile-page">
     <div *ngIf="user" class="top">
       <div class="row">
-        <div class="name col-4">
-          <h1 class="header-text text-center">{{ user.username | titlecase }}</h1>
-        </div>
-        <div class="image col-4 d-flex justify-content-center">
+        <div class="image col-lg-4 d-flex justify-content-center">
           <div class="img">
             <img [src]="user.avatarUrl" alt="" />
           </div>
         </div>
-        <div class="surname col-4">
-          <h1 class="header-text text-center">{{ user.lastName }}</h1>
+        <div class="name col-lg-8 row">
+          <h2 class="header-text text-center col-6">{{ user.username | titlecase }}</h2>
+          <h2 class="header-text text-center col-6">{{ user.lastName |titlecase}}</h2>
         </div>
       </div>
     </div>
     <div class="body">
       <div class="container">
         <div class="row justify-content-center">
-          <div class="user-info col-6">
+          <div class="user-info col-lg-6">
             <!-- -------------- USER CARD ------------- -->
             <div class="user-card">
-              <h3 class="card-title text-center">User Cart</h3>
+              <h3 class="card-title text-center">User Card</h3>
               <div *ngIf="user" class="card-content pl-1">
                 <div class="">
                   <div class="user-card-item name">
-                    <h3 class="pr-1">Name</h3>
+                    <h4 class="pr-1">Name</h4>
 
                     <p>{{ user.username | titlecase }}</p>
                   </div>
                   <div class="user-card-item surname">
-                    <h3 class="pr-1">Last Name</h3>
+                    <h4 class="pr-1">Last Name</h4>
 
                     <p>{{ user.lastName }}</p>
                   </div>
                 </div>
                 <div class="user-card-item email">
-                  <h3 class="pr-1">Email</h3>
+                  <h4 class="pr-1">Email</h4>
 
                   <p>{{ user.email }}</p>
                 </div>
                 <div class="user-card-item phone">
-                  <h3 class="pr-1">Phone</h3>
+                  <h4 class="pr-1">Phone</h4>
 
                   <p>{{ user.phone }}</p>
                 </div>
@@ -50,7 +48,7 @@
                   <button
                     (click)="openEditProfileModal()"
                     type="button"
-                    class="edit-user-button ml-5"
+                    class="edit-user-button btn-orange ml-5"
                   >
                     Edit Profile
                   </button>
@@ -60,11 +58,11 @@
             </div>
           </div>
           <!-- -------------- ADDRESS CARD ------------- -->
-          <div class="addresses col-6">
+          <div class="addresses col-lg-6">
             <div class="addresses-card">
               <h3 class="text-center">Addresses</h3>
               <div class="add-address">
-                <button (click)="openAddAddressModal()" class="add-address-btn" [disabled]="userAddresses.length >= 3">
+                <button (click)="openAddAddressModal()" class="add-address-btn btn-blue" [disabled]="userAddresses.length >= 3">
                   {{userAddresses.length < 3 ? "Add New" : "FULL"}}
                 </button>
               </div>

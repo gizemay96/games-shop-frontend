@@ -7,24 +7,42 @@ import { environment as env } from '../../environments/environment';
 })
 export class AutocomplateAddressService {
   constructor(private http: HttpClient) {}
+  token;
 
-  httpOptions = {
-    headers: { Authorization: `Bearer ${env.countryCityDataToken}` },
-  };
+  getToken() {
+    const httpOptions = {
+      headers: {
+        Accept: 'application/json',
+        'api-token':
+          'lVBXV4cJFgnJJSsTO_4Jzt8hlwVeZJjKtBlHw37LXdojYhJgcYr246IZE6rsuEuptRU',
+        'user-email': 'secrettumm@gmail.com',
+      },
+    };
+
+    return this.http
+      .get(`https://www.universal-tutorial.com/api/getaccesstoken`, httpOptions)
+      .subscribe((response: any) => (this.token = response.auth_token));
+  }
 
   getCountries() {
+    console.log(this.token);
+
+    const httpOptions = {
+      headers: { Authorization: `Bearer ${this.token}` },
+    };
     return this.http.get(
       `https://www.universal-tutorial.com/api/countries/`,
-      this.httpOptions
+      httpOptions
     );
   }
 
   getCities(country) {
-    console.log('service',country)
+    const httpOptions = {
+      headers: { Authorization: `Bearer ${this.token}` },
+    };
     return this.http.get(
       `https://www.universal-tutorial.com/api/states/${country}`,
-      this.httpOptions
+      httpOptions
     );
   }
-
 }

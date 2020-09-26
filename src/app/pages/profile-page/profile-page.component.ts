@@ -19,7 +19,7 @@ export class ProfilePageComponent implements OnInit {
     return this.addressService.getUserAddress();
   }
 
-  selectedAddress:Address;
+  selectedAddress: Address;
 
   constructor(
     private userService: UserService,
@@ -37,11 +37,11 @@ export class ProfilePageComponent implements OnInit {
       centered: true,
     });
     modalRef.componentInstance.editForm.patchValue({
-      username:this.user.username,
-      lastName:this.user.lastName,
-      email:this.user.email,
-      phone:this.user.phone
-    })
+      username: this.user.username,
+      lastName: this.user.lastName,
+      email: this.user.email,
+      phone: this.user.phone,
+    });
   }
 
   openEditAddressModal(addressId) {
@@ -52,13 +52,13 @@ export class ProfilePageComponent implements OnInit {
       centered: true,
     });
     modalRef.componentInstance.addressForm.patchValue({
-    addressName : this.selectedAddress.addressName,
-    suite: this.selectedAddress.suite,
-    streetName: this.selectedAddress.streetName,
-    city: this.selectedAddress.city,
-    country: this.selectedAddress.country,
-    id: this.selectedAddress.id,
-    })
+      addressName: this.selectedAddress.addressName,
+      suite: this.selectedAddress.suite,
+      streetName: this.selectedAddress.streetName,
+      city: this.selectedAddress.city,
+      country: this.selectedAddress.country,
+      id: this.selectedAddress.id,
+    });
   }
 
   openAddAddressModal() {

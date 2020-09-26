@@ -36,24 +36,34 @@ export class LoginPageComponent implements OnInit {
     return this.loginForm.controls.password
   }
 
+  serverErrors;
+  errorActive:boolean = false;
+
   login() {
-    console.log(this.loginForm)
    if(this.loginForm.valid){
     this.isLoading = true;
     this.authService
       .login(this.loginForm.value)
-      .subscribe((response: AuthResponse) => {
-        this.authService.setToken(response.jwt);
-        this.userService.setUser(response.user);
-        this.cartService.fetchUserCart(response.user.id)
-
-        this.isLoading = false;
-
-        this.loginForm.reset()
-
-        this.userService.getDetails();
-        this.router.navigateByUrl('/');
-      });
+      .subscribe(
+        (response: AuthResponse) => {
+          this.authService.setToken(response.jwt);
+          this.userService.setUser(response.user);
+          this.cartService.fetchUserCart(response.user.id)
+          
+          this.isLoading = false;
+          
+          this.loginForm.reset()
+          
+          this.userService.getDetails();
+          this.router.navigateByUrl('/');
+        }, 
+        (error) => {
+          this.serverErrors = error.error.message[0].messages[0].message
+          this.errorActive = true;
+          this.isLoading = false;
+        }
+        )
+      
    }
   }
 }

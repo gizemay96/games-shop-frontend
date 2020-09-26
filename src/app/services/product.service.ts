@@ -60,13 +60,13 @@ export class ProductService {
 // -----------------------------  FETCH CATEGORIES WITH LIMIT  -----------------------------
 
 
-  fetchPsGames(s: number = 0, p: number = 1) {
+  fetchPsGames(start: number = 0, p: number = 1) {
     this.http
-      .get(`${env.productsApiURL}?categories=5&_start=${s}&_limit=4`)
+      .get(`${env.productsApiURL}?categories=5&_start=${start}&_limit=4`)
       .subscribe((response: Product[]) => {
         if (response.length != 0) {
           this.psGames = response;
-          this.PsCounts[0].startingNumber = s;
+          this.PsCounts[0].startingNumber = start;
           this.PsCounts[0].pageCount = p;
         } else {
           return;

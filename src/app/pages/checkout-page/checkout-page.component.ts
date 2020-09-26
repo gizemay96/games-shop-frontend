@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ConfirmationModalComponent } from 'src/app/components/confirmation-modal/confirmation-modal.component';
 import { AddressService } from 'src/app/services/address.service';
 import { CartService } from 'src/app/services/cart.service';
 import { OrderService } from 'src/app/services/order.service';
@@ -15,7 +17,7 @@ export class CheckoutPageComponent implements OnInit {
   selectedAddress: number;
   radioButtonActive: number;
 
-  // ------------------ GETTER METHODS ---------------- // 
+  // ------------------ GETTER METHODS ---------------- //
   get user() {
     return this.userService.getUser();
   }
@@ -58,14 +60,15 @@ export class CheckoutPageComponent implements OnInit {
     private userService: UserService,
     private cartService: CartService,
     private orderService: OrderService,
-    private addressService: AddressService
+    private addressService: AddressService,
+    private modalService: NgbModal
   ) {}
 
   ngOnInit(): void {
-    setTimeout(() => this.addressService.fetchUserAddress(), 100);
+    setTimeout(() => this.addressService.fetchUserAddress(), 200);
   }
 
-  // ------------------ FUNCTIONS ---------------- // 
+  // ------------------ FUNCTIONS ---------------- //
 
   removeFromCart(product: Product) {
     this.cartService.removeFromCart(product, this.user.id);
@@ -75,12 +78,27 @@ export class CheckoutPageComponent implements OnInit {
     this.cartService.addToCart(product, this.user.id);
   }
 
-  radioButtonToActive(addressId) {
-    this.radioButtonActive = addressId;
-    this.selectedAddress = addressId;
+  radioButtonToActive(address) {
+    this.radioButtonActive = address.id;
+    this.selectedAddress = address;
   }
 
-  resetCart(userCart: Cart) {
-    this.cartService.resetCart(userCart);
+  openConfModal() {
+    const modalRef = this.modalService.open(ConfirmationModalComponent, {
+      centered: true,
+    });
+    modalRef.componentInstance.title =
+      'Are you sure you want to empty the cart?';
+    modalRef.result.then((response) => {
+      if (response === true) {
+        this.resetCart();
+      } else {
+        return;
+      }
+    });
+  }
+
+  resetCart() {
+    this.cartService.resetCart(this.user.id);
   }
 }

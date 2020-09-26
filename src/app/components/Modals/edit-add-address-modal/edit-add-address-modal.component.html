@@ -5,6 +5,9 @@
   *ngIf="addressForm.get('id').value; else addAddressModal"
 >
   <div class="modal-body">
+    <div class="close-modal-btn">
+      <button (click)="closeModal()" type="button" class="edit-btn"><i class="fas fa-times"></i></button>
+    </div>
     <div class="logo-case d-flex justify-content-center">
       <div class="logo">
         <img src="../../../assets/logo.png" alt="" />
@@ -102,7 +105,7 @@
         </div>
       </div>
       <div class="footer">
-        <button type="submit" class="edit-btn">Edit</button>
+        <button type="submit" class="edit-btn btn-orange">Edit</button>
       </div>
     </form>
   </div>
@@ -112,6 +115,9 @@
 <ng-template #addAddressModal>
   <div class="modal-content">
     <div class="modal-body">
+      <div class="close-modal-btn">
+        <button (click)="closeModal()" type="button" class="edit-btn"><i class="fas fa-times"></i></button>
+      </div>
       <div class="logo-case d-flex justify-content-center">
         <div class="logo">
           <img src="../../../assets/logo.png" alt="" />
@@ -216,7 +222,7 @@
         </div>
 
         <div class="footer">
-          <button type="submit" class="edit-btn">Add</button>
+          <button type="submit" class="edit-btn btn-orange">Add</button>
         </div>
       </form>
     </div>

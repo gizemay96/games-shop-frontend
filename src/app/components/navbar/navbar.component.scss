@@ -2,9 +2,19 @@ $gray-text: #c5c5c5;
 $color-orange: #d2721e;
 $color-blue: #4589ff;
 
+.navbar-toggler{
+  color: #d2721e;
+  outline: none;
+  display: flex;
+  @media (min-width:576px){
+    display: none;
+  }
+  .navbar-toggler-icon{
+    color: #d2721e;
+  }
+}
 nav {
   background-color: black;
-
   .navbar-brand {
     transform: translateY(-9px);
     max-width: 115px;
@@ -32,9 +42,11 @@ nav {
   .greeting-text {
     cursor: default;
     color: $gray-text;
-    margin-left: 180px;
+    margin-left: 80px;
     margin-top: 10px;
-
+    @media(max-device-width: 767px){
+      display: none !important;
+    }
   }
   
 }

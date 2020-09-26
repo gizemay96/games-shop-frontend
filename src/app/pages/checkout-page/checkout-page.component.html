@@ -18,7 +18,10 @@
             </h4>
             <p class="subtitle">Your Orders</p>
             <!-- // ------------------ ORDER LIST ---------------- //  -->
-            <div class="order-list" *ngIf="userCart && userCart.orders.length">
+            <div
+              class="order-list"
+              *ngIf="userCart && userCart.orders && userCart.orders.length"
+            >
               <div class="order-items">
                 <app-order-item
                   *ngFor="let product of cartProducts"
@@ -30,7 +33,13 @@
               </div>
             </div>
             <!-- // ------------------ CART RESET BUTTON ---------------- //  -->
-            <button *ngIf="userCart && userCart.orders.length" (click)="resetCart(userCart)" class="toEmpty-btn btn btn-block mt-4">Empty The Cart</button>
+            <button
+              *ngIf="userCart && userCart.orders && userCart.orders.length"
+              (click)="openConfModal()"
+              class="toEmpty-btn btn btn-block mt-4"
+            >
+              Empty The Cart
+            </button>
           </div>
           <!-- // ------------------ ADDRESS LIST ---------------- //  -->
           <div class="address-list col-lg-4">
@@ -39,11 +48,24 @@
             </h4>
             <p class="subtitle">Select Delivery Address</p>
             <div class="address-card" *ngFor="let address of userAddresses">
-              <input hidden (click)="radioButtonToActive(address.id)" type="radio" #radiobutton>
+              <input
+                hidden
+                (click)="radioButtonToActive(address)"
+                type="radio"
+                #radiobutton
+              />
               <div class="input">
-                <div class="addressName d-flex align-items-center justify-content-between">
+                <div
+                  class="addressName d-flex align-items-center justify-content-between"
+                >
                   <h5>{{ address.addressName }}</h5>
-                  <button (click)="radiobutton.click()" [ngClass]="{'button-active': radioButtonActive === address.id}" class="address-select-button" ></button>
+                  <button
+                    (click)="radiobutton.click()"
+                    [ngClass]="{
+                      'button-active': radioButtonActive === address.id
+                    }"
+                    class="address-select-button"
+                  ></button>
                 </div>
               </div>
               <div class="address">
@@ -68,7 +90,7 @@
             <ng-template #zeroTotalPrice>
               <h2 class="cost">{{ 0 | currency }}</h2>
             </ng-template>
-  
+
             <br />
             <p class="header">Name <i class="fas fa-signature"></i> :</p>
             <h2 *ngIf="user" class="seller">{{ user.username | titlecase }}</h2>
@@ -82,7 +104,9 @@
         </h1>
       </div>
       <app-payment
-      [CartProducts]="cartProducts"
+        [user]="user"
+        [CartProducts]="cartProducts"
+        [DeliveryAddress]="selectedAddress"
       ></app-payment>
     </div>
   </div>

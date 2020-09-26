@@ -2,12 +2,18 @@
 
 <div class="modal-content">
   <div class="modal-body">
+    <div class="close-modal-btn">
+      <button (click)="closeModal()" type="button" class="edit-btn"><i class="fas fa-times"></i></button>
+    </div>
     <div class="logo-case d-flex justify-content-center">
       <div class="logo">
         <img src="../../../assets/logo.png" alt="" />
       </div>
     </div>
     <h4 class="text-center bg-title">Edit Profile Form</h4>
+    <div *ngIf="errorActive" class="server-errors">
+      <span> {{ServerErrors}} !</span>
+    </div>
     <form [formGroup]="editForm" (submit)="editData()" autocomplete="off">
       <div class="nameInput">
         <label for="name">Name</label>
@@ -97,7 +103,9 @@
       </div>
 
       <div class="footer">
-        <button type="submit" class="edit-btn">Edit</button>
+        <button type="submit" class="edit-btn btn-orange" [disabled]="isLoading">
+          {{!isLoading  ? "Edit" : "Loading..."}}
+        </button>
       </div>
     </form>
   </div>

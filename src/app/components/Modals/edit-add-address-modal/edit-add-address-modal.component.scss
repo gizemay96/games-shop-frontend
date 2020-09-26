@@ -10,6 +10,7 @@ $color-blue: #4589ff;
   background: transparent;
 }
 .modal-body {
+
     .logo {
         max-width: 150px;
         max-height: 150px;
@@ -41,11 +42,6 @@ $color-blue: #4589ff;
 
     .edit-btn {
       margin: 15px 0;
-      padding: 5px 20px;
-      background-color: $color-orange;
-      border: none;
-      color: white;
-      border-radius: 0px 10px 0px 10px;
       float: right;
     }
   }

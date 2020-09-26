@@ -23,13 +23,17 @@ export class CartService {
       });
   }
 
-  fetchCartDetailsById(orders) {
-    const query = orders.map((order) => `id_in=${order.product}`).join('&');
-    this.http
-      .get(`${env.productsApiURL}?${query}`)
-      .subscribe((response: Product[]) => {
-        this.cartProducts = response;
-      });
+  fetchCartDetailsById(orders?) {
+    if (orders) {
+      const query = orders.map((order) => `id_in=${order.product}`).join('&');
+      if (query) {
+        this.http
+          .get(`${env.productsApiURL}?${query}`)
+          .subscribe((response: Product[]) => {
+            this.cartProducts = response;
+          });
+      }
+    }
   }
 
   createCart(userId) {
@@ -110,10 +114,18 @@ export class CartService {
     }
   }
 
-  resetCart(userCart?:Cart) {
-    this.userCart = null;
-    this.cartProducts = null;
-    this.orderService.deleteAllOrder(userCart)
+  resetCart(userId) {
+    this.userCart.orders.map((p) => {
+      const orderId = p.id;
+      this.orderService.deleteAllOrder(orderId).subscribe((response) => {
+        if (response) {
+          this.cartProducts = null;
+          this.userCart.orders = null;
+          this.fetchUserCart(userId);
+          this.fetchCartDetailsById(this.userCart.orders);
+        }
+      });
+    });
   }
 
   getUserCart() {

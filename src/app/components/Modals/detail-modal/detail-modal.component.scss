@@ -52,6 +52,7 @@ $color-blue: #4589ff;
     }
     .title,
     .description {
+      padding-right: 5px;
       margin-top: 20px;
       color: $gray-text;
       /* width */
@@ -68,22 +69,7 @@ $color-blue: #4589ff;
 
     .add-cart-btn {
       .button {
-        color: white;
-        background: #d2721e88;
         padding: 8px 40px;
-        border-radius: 0 20px 0 20px;
-        border: none;
-        outline: none;
-
-        &:hover {
-          background-color: #d2721e88;
-        }
-
-        &:active {
-          background-color: #d2721e88;
-          box-shadow: 0 5px rgba(32, 13, 0, 0.445);
-          transform: translateY(4px);
-        }
       }
     }
   }

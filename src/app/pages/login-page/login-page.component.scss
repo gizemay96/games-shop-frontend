@@ -13,6 +13,8 @@ $color-orange: #d2721e;
   align-items: center;
   flex-direction: column;
   z-index: 9999;
+  overflow: auto;
+  position: fixed;
 
   .close-btn {
     width: 370px;

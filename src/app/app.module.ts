@@ -21,6 +21,7 @@ import { EditProfileModalComponent } from './components/Modals/edit-profile-moda
 import { EditAddressModalComponent } from './components/Modals/edit-add-address-modal/edit-add-address-modal.component';
 import { ExpDatePipe } from './pipes/exp-date.pipe';
 import { CardNumberPipe } from './pipes/card-number.pipe';
+import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { CardNumberPipe } from './pipes/card-number.pipe';
     EditAddressModalComponent,
     ExpDatePipe,
     CardNumberPipe,
+    ConfirmationModalComponent,
     
   ],
   imports: [
