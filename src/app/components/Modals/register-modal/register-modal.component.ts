@@ -1,56 +1,67 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/services/auth.service';
 import { CartService } from 'src/app/services/cart.service';
 import { UserService } from 'src/app/services/user.service';
 import { AuthResponse } from 'src/app/types/authResponse.type';
 
 @Component({
-  selector: 'app-register-page',
-  templateUrl: './register-page.component.html',
-  styleUrls: ['./register-page.component.scss'],
+  selector: 'app-register-modal',
+  templateUrl: './register-modal.component.html',
+  styleUrls: ['./register-modal.component.scss'],
 })
-export class RegisterPageComponent implements OnInit {
+export class RegisterModalComponent implements OnInit {
   isLoading: boolean = false;
   regForm = new FormGroup({
-    username: new FormControl('', [Validators.required, Validators.minLength(3)]),
-    lastName: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    username: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+    ]),
+    lastName: new FormControl('', [
+      Validators.required,
+      Validators.minLength(2),
+    ]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(6),
+    ]),
+    confirmPassword: new FormControl('', [
+      Validators.required,
+      Validators.minLength(6),
+    ]),
   });
 
-  get usernameErrors(){
-    return this.regForm.controls.username
+  get usernameErrors() {
+    return this.regForm.controls.username;
   }
 
-  get lastNameErrors(){
-    return this.regForm.controls.lastName
+  get lastNameErrors() {
+    return this.regForm.controls.lastName;
   }
 
-  get emailErrors(){
-    return this.regForm.controls.email
+  get emailErrors() {
+    return this.regForm.controls.email;
   }
 
-  get passwordErrors(){
-    return this.regForm.controls.password
+  get passwordErrors() {
+    return this.regForm.controls.password;
   }
 
   get confirmPassErrors() {
     return this.regForm.controls.confirmPassword;
   }
-
-
   constructor(
     private authService: AuthService,
     private userService: UserService,
     private cartService: CartService,
-    private router: Router
+    private router: Router,
+    private activeModal: NgbActiveModal
   ) {}
 
   ngOnInit(): void {}
-
 
   register() {
     if (this.regForm.valid) {
@@ -75,7 +86,13 @@ export class RegisterPageComponent implements OnInit {
           this.cartService.fetchUserCart(response.user.id);
 
           this.router.navigateByUrl('/');
+          this.activeModal.close();
         });
     }
+  }
+
+  close() {
+    this.router.navigateByUrl('/');
+    this.activeModal.close();
   }
 }

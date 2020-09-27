@@ -1,20 +1,6 @@
 $gamefont: "Press Start 2P", cursive;
 $color-orange: #d2721e;
 
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0 0 0 / 83%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  z-index: 9999;
-  overflow: auto;
-  position: fixed;
 
   .close-btn {
     width: 370px;
@@ -34,8 +20,6 @@ $color-orange: #d2721e;
 
   .login-form {
     form {
-      width: 400px;
-
       input {
         width: 100%;
         padding: 15px 15px;
@@ -70,7 +54,7 @@ $color-orange: #d2721e;
       }
     }
   }
-}
+
 
 
 

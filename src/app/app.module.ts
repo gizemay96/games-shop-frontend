@@ -6,9 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
-import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductTitleComponent } from './components/product-title/product-title.component';
 import { NgbActiveModal, NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -21,16 +19,16 @@ import { EditProfileModalComponent } from './components/Modals/edit-profile-moda
 import { EditAddressModalComponent } from './components/Modals/edit-add-address-modal/edit-add-address-modal.component';
 import { ExpDatePipe } from './pipes/exp-date.pipe';
 import { CardNumberPipe } from './pipes/card-number.pipe';
-import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
+import { ConfirmationModalComponent } from './components/Modals/confirmation-modal/confirmation-modal.component';
+import { LoginModalComponent } from './components/Modals/login-modal/login-modal.component';
+import { RegisterModalComponent } from './components/Modals/register-modal/register-modal.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
-    LoginPageComponent,
     NavbarComponent,
-    RegisterPageComponent,
     ProductCardComponent,
     ProductTitleComponent,
     DetailModalComponent,
@@ -43,6 +41,8 @@ import { ConfirmationModalComponent } from './components/confirmation-modal/conf
     ExpDatePipe,
     CardNumberPipe,
     ConfirmationModalComponent,
+    LoginModalComponent,
+    RegisterModalComponent,
     
   ],
   imports: [

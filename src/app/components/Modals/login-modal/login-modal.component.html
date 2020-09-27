@@ -1,0 +1,82 @@
+<div class="modal-content">
+  <div class="modal-body">
+    <div class="close-btn">
+      <div class="row justify-content-end">
+        <button class="btn btn-outline-light" (click)="close()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    </div>
+    <div class="logo-case d-flex justify-content-center">
+      <div class="logo">
+        <img src="../../../assets/logo.png" alt="" />
+      </div>
+    </div>
+    <h4 class="text-center bg-title">Login</h4>
+    <div *ngIf="errorActive" class="server-errors">
+      <span> {{ serverErrors }} !</span>
+    </div>
+    <div class="login-form">
+      <form [formGroup]="loginForm" (submit)="login()" autocomplete="off">
+        <div class="username form-item">
+          <label for="identifier"></label>
+          <input
+            class="email-input"
+            formControlName="identifier"
+            name="identifier"
+            type="text"
+            id="identifier"
+            style="font-family: sans-serif, fontawesome"
+            placeholder="&#xf007; Username or Email"
+          />
+          <div
+            class="errors"
+            *ngIf="identifierErrors.dirty && identifierErrors.errors"
+          >
+            <span *ngIf="identifierErrors.errors.required">
+              This Field Is Required !
+            </span>
+            <span *ngIf="identifierErrors.errors.minlength"
+              >Please enter minimum
+              {{
+                identifierErrors.errors.minlength.requiredLength
+              }}
+              character.</span
+            >
+          </div>
+        </div>
+        <div class="password form-item">
+          <label for="password"></label>
+          <input
+            formControlName="password"
+            name="password"
+            type="password"
+            id="password"
+            style="font-family: sans-serif, fontawesome"
+            placeholder="&#xf084; Password"
+          />
+          <div
+            class="errors"
+            *ngIf="passwordErrors.dirty && passwordErrors.errors"
+          >
+            <span *ngIf="passwordErrors.errors.required">
+              This Field Is Required !
+            </span>
+            <span *ngIf="passwordErrors.errors.minlength"
+              >Please enter minimum
+              {{
+                passwordErrors.errors.minlength.requiredLength
+              }}
+              character.</span
+            >
+          </div>
+        </div>
+        <div class="login-button">
+          <button type="submit" class="btn btn-block">
+            {{ isLoading ? "Wait Please" : "Press Start" }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

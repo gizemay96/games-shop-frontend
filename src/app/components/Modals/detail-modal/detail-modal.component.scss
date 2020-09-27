@@ -88,3 +88,21 @@ $color-blue: #4589ff;
 .filled.bad {
   color: #ff1e1e;
 }
+
+
+
+
+@media screen and (max-width:767px) {
+  .card{
+    max-height: 100%;
+    padding: 15px;
+
+    .image{
+      height: 200px;
+
+      img{
+        object-fit: contain;
+      }
+    }
+  }
+}

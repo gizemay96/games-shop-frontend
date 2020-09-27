@@ -146,3 +146,25 @@ $color-blue: #4589ff;
 .comprobe {
   text-align: center;
 }
+
+
+@media screen and (max-width:991px) {
+ .orders{
+   padding: 60px 0;
+   border-bottom: 1px solid;
+ }
+
+ .address-list{
+   padding: 60px 0;
+   border-bottom: 1px solid;
+ }
+ .total-price{
+  padding: 60px 0;
+  border-bottom: 1px solid;
+  .content{
+    display: grid;
+    grid-template-columns: 6fr 6fr;
+  }
+}
+  
+  }

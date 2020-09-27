@@ -28,4 +28,8 @@ export class AuthService {
   login(loginForm) {
     return this.http.post(`${this.baseUrl}/local`, loginForm);
   }
+
+  isAuthenticated():boolean {
+    return !!window.localStorage.getItem('token')
+  }
 }

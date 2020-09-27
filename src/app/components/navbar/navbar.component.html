@@ -6,27 +6,51 @@
         ><img src="../../../assets/logo.png" alt=""
       /></a>
       <!-- // ------------------ TOGGLER ICON ---------------- //  -->
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-      <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
-      MENU
-      </button>
+      <div class="toggler-actions">
+        <button
+          (click)="
+            !isOpenToggler ? (isOpenToggler = true) : (isOpenToggler = false)
+          "
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          MENU |
+        </button>
+        <a
+          *ngIf="userCart && userCart.orders"
+          class="cart cart-mini mt-2 ml-2"
+          routerLink="/checkout"
+        >
+          <i class="fas fa-shopping-basket basket-icon"></i>
+          <span
+            [ngClass]="{
+              'sm-padding': cartLength < 10,
+              'lg-padding': cartLength > 9
+            }"
+            class="cart-length"
+          >
+            {{ cartLength }}
+          </span>
+        </a>
+      </div>
       <!-- // ------------------ NAVBAR ITEMS ---------------- //  -->
       <div *ngIf="!user; else authNav" class="navB">
         <div
           class="collapse navbar-collapse justify-content-end"
           id="navbarNav"
         >
-          <div class="d-flex align-items-center">
-            <h5><a class="nav-link" routerLink="/login">Login</a></h5>
-            <h5><a class="nav-link" routerLink="/register">Register</a></h5>
+          <div class="d-flex align-items-center nav-items-lg">
+            <h5><a class="nav-link" (click)="openLogin()">Login</a></h5>
+            <h5><a class="nav-link" (click)="openRegister()">Register</a></h5>
+          </div>
+          <div *ngIf="isOpenToggler" class="d-flex align-items-center">
+            <h5><a class="nav-link" (click)="openLogin()">Login</a></h5>
+            <h5><a class="nav-link" (click)="openRegister()">Register</a></h5>
           </div>
         </div>
       </div>
@@ -36,31 +60,59 @@
           Welcome {{ user.username | titlecase }} !
           <img class="avatar ml-2" [src]="user.avatarUrl" alt="" />
         </h4>
-        <div
-          class="collapse navbar-collapse justify-content-end colapse-activeUser"
-          id="navbarNav"
-        >
-          <div
-            class="collapse navbar-collapse justify-content-end"
-            id="navbarNav"
+        <div class="d-flex align-items-center mt-3 nav-items-lg">
+          <h5>
+            <a
+              class="nav-link"
+              routerLink="/profile"
+              (click)="isOpenToggler = false"
+              >Profile</a
+            >
+          </h5>
+          <h5><a class="nav-link" (click)="logout()">LogOut</a></h5>
+          <a
+            *ngIf="userCart && userCart.orders"
+            class="cart cart-lg mt-2 ml-2"
+            routerLink="/checkout"
           >
-            <div class="d-flex align-items-center">
-              <h5><a class="nav-link" routerLink="/profile">Profile</a></h5>
-              <h5><a class="nav-link" (click)="logout()">LogOut</a></h5>
-              <a *ngIf="userCart && userCart.orders" class="cart mt-2 ml-2" routerLink="/checkout">
-                <i class="fas fa-shopping-basket basket-icon"></i>
-                <span
-                  [ngClass]="{
-                    'sm-padding': cartLength < 10,
-                    'lg-padding': cartLength > 9
-                  }"
-                  class="cart-length"
-                >
-                  {{ cartLength }}
-                </span>
-              </a>
-            </div>
-          </div>
+            <i class="fas fa-shopping-basket basket-icon"></i>
+            <span
+              [ngClass]="{
+                'sm-padding': cartLength < 10,
+                'lg-padding': cartLength > 9
+              }"
+              class="cart-length"
+            >
+              {{ cartLength }}
+            </span>
+          </a>
+        </div>
+        <div *ngIf="isOpenToggler" class="d-flex align-items-center mt-3">
+          <h5>
+            <a
+              class="nav-link"
+              routerLink="/profile"
+              (click)="isOpenToggler = false"
+              >Profile</a
+            >
+          </h5>
+          <h5><a class="nav-link" (click)="logout()">LogOut</a></h5>
+          <a
+            *ngIf="userCart && userCart.orders"
+            class="cart cart-lg mt-2 ml-2"
+            routerLink="/checkout"
+          >
+            <i class="fas fa-shopping-basket basket-icon"></i>
+            <span
+              [ngClass]="{
+                'sm-padding': cartLength < 10,
+                'lg-padding': cartLength > 9
+              }"
+              class="cart-length"
+            >
+              {{ cartLength }}
+            </span>
+          </a>
         </div>
       </ng-template>
     </div>
