@@ -22,6 +22,8 @@ import { CardNumberPipe } from './pipes/card-number.pipe';
 import { ConfirmationModalComponent } from './components/Modals/confirmation-modal/confirmation-modal.component';
 import { LoginModalComponent } from './components/Modals/login-modal/login-modal.component';
 import { RegisterModalComponent } from './components/Modals/register-modal/register-modal.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 @NgModule({
@@ -52,6 +54,11 @@ import { RegisterModalComponent } from './components/Modals/register-modal/regis
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
+    BrowserAnimationsModule,
+    MatProgressBarModule
+  ],
+  exports: [
+    MatProgressBarModule
   ],
   providers: [NgbActiveModal],
   bootstrap: [AppComponent]

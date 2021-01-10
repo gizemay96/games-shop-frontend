@@ -39,6 +39,7 @@ export class UserService {
         },
       })
       .subscribe((response: User) => {
+        console.log(response)
         this.user = response;
         this.cartService.fetchUserCart(this.user.id);
         this.getDetails();

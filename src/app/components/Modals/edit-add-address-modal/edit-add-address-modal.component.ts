@@ -12,6 +12,7 @@ import { AutocomplateAddressService } from 'src/app/services/autocomplate-addres
   styleUrls: ['./edit-add-address-modal.component.scss'],
 })
 export class EditAddressModalComponent implements OnInit {
+  loading;
   
   // ------------------ ADDRESS FORM ---------------- // 
   addressForm = new FormGroup({
@@ -80,6 +81,7 @@ export class EditAddressModalComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.loading = true;
     this.autocomplateAddressService.getToken();
     this.states = [];
     setTimeout(() => {
@@ -88,7 +90,8 @@ export class EditAddressModalComponent implements OnInit {
       .subscribe((response: any) => {
         this.states.push(response.map((a) => a.country_name));
       });
-    }, 900);
+      this.loading = false;
+    }, 1500);
   }
 
   // ------------------ FUNCTIONS ---------------- // 

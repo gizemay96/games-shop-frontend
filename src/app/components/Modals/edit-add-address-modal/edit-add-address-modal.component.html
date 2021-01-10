@@ -1,5 +1,4 @@
 <!-- // ------------------ EDIT ADDRESS FORM ---------------- //  -->
-
 <div
   class="modal-content"
   *ngIf="addressForm.get('id').value; else addAddressModal"
@@ -14,7 +13,8 @@
       </div>
     </div>
     <h4 class="text-center bg-title">Edit Address Form</h4>
-    <form [formGroup]="addressForm" (submit)="editData()" autocomplete="off">
+    <mat-progress-bar *ngIf="loading" class="mb-2" mode="indeterminate" color="test"></mat-progress-bar>
+    <form *ngIf="!loading" [formGroup]="addressForm" (submit)="editData()" autocomplete="off">
       <div class="nameInput">
         <label for="addressName">Address Name</label>
         <input

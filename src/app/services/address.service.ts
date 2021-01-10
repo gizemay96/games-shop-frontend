@@ -13,7 +13,7 @@ export class AddressService {
   constructor(private http: HttpClient, private userService: UserService) {}
 
   fetchUserAddress() {
-    const userId = this.userService.getUser().id;
+    const userId = JSON.parse(localStorage.getItem('user')).id;
 
     this.http
       .get(`${env.addressApiURL}/?user=${userId}`)

@@ -52,6 +52,8 @@ export class LoginModalComponent implements OnInit {
       this.isLoading = true;
       this.authService.login(this.loginForm.value).subscribe(
         (response: AuthResponse) => {
+          console.log(response);
+          window.localStorage.setItem('user', JSON.stringify(response.user));
           this.authService.setToken(response.jwt);
           this.userService.setUser(response.user);
           this.cartService.fetchUserCart(response.user.id);
