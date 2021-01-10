@@ -11,20 +11,20 @@ import { Product } from 'src/app/types/product.type';
 })
 export class HomePageComponent implements OnInit {
 
-  selectedProduct:Product;
-  currentRate:number;
+  selectedProduct: Product;
+  currentRate: number;
 
 
   constructor(
     private productService: ProductService,
-    private cartService:CartService,
-    private userService:UserService
-    ) {}
+    private cartService: CartService,
+    private userService: UserService
+  ) { }
 
   // ------- GET DATA ----------
 
-  get user(){
-   return this.userService.getUser();
+  get user() {
+    return this.userService.getUser();
   }
 
   get allProducts() {
@@ -75,7 +75,7 @@ export class HomePageComponent implements OnInit {
   // ------------------ PREVIOUS PAGE FUNCTION ---------------- // 
   previousData(categoryId) {
     // ----- Previous PC games ------
-    if (categoryId == 9) {
+    if (categoryId == '5ffb1da2e043661d30d0833e') {
       if (this.pcCounts.startingNumber != 0) {
         const startNum = this.pcCounts.startingNumber - 4;
         const pageNum = this.pcCounts.pageCount - 1;
@@ -83,21 +83,21 @@ export class HomePageComponent implements OnInit {
       }
     }
     // ----- Previous Playstation games ------
-    else if (categoryId == 5) {
+    else if (categoryId == '5ffb3f9ef03198001780d3ad') {
       if (this.psCounts.startingNumber != 0) {
         const start = this.psCounts.startingNumber - 4;
         this.productService.fetchPsGames(start);
       }
     }
     // ----- Previous Xbox games ------
-    else if (categoryId == 6) {
+    else if (categoryId == '5ffb3fc9f03198001780d3ae') {
       if (this.xboxCounts.startingNumber != 0) {
         const start = this.xboxCounts.startingNumber - 4;
         this.productService.fetchXboxGames(start);
       }
     }
     // ----- Previous Nintendo games ------
-    else if (categoryId == 7) {
+    else if (categoryId == '5ffb3fe1f03198001780d3af') {
       if (this.nintendoCounts.startingNumber != 0) {
         const start = this.nintendoCounts.startingNumber - 4;
         this.productService.fetchNintendoGames(start);
@@ -107,26 +107,27 @@ export class HomePageComponent implements OnInit {
 
   // ------------------ NEXT PAGE FUNCTION ---------------- // 
   nextData(categoryId) {
+
     // ----- Fetch More PC games ------
-    if (categoryId == 9) {
+    if (categoryId == '5ffb1da2e043661d30d0833e') {
       const startNum = this.pcCounts.startingNumber + 4;
       const pageNum = this.pcCounts.pageCount + 1;
       this.productService.fetchPcGames(startNum, pageNum);
     }
     // ----- Fetch More Playstation games ------
-    else if (categoryId == 5) {
+    else if (categoryId == '5ffb3f9ef03198001780d3ad') {
       const startNum = this.psCounts.startingNumber + 4;
       const pageNum = this.psCounts.pageCount + 1;
       this.productService.fetchPsGames(startNum, pageNum);
     }
     // ----- Fetch More Xbox games ------
-    else if (categoryId == 6) {
+    else if (categoryId == '5ffb3fc9f03198001780d3ae') {
       const startNum = this.xboxCounts.startingNumber + 4;
       const pageNum = this.xboxCounts.pageCount + 1;
       this.productService.fetchXboxGames(startNum, pageNum);
     }
     // ----- Fetch More Nintendo games ------
-    else if (categoryId == 7) {
+    else if (categoryId == '5ffb3fe1f03198001780d3af') {
       const startNum = this.nintendoCounts.startingNumber + 4;
       const pageNum = this.nintendoCounts.pageCount + 1;
       this.productService.fetchNintendoGames(startNum, pageNum);
@@ -134,11 +135,11 @@ export class HomePageComponent implements OnInit {
   }
 
   selectedProd(productId) {
-    this.selectedProduct =  this.allProducts.find(p => p.id == productId);
+    this.selectedProduct = this.allProducts.find(p => p.id == productId);
     this.currentRate = this.selectedProduct.rating;
   }
 
-  addToCart(product){
-    this.cartService.addToCart(product , this.user.id)
+  addToCart(product) {
+    this.cartService.addToCart(product, this.user.id)
   }
 }

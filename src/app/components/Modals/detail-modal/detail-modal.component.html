@@ -8,11 +8,11 @@
 >
   <app-navbar [positionFix]="false"></app-navbar>
   <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
+    <div class="modal-content" style="margin-top: -200px;">
       <div *ngIf="data" class="card">
         <div class="row">
           <div class="image col-md-6">
-            <img [src]="'http://localhost:1337' + data.img[0].url" alt="" />
+            <img [src]="'https://gameshopv2.herokuapp.com' + data.img[0].url" alt="" />
           </div>
           <div class="body col-md-6">
             <div class="title">
@@ -33,7 +33,7 @@
               <p>{{ data.description }}</p>
             </div>
             <div class="card-bottom row align-items-center">
-              <div class="price col-sm-6 mt-2 text-center">
+              <div class="price col-sm-6 mt-2 text-center" style="margin-left: -20px;">
                 <h1 class="text-light">{{ data.price | currency }}</h1>
               </div>
               <div class="add-cart-btn col-sm-6 text-center">

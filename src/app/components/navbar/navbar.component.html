@@ -27,15 +27,15 @@
           routerLink="/checkout"
         >
           <i class="fas fa-shopping-basket basket-icon"></i>
-          <span
-            [ngClass]="{
-              'sm-padding': cartLength < 10,
-              'lg-padding': cartLength > 9
-            }"
-            class="cart-length"
+          <div class="cart-length">
+            <span
+
+            class=""
           >
             {{ cartLength }}
           </span>
+
+          </div>
         </a>
       </div>
       <!-- // ------------------ NAVBAR ITEMS ---------------- //  -->

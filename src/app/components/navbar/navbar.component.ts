@@ -42,11 +42,17 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {}
 
   openLogin() {
-    this.modalService.open(LoginModalComponent);
+    this.modalService.open(LoginModalComponent, {
+      centered: true,
+      windowClass: 'login-modal'
+    });
   }
 
   openRegister(){
-    this.modalService.open(RegisterModalComponent);
+    this.modalService.open(RegisterModalComponent, {
+      centered: true,
+      windowClass: 'register-modal'
+    });
   }
 
   logout() {

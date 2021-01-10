@@ -7,7 +7,7 @@ import { UserService } from './user.service';
   providedIn: 'root',
 })
 export class AuthService {
-  baseUrl = 'http://localhost:1337/auth';
+  baseUrl = 'https://gameshopv2.herokuapp.com/auth';
 
   constructor(private http: HttpClient, private userService: UserService, private router : Router) {}
 

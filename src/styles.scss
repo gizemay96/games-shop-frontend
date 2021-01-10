@@ -97,6 +97,30 @@ body {
   }
 }
 
+.confirmation-modal{
+  .modal-content{
+    background-color: #2d2d2dad !important;
+    padding: 30px 50px;
+    border-radius: 40px;
+    margin-top: -150px;
+  }
+}
+.login-modal{
+  .modal-content{
+    background-color: #000000c4 !important;
+    border-radius: 15px;
+    margin-top: -40px;
+  }
+}
+
+.register-modal{
+  .modal-content{
+    background-color: #000000f2 !important;
+    border-radius: 15px;
+    padding: 30px;
+  }
+}
+
 // .number-font{
 //   font-family: 'Nova Square', cursive;
 // }

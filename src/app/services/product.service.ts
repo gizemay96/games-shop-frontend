@@ -62,7 +62,7 @@ export class ProductService {
 
   fetchPsGames(start: number = 0, p: number = 1) {
     this.http
-      .get(`${env.productsApiURL}?categories=5&_start=${start}&_limit=4`)
+      .get(`${env.productsApiURL}?categories=5ffb3f9ef03198001780d3ad&_start=${start}&_limit=4`)
       .subscribe((response: Product[]) => {
         if (response.length != 0) {
           this.psGames = response;
@@ -76,7 +76,7 @@ export class ProductService {
 
   fetchXboxGames(s: number = 0, p: number = 1) {
     this.http
-      .get(`${env.productsApiURL}?categories=6&_start=${s}&_limit=4`)
+      .get(`${env.productsApiURL}?categories=5ffb3fc9f03198001780d3ae&_start=${s}&_limit=4`)
       .subscribe((response: Product[]) => {
         if (response.length != 0) {
           this.xboxGames = response;
@@ -90,7 +90,7 @@ export class ProductService {
 
   fetchNintendoGames(s: number = 0, p: number = 1) {
     this.http
-      .get(`${env.productsApiURL}?categories=7&_start=${s}&_limit=4`)
+      .get(`${env.productsApiURL}?categories=5ffb3fe1f03198001780d3af&_start=${s}&_limit=4`)
       .subscribe((response: Product[]) => {
         if (response.length != 0) {
           this.nintendoGames = response;
@@ -104,7 +104,7 @@ export class ProductService {
 
   fetchPcGames(s: number = 0, p: number = 1) {
     this.http
-      .get(`${env.productsApiURL}?categories=9&_start=${s}&_limit=4`)
+      .get(`${env.productsApiURL}?categories=5ffb1da2e043661d30d0833e&_start=${s}&_limit=4`)
       .subscribe((response: Product[]) => {
         if (response.length != 0) {
           this.pcGames = response;

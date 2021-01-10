@@ -146,14 +146,15 @@ nav {
 
 .cart {
   .cart-length {
+    text-align: center;
+    width: 26px;
     transform: translate(-5px, -17px);
     position: absolute;
     background: orange;
     border-radius: 50%;
     font-size: 16px;
     color: white;
-    padding: 0px 5px;
-    font-weight: 500;
+    height: 24px;
   }
 
   .basket-icon {

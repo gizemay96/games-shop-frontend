@@ -11,7 +11,7 @@ import { error } from '@angular/compiler/src/util';
   providedIn: 'root',
 })
 export class UserService {
-  baseUrl = 'http://localhost:1337/users';
+  baseUrl = 'https://gameshopv2.herokuapp.com/users';
   private user: User;
   errors;
 

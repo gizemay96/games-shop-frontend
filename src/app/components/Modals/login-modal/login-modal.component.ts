@@ -32,9 +32,9 @@ export class LoginModalComponent implements OnInit {
     private cartService: CartService,
     private router: Router,
     private activeModal: NgbActiveModal
-  ) {}
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   get identifierErrors() {
     return this.loginForm.controls.identifier;
@@ -74,7 +74,7 @@ export class LoginModalComponent implements OnInit {
   }
 
 
-  close(){
+  close() {
     this.router.navigateByUrl('/');
     this.activeModal.close();
 

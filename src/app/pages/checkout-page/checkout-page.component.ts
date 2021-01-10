@@ -86,6 +86,7 @@ export class CheckoutPageComponent implements OnInit {
   openConfModal() {
     const modalRef = this.modalService.open(ConfirmationModalComponent, {
       centered: true,
+      windowClass: 'confirmation-modal'
     });
     modalRef.componentInstance.title =
       'Are you sure you want to empty the cart?';
