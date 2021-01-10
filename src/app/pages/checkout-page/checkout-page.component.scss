@@ -54,7 +54,7 @@ $color-blue: #4589ff;
 }
 
 .order-items {
-  max-height: 500px;
+  max-height: 540px;
   overflow: auto;
 }
 
@@ -102,6 +102,13 @@ $color-blue: #4589ff;
 
 .total-price {
   text-align: center;
+  .content{
+   box-shadow: 0px 2px 5px 7px black;
+   padding: 20px;
+   margin-top: 58px;
+   margin-bottom: 50px;
+   border-radius: 10px;
+  }
 }
 
 .payment-title {

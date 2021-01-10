@@ -6,31 +6,8 @@
     <div class="receipt">
       <div class="receipt-body">
         <div class="row">
-          <!-- // ------------------ BILL ---------------- //  -->
-          <div class="total-price col-lg-3">
-            <h4 class="header text-light mb-4">
-              Bill <i class="fas fa-file-invoice-dollar"></i>
-            </h4>
-            <div class="content">
-              <div class="total">
-                <p class="header">Total Price <i class="fas fa-coins"></i> :</p>
-                <h2 *ngIf="cartProducts; else zeroTotalPrice" class="cost">
-                  {{ getTotal | currency }}
-                </h2>
-                <ng-template #zeroTotalPrice>
-                  <h2 class="cost">{{ 0 | currency }}</h2>
-                </ng-template>
-              </div>
-              <div class="name">
-                <p class="header">Name <i class="fas fa-signature"></i> :</p>
-                <h2 *ngIf="user" class="seller">
-                  {{ user.username | titlecase }}
-                </h2>
-              </div>
-            </div>
-          </div>
           <!-- // ------------------ ORDERS---------------- //  -->
-          <div class="orders col-lg-5">
+          <div class="orders col-lg-8">
             <!-- // ------------------ TITLE ---------------- //  -->
             <h4 class="header text-light mb-4">
               Order List
@@ -66,7 +43,43 @@
           </div>
           <!-- // ------------------ ADDRESS LIST ---------------- //  -->
           <div class="address-list col-lg-4">
-            <h4 class="header text-light mb-4">
+
+            
+          <!-- // ------------------ BILL ---------------- //  -->
+          <div class="total-price col-lg-12">
+            <h4 class="header text-light mb-4 text-right">
+              Bill <i class="fas fa-file-invoice-dollar"></i>
+            </h4>
+            <div class="content">
+              <div class="total">
+                <p class="header">Total Price <i class="fas fa-coins"></i> :</p>
+                <h2 *ngIf="cartProducts; else zeroTotalPrice" class="cost">
+                  {{ getTotal | currency }}
+                </h2>
+                <ng-template #zeroTotalPrice>
+                  <h2 class="cost">{{ 0 | currency }}</h2>
+                </ng-template>
+              </div>
+              <div class="name">
+                <p class="header">Name <i class="fas fa-signature"></i> :</p>
+                <h2 *ngIf="user" class="seller">
+                  {{ user.username | titlecase }}
+                </h2>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+            <h4 class="header text-light mb-4 text-right">
               Addresses <i class="fas fa-map-marked-alt"></i>
             </h4>
             <p class="subtitle">Select Delivery Address</p>
@@ -100,6 +113,7 @@
                 </p>
               </div>
             </div>
+
           </div>
         </div>
       </div>
