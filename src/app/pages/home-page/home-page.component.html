@@ -1,11 +1,18 @@
 <div class="container">
+  <!-- <mat-progress-bar *ngIf="loading" class="mb-2" mode="indeterminate" color="test"></mat-progress-bar> -->
   <!-- ----------- PC GAME LIST -------------- -->
   <app-product-title
     [categoryCount]="pcGames.length"
     icon="fas fa-desktop"
     title="PC Games"
   ></app-product-title>
+  <div *ngIf="loading || !loading && loadingChangeId === '5ffb1da2e043661d30d0833e'"class="spinner-case">
+    <div class="spinner-grow color-orange" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
   <app-product-card
+  *ngIf="!loading && loadingChangeId !== '5ffb1da2e043661d30d0833e'"
     (next)="nextData($event)"
     (previous)="previousData($event)"
     (selectedProd)="selectedProd($event)"
@@ -21,7 +28,13 @@
     icon="fab fa-playstation"
     title="Playstation"
   ></app-product-title>
+  <div *ngIf="loading || !loading && loadingChangeId === '5ffb3f9ef03198001780d3ad'" class="spinner-case">
+    <div class="spinner-grow color-blue" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
   <app-product-card
+  *ngIf="!loading && loadingChangeId !== '5ffb3f9ef03198001780d3ad'"
     (next)="nextData($event)"
     (previous)="previousData($event)"
     (selectedProd)="selectedProd($event)"
@@ -37,7 +50,13 @@
     icon="fab fa-xbox"
     title="Xbox"
   ></app-product-title>
+  <div *ngIf="loading || !loading && loadingChangeId === '5ffb3fc9f03198001780d3ae'" class="spinner-case">
+    <div class="spinner-grow color-orange" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
   <app-product-card
+  *ngIf="!loading && loadingChangeId !== '5ffb3fc9f03198001780d3ae'"
     (next)="nextData($event)"
     (previous)="previousData($event)"
     (selectedProd)="selectedProd($event)"
@@ -53,7 +72,13 @@
     icon="fas fa-gamepad"
     title="Nintendo"
   ></app-product-title>
+  <div *ngIf="loading || !loading && loadingChangeId === '5ffb3fe1f03198001780d3af'" class="spinner-case">
+    <div class="spinner-grow color-blue" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
   <app-product-card
+  *ngIf="!loading && !loading && loadingChangeId !== '5ffb3fe1f03198001780d3af'"
     (next)="nextData($event)"
     (previous)="previousData($event)"
     (selectedProd)="selectedProd($event)"

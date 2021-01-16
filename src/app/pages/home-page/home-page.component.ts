@@ -13,6 +13,8 @@ export class HomePageComponent implements OnInit {
 
   selectedProduct: Product;
   currentRate: number;
+  loading = false;
+  loadingChangeId: any = '1';
 
 
   constructor(
@@ -65,16 +67,21 @@ export class HomePageComponent implements OnInit {
   // ---
 
   ngOnInit(): void {
+    this.loading = true;
     this.productService.fetchProducts();
     this.productService.fetchPsGames();
     this.productService.fetchXboxGames();
     this.productService.fetchNintendoGames();
     this.productService.fetchPcGames();
+    setTimeout(() => {
+      this.loading = false;
+    }, 300);
   }
 
 
   // ------------------ PREVIOUS PAGE FUNCTION ---------------- // 
   previousData(categoryId) {
+    this.loadingChangeId = categoryId;
     // ----- Previous PC games ------
     if (categoryId == '5ffb1da2e043661d30d0833e') {
       if (this.pcCounts.startingNumber != 0) {
@@ -104,11 +111,14 @@ export class HomePageComponent implements OnInit {
         this.productService.fetchNintendoGames(start);
       }
     }
+    setTimeout(() => {
+      this.loadingChangeId = '1';
+    }, 600);
   }
 
   // ------------------ NEXT PAGE FUNCTION ---------------- // 
   nextData(categoryId) {
-
+    this.loadingChangeId = categoryId;
     // ----- Fetch More PC games ------
     if (categoryId == '5ffb1da2e043661d30d0833e') {
       const startNum = this.pcCounts.startingNumber + 4;
@@ -133,6 +143,9 @@ export class HomePageComponent implements OnInit {
       const pageNum = this.nintendoCounts.pageCount + 1;
       this.productService.fetchNintendoGames(startNum, pageNum);
     }
+    setTimeout(() => {
+      this.loadingChangeId = '1';
+    }, 600);
   }
 
   selectedProd(productId) {
