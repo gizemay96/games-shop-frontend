@@ -18,19 +18,22 @@ $color-blue: #4589ff;
 .modal-content {
   background: transparent;
 }
+
 .modal-body {
 
-    .logo {
-        max-width: 150px;
-        max-height: 150px;
-        img {
-            width: 100%;
-        }
+  .logo {
+    max-width: 150px;
+    max-height: 150px;
+
+    img {
+      width: 100%;
     }
-    form {
+  }
+
+  form {
     width: 100%;
 
-    label{
+    label {
       color: $gray-text;
     }
 
@@ -54,4 +57,26 @@ $color-blue: #4589ff;
       float: right;
     }
   }
+
+  .spinner-case {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .spinner-grow {
+      width: 5rem !important;
+      height: 5rem !important;
+    }
+
+  }
+
+  .color-orange {
+    color: #d2721e2c !important;
+  }
+
+  .color-blue {
+    color: #4589ff3d !important;
+  }
+
 }
