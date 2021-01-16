@@ -12,7 +12,7 @@ import { Order } from '../types/order.type';
 export class CartService {
   private userCart: Cart;
   private cartProducts: Product[];
-  constructor(private http: HttpClient, private orderService: OrderService) {}
+  constructor(private http: HttpClient, private orderService: OrderService) { }
 
   fetchUserCart(userId: number) {
     this.http
@@ -112,6 +112,16 @@ export class CartService {
         this.fetchUserCart(userId);
       });
     }
+  }
+
+  removeProduct(product: Product, userId: number) {
+    const existingOrder = this.userCart.orders.find(
+      (order) => order.product === product.id
+    );
+    
+    this.orderService.deleteOrder(existingOrder.id).subscribe((response) => {
+      this.fetchUserCart(userId);
+    });
   }
 
   resetCart(userId) {

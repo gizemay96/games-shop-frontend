@@ -99,6 +99,22 @@ export class CheckoutPageComponent implements OnInit {
     });
   }
 
+  deleteProduct(product){
+    const modalRef = this.modalService.open(ConfirmationModalComponent, {
+      centered: true,
+      windowClass: 'confirmation-modal'
+    });
+    modalRef.componentInstance.title =
+      'Are you sure you want to delete product ?';
+    modalRef.result.then((response) => {
+      if (response === true) {
+        this.cartService.removeProduct(product, this.user.id);
+      } else {
+        return;
+      }
+    });
+  }
+
   resetCart() {
     this.cartService.resetCart(this.user.id);
   }

@@ -16,6 +16,7 @@ export class OrderItemComponent implements OnInit {
   @Input() product:Product;
   @Output() decrementClick = new EventEmitter();
   @Output() incrementClick = new EventEmitter();
+  @Output() deleteProduct = new EventEmitter();
   order:Order
   itemQuantity:number;
 

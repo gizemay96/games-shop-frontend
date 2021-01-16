@@ -41,7 +41,6 @@ export class HomePageComponent implements OnInit {
     return this.productService.getNintendoGames();
   }
   get pcGames() {
-    console.log(this.productService.getPcGames());
     return this.productService.getPcGames();
   }
   // ---

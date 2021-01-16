@@ -10,7 +10,7 @@ import { Order } from '../types/order.type';
 export class OrderService {
   orders: Order[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   createOrder(productId: number, userId: number) {
     const token = window.localStorage.getItem('token');
@@ -62,7 +62,7 @@ export class OrderService {
     return this.http.delete(`${env.orderApiURL}/${orderId}`)
   }
 
-  getOrders(){
+  getOrders() {
     return this.orders;
   }
 }

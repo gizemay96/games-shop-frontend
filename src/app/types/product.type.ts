@@ -3,6 +3,7 @@ import { Category } from './category.type';
 export type Product = {
   id: number;
   name: string;
+  title: string;
   description: string;
   price: number;
   rating: number;
