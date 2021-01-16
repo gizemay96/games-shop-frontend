@@ -75,7 +75,7 @@ export class HomePageComponent implements OnInit {
     this.productService.fetchPcGames();
     setTimeout(() => {
       this.loading = false;
-    }, 300);
+    }, 1000);
   }
 
 

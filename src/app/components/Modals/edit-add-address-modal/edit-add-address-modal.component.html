@@ -1,8 +1,5 @@
 <!-- // ------------------ EDIT ADDRESS FORM ---------------- //  -->
-<div
-  class="modal-content"
-  *ngIf="addressForm.get('id').value; else addAddressModal"
->
+<div class="modal-content" *ngIf="addressForm.get('id').value; else addAddressModal">
   <div class="modal-body">
     <div class="close-modal-btn">
       <button (click)="closeModal()" type="button" class="edit-btn"><i class="fas fa-times"></i></button>
@@ -17,13 +14,7 @@
     <form *ngIf="!loading" [formGroup]="addressForm" (submit)="editData()" autocomplete="off">
       <div class="nameInput">
         <label for="addressName">Address Name</label>
-        <input
-          class="edit-input"
-          type="text"
-          id="addressName"
-          name="addressName"
-          formControlName="addressName"
-        />
+        <input class="edit-input" type="text" id="addressName" name="addressName" formControlName="addressName" />
         <div class="errors" *ngIf="nameErrors.dirty && nameErrors.errors">
           <span *ngIf="nameErrors.errors.required">
             This field is required !
@@ -33,13 +24,7 @@
 
       <div class="suiteInput">
         <label for="suite">Suite</label>
-        <input
-          class="edit-input"
-          type="text"
-          id="suite"
-          name="suite"
-          formControlName="suite"
-        />
+        <input class="edit-input" type="text" id="suite" name="suite" formControlName="suite" />
         <div class="errors" *ngIf="suiteErrors.dirty && suiteErrors.errors">
           <span *ngIf="suiteErrors.errors.required">
             This field is required !
@@ -49,17 +34,8 @@
 
       <div class="streetInput">
         <label for="street">StreetName</label>
-        <input
-          class="edit-input"
-          type="text"
-          id="street"
-          name="street"
-          formControlName="streetName"
-        />
-        <div
-          class="errors"
-          *ngIf="streetNameErrors.dirty && streetNameErrors.errors"
-        >
+        <input class="edit-input" type="text" id="street" name="street" formControlName="streetName" />
+        <div class="errors" *ngIf="streetNameErrors.dirty && streetNameErrors.errors">
           <span *ngIf="streetNameErrors.errors.required">
             This field is required !
           </span>
@@ -68,16 +44,8 @@
 
       <div class="countryInput">
         <label for="country">Counrty</label>
-        <input
-          class="edit-input"
-          type="text"
-          id="country"
-          name="country"
-          formControlName="country"
-          [ngbTypeahead]="searchCountry"
-          #instance="ngbTypeahead"
-          autocomplete="no"
-        />
+        <input class="edit-input" type="text" id="country" name="country" formControlName="country"
+          [ngbTypeahead]="searchCountry" #instance="ngbTypeahead" autocomplete="no" />
         <div class="errors" *ngIf="countryErrors.dirty && countryErrors.errors">
           <span *ngIf="countryErrors.errors.required">
             This field is required !
@@ -87,17 +55,8 @@
 
       <div class="cityInput">
         <label for="city">City</label>
-        <input
-          class="edit-input"
-          type="text"
-          id="city"
-          name="city"
-          formControlName="city"
-          [ngbTypeahead]="searchCity"
-          #instance="ngbTypeahead"
-          autocomplete="no"
-          (focus)="getCities()"
-        />
+        <input class="edit-input" type="text" id="city" name="city" formControlName="city" [ngbTypeahead]="searchCity"
+          #instance="ngbTypeahead" autocomplete="no" (focus)="getCities()" />
         <div class="errors" *ngIf="cityErrors.dirty && cityErrors.errors">
           <span *ngIf="cityErrors.errors.required">
             This field is required !
@@ -124,20 +83,11 @@
         </div>
       </div>
       <h4 class="text-center bg-title">Add Address Form</h4>
-      <form
-        [formGroup]="addressForm"
-        (submit)="addAddress()"
-        autocomplete="off"
-      >
+      <mat-progress-bar *ngIf="loading" class="mb-2" mode="indeterminate" color="test"></mat-progress-bar>
+      <form *ngIf="!loading" [formGroup]="addressForm" (submit)="addAddress()" autocomplete="off">
         <div class="nameInput">
           <label for="addressName">Address Name</label>
-          <input
-            class="edit-input"
-            type="text"
-            id="addressName"
-            name="addressName"
-            formControlName="addressName"
-          />
+          <input class="edit-input" type="text" id="addressName" name="addressName" formControlName="addressName" />
           <div class="errors" *ngIf="nameErrors.dirty && nameErrors.errors">
             <span *ngIf="nameErrors.errors.required">
               This field is required !
@@ -147,13 +97,7 @@
 
         <div class="suiteInput">
           <label for="suite">Suite</label>
-          <input
-            class="edit-input"
-            type="text"
-            id="suite"
-            name="suite"
-            formControlName="suite"
-          />
+          <input class="edit-input" type="text" id="suite" name="suite" formControlName="suite" />
           <div class="errors" *ngIf="suiteErrors.dirty && suiteErrors.errors">
             <span *ngIf="suiteErrors.errors.required">
               This field is required !
@@ -163,17 +107,8 @@
 
         <div class="streetInput">
           <label for="street">StreetName</label>
-          <input
-            class="edit-input"
-            type="text"
-            id="street"
-            name="street"
-            formControlName="streetName"
-          />
-          <div
-            class="errors"
-            *ngIf="streetNameErrors.dirty && streetNameErrors.errors"
-          >
+          <input class="edit-input" type="text" id="street" name="street" formControlName="streetName" />
+          <div class="errors" *ngIf="streetNameErrors.dirty && streetNameErrors.errors">
             <span *ngIf="streetNameErrors.errors.required">
               This field is required !
             </span>
@@ -181,20 +116,9 @@
         </div>
         <div class="countryInput">
           <label for="typeahead-basic">Counrty</label>
-          <input
-            class="edit-input"
-            type="text"
-            name="country"
-            formControlName="country"
-            id="typeahead-basic"
-            [ngbTypeahead]="searchCountry"
-            #instance="ngbTypeahead"
-            autocomplete="no"
-          />
-          <div
-            class="errors"
-            *ngIf="countryErrors.dirty && countryErrors.errors"
-          >
+          <input class="edit-input" type="text" name="country" formControlName="country" id="typeahead-basic"
+            [ngbTypeahead]="searchCountry" #instance="ngbTypeahead" autocomplete="no" />
+          <div class="errors" *ngIf="countryErrors.dirty && countryErrors.errors">
             <span *ngIf="countryErrors.errors.required">
               This field is required !
             </span>
@@ -203,17 +127,8 @@
 
         <div class="cityInput">
           <label for="city">City</label>
-          <input
-            class="edit-input"
-            type="text"
-            id="city"
-            name="city"
-            formControlName="city"
-            [ngbTypeahead]="searchCity"
-            #instance="ngbTypeahead"
-            autocomplete="no"
-            (focus)="getCities()"
-          />
+          <input class="edit-input" type="text" id="city" name="city" formControlName="city" [ngbTypeahead]="searchCity"
+            #instance="ngbTypeahead" autocomplete="no" (focus)="getCities()" />
           <div class="errors" *ngIf="cityErrors.dirty && cityErrors.errors">
             <span *ngIf="cityErrors.errors.required">
               This field is required !
