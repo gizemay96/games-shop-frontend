@@ -16,11 +16,10 @@ export class EditProfileModalComponent implements OnInit {
       Validators.minLength(3),
     ]),
     lastName: new FormControl('', [
-      Validators.required,
       Validators.minLength(2),
     ]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    phone: new FormControl('', [Validators.required]),
+    phone: new FormControl(''),
   });
 
   errorActive: boolean = false;
