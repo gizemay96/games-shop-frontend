@@ -69,10 +69,10 @@
               >Profile</a
             >
           </h5>
-          <h5><a class="nav-link" (click)="logout()">LogOut</a></h5>
+          <h5><a class="nav-link logout-text" (click)="logout()">LogOut</a></h5>
           <a
             *ngIf="userCart && userCart.orders"
-            class="cart cart-lg mt-2 ml-2"
+            class="cart cart-lg ml-2"
             routerLink="/checkout"
           >
             <i class="fas fa-shopping-basket basket-icon"></i>

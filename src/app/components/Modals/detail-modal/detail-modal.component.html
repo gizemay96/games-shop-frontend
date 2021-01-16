@@ -12,11 +12,11 @@
       <div *ngIf="data" class="card">
         <div class="row">
           <div class="image col-md-6">
-            <img [src]="'https://gameshopv2.herokuapp.com' + data.img[0].url" alt="" />
+            <img [src]="data.img[0].url" alt="" />
           </div>
           <div class="body col-md-6">
             <div class="title">
-              <h3>{{ data.name }}</h3>
+              <h3>{{ data.title }}</h3>
               <ngb-rating [(rate)]="rating" [readonly]="true">
                 <ng-template let-fill="fill" let-index="index">
                   <span

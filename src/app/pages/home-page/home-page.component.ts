@@ -41,6 +41,7 @@ export class HomePageComponent implements OnInit {
     return this.productService.getNintendoGames();
   }
   get pcGames() {
+    console.log(this.productService.getPcGames());
     return this.productService.getPcGames();
   }
   // ---
@@ -71,6 +72,7 @@ export class HomePageComponent implements OnInit {
     this.productService.fetchNintendoGames();
     this.productService.fetchPcGames();
   }
+
 
   // ------------------ PREVIOUS PAGE FUNCTION ---------------- // 
   previousData(categoryId) {
