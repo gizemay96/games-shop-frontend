@@ -11,6 +11,11 @@ $color-blue: #4589ff;
   @media (max-width: 991px) {
     padding: 0px;
   }
+  
+  .name{
+    word-break: break-all;
+  }
+
   .top {
     h1 {
       color: $gray-text;
@@ -68,6 +73,7 @@ $color-blue: #4589ff;
             display: block;
           }
           p {
+            word-break: break-all;
             font-size: 18px;
             margin: 0 0 0 15px;
             @media (max-width: 767px) {
@@ -77,6 +83,7 @@ $color-blue: #4589ff;
           }
 
           h4 {
+            width: 160px;
             margin: 0;
             border-right: 1px solid $color-orange;
             @media (max-width: 534px) {
@@ -96,7 +103,7 @@ $color-blue: #4589ff;
         justify-content: flex-end;
 
         .edit-user-button {
-          margin-top: 30px;
+          margin-top: 60px;
           padding: 5px 10px;
         }
       }
