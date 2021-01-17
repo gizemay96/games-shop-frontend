@@ -11,6 +11,9 @@
   </div>
 </div>
 <h4 class="text-center bg-title" style="margin: 20px;">Register</h4>
+<div *ngIf="errorActive" class="server-errors">
+  <span> {{ serverErrors }} !</span>
+</div>
 <div class="register-form">
   <form [formGroup]="regForm" (submit)="register()" autocomplete="off">
     <div class="username form-item">

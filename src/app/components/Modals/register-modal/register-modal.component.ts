@@ -53,15 +53,23 @@ export class RegisterModalComponent implements OnInit {
   get confirmPassErrors() {
     return this.regForm.controls.confirmPassword;
   }
+
+
+
+  serverErrors;
+  errorActive: boolean = false;
+
+
   constructor(
     private authService: AuthService,
     private userService: UserService,
     private cartService: CartService,
     private router: Router,
     private activeModal: NgbActiveModal
-  ) {}
+  ) { }
 
-  ngOnInit(): void {}
+
+  ngOnInit(): void { }
 
   register() {
     if (this.regForm.valid) {
@@ -88,7 +96,15 @@ export class RegisterModalComponent implements OnInit {
 
           this.router.navigateByUrl('/');
           this.activeModal.close();
-        });
+        },
+          (error) => {
+            this.serverErrors = error.error.message[0].messages[0].message;
+            this.errorActive = true;
+            this.isLoading = false;
+          }
+
+
+        );
     }
   }
 
