@@ -14,6 +14,19 @@ $color-blue: #4589ff;
   background-color: rgb(58, 58, 58);
 }
 
+::ng-deep .dropdown-item.active,
+.dropdown-item:active {
+  background-color: #d2721e62;
+}
+
+::ng-deep .dropdown-menu.show {
+  background-color: rgba(29, 29, 29, 0.822);
+
+  .dropdown-item {
+    color: white;
+  }
+}
+
 
 .modal-content {
   background: transparent;
