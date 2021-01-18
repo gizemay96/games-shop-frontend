@@ -38,6 +38,7 @@ export class ProfilePageComponent implements OnInit {
     });
     modalRef.componentInstance.editForm.patchValue({
       username: this.user.username,
+      name: this.user.name,
       lastName: this.user.lastName,
       email: this.user.email,
       phone: this.user.phone,

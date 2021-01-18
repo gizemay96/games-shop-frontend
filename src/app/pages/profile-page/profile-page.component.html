@@ -24,9 +24,14 @@
               <div *ngIf="user" class="card-content pl-1">
                 <div class="">
                   <div class="user-card-item name">
-                    <h4 class="pr-1 header">Name</h4>
+                    <h4 class="pr-1 header">User Name</h4>
 
                     <p>{{ user.username | titlecase }}</p>
+                  </div>
+                  <div class="user-card-item surname">
+                    <h4 class="pr-1 header">Name</h4>
+
+                    <p>{{ user.name }}</p>
                   </div>
                   <div class="user-card-item surname">
                     <h4 class="pr-1 header">Last Name</h4>

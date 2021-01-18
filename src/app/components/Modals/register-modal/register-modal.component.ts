@@ -19,6 +19,10 @@ export class RegisterModalComponent implements OnInit {
       Validators.required,
       Validators.minLength(3),
     ]),
+    name: new FormControl('', [
+      Validators.required,
+      Validators.minLength(3),
+    ]),
     lastName: new FormControl('', [
       Validators.required,
       Validators.minLength(2),
@@ -38,9 +42,14 @@ export class RegisterModalComponent implements OnInit {
     return this.regForm.controls.username;
   }
 
+  get nameErrors() {
+    return this.regForm.controls.name;
+  }
+
   get lastNameErrors() {
     return this.regForm.controls.lastName;
   }
+
 
   get emailErrors() {
     return this.regForm.controls.email;
@@ -76,6 +85,7 @@ export class RegisterModalComponent implements OnInit {
       this.isLoading = true;
       const registerData = {
         username: this.regForm.get('username').value,
+        name: this.regForm.get('name').value,
         lastName: this.regForm.get('lastName').value,
         email: this.regForm.get('email').value,
         password: this.regForm.get('password').value,

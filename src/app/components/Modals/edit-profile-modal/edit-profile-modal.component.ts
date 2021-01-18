@@ -15,6 +15,9 @@ export class EditProfileModalComponent implements OnInit {
       Validators.required,
       Validators.minLength(3),
     ]),
+    name: new FormControl('', [
+      Validators.minLength(3),
+    ]),
     lastName: new FormControl('', [
       Validators.minLength(2),
     ]),
@@ -27,6 +30,9 @@ export class EditProfileModalComponent implements OnInit {
 
   get usernameErrors() {
     return this.editForm.controls.username;
+  }
+  get nameErrors() {
+    return this.editForm.controls.lastName;
   }
 
   get lastNameErrors() {

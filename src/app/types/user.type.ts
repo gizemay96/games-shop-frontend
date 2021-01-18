@@ -11,6 +11,7 @@ export type User = {
   role: object;
   updated_at?: string;
   username: string;
+  name: string;
   avatar: any;
   avatarUrl: string;
   cart: Cart | number;
