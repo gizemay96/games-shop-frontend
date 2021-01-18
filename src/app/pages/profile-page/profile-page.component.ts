@@ -5,6 +5,7 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EditProfileModalComponent } from 'src/app/components/./Modals/edit-profile-modal/edit-profile-modal.component';
 import { EditAddressModalComponent } from 'src/app/components/Modals/edit-add-address-modal/edit-add-address-modal.component';
 import { Address } from 'src/app/types/address.type';
+import { ConfirmationModalComponent } from 'src/app/components/Modals/confirmation-modal/confirmation-modal.component';
 
 @Component({
   selector: 'app-profile-page',
@@ -66,7 +67,19 @@ export class ProfilePageComponent implements OnInit {
     this.modalService.open(EditAddressModalComponent, { centered: true });
   }
 
-  deleteAddress(addressId: number) {
-    this.addressService.deleteAddress(addressId);
+  deleteAddress(address) {
+    const modalRef = this.modalService.open(ConfirmationModalComponent, {
+      centered: true,
+      windowClass: 'confirmation-modal'
+    });
+    modalRef.componentInstance.title =
+      `Are you sure you want to delete " ${address.addressName} " ?`;
+    modalRef.result.then((response) => {
+      if (response === true) {
+        this.addressService.deleteAddress(address.id);
+      } else {
+        return;
+      }
+    });
   }
 }

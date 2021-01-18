@@ -13,6 +13,7 @@ import { AutocomplateAddressService } from 'src/app/services/autocomplate-addres
 })
 export class EditAddressModalComponent implements OnInit {
   loading;
+  invalidFormErrors
   
   // ------------------ ADDRESS FORM ---------------- // 
   addressForm = new FormGroup({
@@ -118,10 +119,12 @@ export class EditAddressModalComponent implements OnInit {
   }
 
   addAddress() {
-    console.log(this.addressForm)
     if (this.addressForm.valid) {
       this.addressService.addUserAddress(this.addressForm.value);
       this.activeModal.close();
+    } else {
+      this.invalidFormErrors = true;
+      this.loading = false;
     }
   }
 

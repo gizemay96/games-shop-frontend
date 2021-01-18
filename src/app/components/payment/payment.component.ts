@@ -75,7 +75,6 @@ export class PaymentComponent implements OnInit {
       this.bougthOrderCount = null;
       return;
     } else if (this.paymentForm.valid && !this.CartProducts) {
-      console.log("empty")
       this.paymentErrors = true;
       this.noOrder = true;
       this.bougthOrderCount = null;

@@ -25,8 +25,6 @@ export class AutocomplateAddressService {
   }
 
   getCountries() {
-    console.log(this.token);
-
     const httpOptions = {
       headers: { Authorization: `Bearer ${this.token}` },
     };

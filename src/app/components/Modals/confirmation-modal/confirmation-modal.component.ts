@@ -15,7 +15,6 @@ export class ConfirmationModalComponent implements OnInit {
   ngOnInit(): void {}
 
   close(action: boolean) {
-    console.log(action);
     this.activeModal.close(action);
   }
 }

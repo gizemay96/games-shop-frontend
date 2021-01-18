@@ -31,7 +31,7 @@
           />
           <div
             class="errors"
-            *ngIf="identifierErrors.dirty && identifierErrors.errors"
+            *ngIf="(identifierErrors.dirty && identifierErrors.errors) || (identifierErrors.errors && invalidFormErrors)"
           >
             <span *ngIf="identifierErrors.errors.required">
               This Field Is Required !
@@ -57,7 +57,7 @@
           />
           <div
             class="errors"
-            *ngIf="passwordErrors.dirty && passwordErrors.errors"
+            *ngIf="(passwordErrors.dirty && passwordErrors.errors) || (passwordErrors.errors && invalidFormErrors)"
           >
             <span *ngIf="passwordErrors.errors.required">
               This Field Is Required !

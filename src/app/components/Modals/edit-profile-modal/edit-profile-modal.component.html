@@ -23,7 +23,7 @@
       <div class="nameInput">
         <label for="name">User Name</label>
         <input class="edit-input" type="text" id="name" name="name" formControlName="username" />
-        <div class="errors" *ngIf="usernameErrors.dirty && usernameErrors.errors">
+        <div class="errors" *ngIf="(usernameErrors.dirty && usernameErrors.errors) || (usernameErrors.errors && invalidFormErrors)">
           <span *ngIf="usernameErrors.errors.required">This Field Is Required !</span>
           <span *ngIf="usernameErrors.errors.minlength">Please enter minimum
             {{
@@ -36,7 +36,7 @@
       <div class="name">
         <label for="name">Name</label>
         <input class="edit-input" type="text" id="name" name="name" formControlName="name" />
-        <div class="errors" *ngIf="nameErrors.dirty && nameErrors.errors">
+        <div class="errors" *ngIf="(nameErrors.dirty && nameErrors.errors) || (nameErrors.errors && invalidFormErrors) ">
           <span *ngIf="nameErrors.errors.required">This Field Is Required !</span>
           <span *ngIf="nameErrors.errors.minlength">Please enter minimum
             {{
@@ -49,7 +49,7 @@
       <div class="lastNameInput">
         <label for="lastname">Last Name</label>
         <input class="edit-input" type="text" id="lastname" name="lastname" formControlName="lastName" />
-        <div class="errors" *ngIf="lastNameErrors.dirty && lastNameErrors.errors">
+        <div class="errors" *ngIf="(lastNameErrors.dirty && lastNameErrors.errors) || (lastNameErrors.errors && invalidFormErrors)">
           <span *ngIf="lastNameErrors.errors.required">This Field Is Required !</span>
           <span *ngIf="lastNameErrors.errors.minlength">Please enter minimum
             {{
@@ -62,7 +62,7 @@
       <div class="emailInput">
         <label for="email">Email</label>
         <input class="edit-input" type="text" id="email" name="email" formControlName="email" />
-        <div class="errors" *ngIf="emailErrors.dirty && emailErrors.errors">
+        <div class="errors" *ngIf="(emailErrors.dirty && emailErrors.errors) || (emailErrors.errors && invalidFormErrors)">
           <span *ngIf="emailErrors.errors.required">This Field Is Required !</span>
           <span *ngIf="emailErrors.errors.email">Please enter valid email.</span>
         </div>
@@ -71,7 +71,7 @@
       <div class="phoneInput">
         <label for="phone">Phone</label>
         <input class="edit-input" type="text" id="phone" name="phone" formControlName="phone" />
-        <div class="errors" *ngIf="phoneErrors.dirty && phoneErrors.errors">
+        <div class="errors" *ngIf="(phoneErrors.dirty && phoneErrors.errors) || (phoneErrors.errors && invalidFormErrors)">
           <span *ngIf="phoneErrors.errors.required">This Field Is Required !</span>
         </div>
       </div>

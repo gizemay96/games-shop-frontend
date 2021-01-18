@@ -10,6 +10,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./edit-profile-modal.component.scss'],
 })
 export class EditProfileModalComponent implements OnInit {
+  
   editForm = new FormGroup({
     username: new FormControl('', [
       Validators.required,
@@ -24,7 +25,8 @@ export class EditProfileModalComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
     phone: new FormControl(''),
   });
-
+  
+  invalidFormErrors = false;
   errorActive: boolean = false;
   isLoading: boolean = false;
 
@@ -32,7 +34,7 @@ export class EditProfileModalComponent implements OnInit {
     return this.editForm.controls.username;
   }
   get nameErrors() {
-    return this.editForm.controls.lastName;
+    return this.editForm.controls.name;
   }
 
   get lastNameErrors() {
@@ -75,6 +77,9 @@ export class EditProfileModalComponent implements OnInit {
           this.activeModal.close();
         }
       }, 1000);
+    } else {
+      this.invalidFormErrors = true;
+      this.isLoading = false;
     }
   }
 

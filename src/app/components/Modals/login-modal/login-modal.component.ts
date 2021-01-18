@@ -14,6 +14,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class LoginModalComponent implements OnInit {
   isLoading: boolean = false;
+  invalidFormErrors = false;
 
   loginForm = new FormGroup({
     identifier: new FormControl('', [
@@ -52,7 +53,6 @@ export class LoginModalComponent implements OnInit {
       this.isLoading = true;
       this.authService.login(this.loginForm.value).subscribe(
         (response: AuthResponse) => {
-          console.log(response);
           window.localStorage.setItem('user', JSON.stringify(response.user));
           this.authService.setToken(response.jwt);
           this.userService.setUser(response.user);
@@ -72,6 +72,9 @@ export class LoginModalComponent implements OnInit {
           this.isLoading = false;
         }
       );
+    } else {
+      this.invalidFormErrors = true;
+      this.isLoading = false;
     }
   }
 

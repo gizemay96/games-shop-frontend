@@ -14,6 +14,8 @@ import { AuthResponse } from 'src/app/types/authResponse.type';
 })
 export class RegisterModalComponent implements OnInit {
   isLoading: boolean = false;
+  invalidFormErrors = false;
+
   regForm = new FormGroup({
     username: new FormControl('', [
       Validators.required,
@@ -115,6 +117,9 @@ export class RegisterModalComponent implements OnInit {
 
 
         );
+    } else {
+      this.invalidFormErrors = true;
+      this.isLoading = false;
     }
   }
 

@@ -10,7 +10,7 @@
       </div>
     </div>
     <h4 class="text-center bg-title">Edit Address Form</h4>
-    <div *ngIf="loading"class="spinner-case">
+    <div *ngIf="loading" class="spinner-case">
       <div class="spinner-grow color-blue" role="status">
         <span class="sr-only">Loading...</span>
       </div>
@@ -87,7 +87,7 @@
         </div>
       </div>
       <h4 class="text-center bg-title">Add Address Form</h4>
-      <div *ngIf="loading"class="spinner-case">
+      <div *ngIf="loading" class="spinner-case">
         <div class="spinner-grow color-blue" role="status">
           <span class="sr-only">Loading...</span>
         </div>
@@ -96,7 +96,8 @@
         <div class="nameInput">
           <label for="addressName">Address Name</label>
           <input class="edit-input" type="text" id="addressName" name="addressName" formControlName="addressName" />
-          <div class="errors" *ngIf="nameErrors.dirty && nameErrors.errors">
+          <div class="errors"
+            *ngIf="(nameErrors.dirty && nameErrors.errors) || (nameErrors.errors && invalidFormErrors)">
             <span *ngIf="nameErrors.errors.required">
               This field is required !
             </span>
@@ -106,7 +107,8 @@
         <div class="suiteInput">
           <label for="suite">Suite</label>
           <input class="edit-input" type="text" id="suite" name="suite" formControlName="suite" />
-          <div class="errors" *ngIf="suiteErrors.dirty && suiteErrors.errors">
+          <div class="errors"
+            *ngIf="(suiteErrors.dirty && suiteErrors.errors) || (suiteErrors.errors && invalidFormErrors)">
             <span *ngIf="suiteErrors.errors.required">
               This field is required !
             </span>
@@ -116,7 +118,8 @@
         <div class="streetInput">
           <label for="street">StreetName</label>
           <input class="edit-input" type="text" id="street" name="street" formControlName="streetName" />
-          <div class="errors" *ngIf="streetNameErrors.dirty && streetNameErrors.errors">
+          <div class="errors"
+            *ngIf="(streetNameErrors.dirty && streetNameErrors.errors) || (streetNameErrors.errors && invalidFormErrors)">
             <span *ngIf="streetNameErrors.errors.required">
               This field is required !
             </span>
@@ -126,7 +129,8 @@
           <label for="typeahead-basic">Counrty</label>
           <input class="edit-input" type="text" name="country" formControlName="country" id="typeahead-basic"
             [ngbTypeahead]="searchCountry" #instance="ngbTypeahead" autocomplete="no" />
-          <div class="errors" *ngIf="countryErrors.dirty && countryErrors.errors">
+          <div class="errors"
+            *ngIf="(countryErrors.dirty && countryErrors.errors) || (countryErrors.errors && invalidFormErrors)">
             <span *ngIf="countryErrors.errors.required">
               This field is required !
             </span>
@@ -137,7 +141,8 @@
           <label for="city">City</label>
           <input class="edit-input" type="text" id="city" name="city" formControlName="city" [ngbTypeahead]="searchCity"
             #instance="ngbTypeahead" autocomplete="no" (focus)="getCities()" />
-          <div class="errors" *ngIf="cityErrors.dirty && cityErrors.errors">
+          <div class="errors"
+            *ngIf="(cityErrors.dirty && cityErrors.errors) || (cityErrors.errors && invalidFormErrors)">
             <span *ngIf="cityErrors.errors.required">
               This field is required !
             </span>

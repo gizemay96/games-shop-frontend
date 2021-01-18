@@ -26,7 +26,7 @@
         style="font-family: sans-serif, fontawesome"
         placeholder="&#xf007; User name"
       />
-      <div class="errors" *ngIf="usernameErrors.dirty && usernameErrors.errors">
+      <div class="errors" *ngIf="(usernameErrors.dirty && usernameErrors.errors) || (usernameErrors.errors && invalidFormErrors) ">
         <span *ngIf="usernameErrors.errors.required"
           >This Field Is Required !</span
         >
@@ -46,7 +46,7 @@
         style="font-family: sans-serif, fontawesome"
         placeholder="&#xf007; Your Name"
       />
-      <div class="errors" *ngIf="nameErrors.dirty && nameErrors.errors">
+      <div class="errors" *ngIf="(nameErrors.dirty && nameErrors.errors) || (nameErrors.errors && invalidFormErrors) ">
         <span *ngIf="nameErrors.errors.required"
           >This Field Is Required !</span
         >
@@ -66,7 +66,7 @@
         style="font-family: sans-serif, fontawesome"
         placeholder="&#xf007; Last Name"
       />
-      <div class="errors" *ngIf="lastNameErrors.dirty && lastNameErrors.errors">
+      <div class="errors" *ngIf="(lastNameErrors.dirty && lastNameErrors.errors) || (lastNameErrors.errors && invalidFormErrors) ">
         <span *ngIf="lastNameErrors.errors.required"
           >This Field Is Required !</span
         >
@@ -86,7 +86,7 @@
         style="font-family: sans-serif, fontawesome"
         placeholder="&#xf0e0; Email"
       />
-      <div class="errors" *ngIf="emailErrors.dirty && emailErrors.errors">
+      <div class="errors" *ngIf="(emailErrors.dirty && emailErrors.errors) || (emailErrors.errors && invalidFormErrors) ">
         <span *ngIf="emailErrors.errors.required"
           >This Field Is Required !</span
         >
@@ -103,7 +103,7 @@
         style="font-family: sans-serif, fontawesome"
         placeholder="&#xf084; Password"
       />
-      <div class="errors" *ngIf="passwordErrors.dirty && passwordErrors.errors">
+      <div class="errors" *ngIf="(passwordErrors.dirty && passwordErrors.errors) || (passwordErrors.errors && invalidFormErrors) ">
         <span *ngIf="passwordErrors.errors.required"
           >This Field Is Required !</span
         >
@@ -125,7 +125,7 @@
       />
       <div
         class="errors"
-        *ngIf="confirmPassErrors.dirty && confirmPassErrors.errors"
+        *ngIf="(confirmPassErrors.dirty && confirmPassErrors.errors) || ( confirmPassErrors.errors && invalidFormErrors) "
       >
         <span *ngIf="confirmPassErrors.errors.required"
           >This Field Is Required !</span
