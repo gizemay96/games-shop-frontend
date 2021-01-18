@@ -2,7 +2,7 @@
   <!-- <mat-progress-bar *ngIf="loading" class="mb-2" mode="indeterminate" color="test"></mat-progress-bar> -->
   <!-- ----------- PC GAME LIST -------------- -->
   <app-product-title
-    [categoryCount]="pcGames.length"
+    [categoryCount]="products.pcGames.length"
     icon="fas fa-desktop"
     title="PC Games"
   ></app-product-title>
@@ -17,14 +17,14 @@
     (previous)="previousData($event)"
     (selectedProd)="selectedProd($event)"
     (addToCart)="addToCart($event)"
-    [data]="pcGames"
+    [data]="products.pcGames"
     [page]="pcCounts.pageCount"
   ></app-product-card>
 
   <!-- ----------- PLAYSTATION GAME LIST -------------- -->
 
   <app-product-title
-    [categoryCount]="psGames.length"
+    [categoryCount]="products.playstationGames.length"
     icon="fab fa-playstation"
     title="Playstation"
   ></app-product-title>
@@ -39,14 +39,14 @@
     (previous)="previousData($event)"
     (selectedProd)="selectedProd($event)"
     (addToCart)="addToCart($event)"
-    [data]="psGames"
+    [data]="products.playstationGames"
     [page]="psCounts.pageCount"
   ></app-product-card>
 
   <!-- ----------- XBOX GAME LIST -------------- -->
 
   <app-product-title
-    [categoryCount]="xboxGames.length"
+    [categoryCount]="products.xboxGames.length"
     icon="fab fa-xbox"
     title="Xbox"
   ></app-product-title>
@@ -61,14 +61,14 @@
     (previous)="previousData($event)"
     (selectedProd)="selectedProd($event)"
     (addToCart)="addToCart($event)"
-    [data]="xboxGames"
+    [data]="products.xboxGames"
     [page]="xboxCounts.pageCount"
   ></app-product-card>
 
   <!-- ----------- NINTENDO GAME LIST -------------- -->
 
   <app-product-title
-    [categoryCount]="nintendoGames.length"
+    [categoryCount]="products.nintendoGames.length"
     icon="fas fa-gamepad"
     title="Nintendo"
   ></app-product-title>
@@ -83,7 +83,7 @@
     (previous)="previousData($event)"
     (selectedProd)="selectedProd($event)"
     (addToCart)="addToCart($event)"
-    [data]="nintendoGames"
+    [data]="products.nintendoGames"
     [page]="nintendoCounts.pageCount"
   ></app-product-card>
 </div>

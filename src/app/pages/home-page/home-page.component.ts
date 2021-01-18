@@ -16,6 +16,22 @@ export class HomePageComponent implements OnInit {
   loading = false;
   loadingChangeId: any = '1';
 
+  // Products 
+  products = {
+    all: [],
+    pcGames: [],
+    playstationGames: [],
+    xboxGames: [],
+    nintendoGames: [],
+  }
+
+  pageNumbers = {
+    PcCounts: {pageCount: 1 , startingNumber: 0},
+    PsCounts: {pageCount: 1 , startingNumber: 0},
+    XboxCounts: {pageCount: 1 , startingNumber: 0},
+    NintendoCounts: {pageCount: 1 , startingNumber: 0}
+  }
+
 
   constructor(
     private productService: ProductService,
@@ -29,50 +45,57 @@ export class HomePageComponent implements OnInit {
     return this.userService.getUser();
   }
 
-  get allProducts() {
-    return this.productService.getProducts();
-  }
+  // get allProducts() {
+  //   return this.productService.getProducts();
+  // }
 
-  get psGames() {
-    return this.productService.getPsGames();
-  }
-  get xboxGames() {
-    return this.productService.getXboxGames();
-  }
-  get nintendoGames() {
-    return this.productService.getNintendoGames();
-  }
-  get pcGames() {
-    return this.productService.getPcGames();
-  }
+  // get psGames() {
+  //   return this.productService.getPsGames();
+  // }
+  // get xboxGames() {
+  //   return this.productService.getXboxGames();
+  // }
+  // get nintendoGames() {
+  //   return this.productService.getNintendoGames();
+  // }
+  // get pcGames() {
+  //   return this.productService.getPcGames();
+  // }
   // ---
 
   // ------- GET COUNTS ----------
 
   get pcCounts() {
-    return this.productService.getStartPcCount();
+    return this.pageNumbers.PcCounts;
   }
 
   get psCounts() {
-    return this.productService.getStartPsCount();
+    return this.pageNumbers.PsCounts;
   }
 
   get xboxCounts() {
-    return this.productService.getStartXboxCount();
+    return this.pageNumbers.XboxCounts;
   }
 
   get nintendoCounts() {
-    return this.productService.getStartNintendoCount();
+    return this.pageNumbers.NintendoCounts;
   }
   // ---
 
   ngOnInit(): void {
+    this.getProducts();
+  }
+
+  async getProducts() {
     this.loading = true;
-    this.productService.fetchProducts();
-    this.productService.fetchPsGames();
-    this.productService.fetchXboxGames();
-    this.productService.fetchNintendoGames();
-    this.productService.fetchPcGames();
+
+    this.products.all = await this.productService.fetchProducts().toPromise();
+    this.products.pcGames = await this.productService.fetchPcGames().toPromise();
+    this.products.playstationGames = await this.productService.fetchPsGames().toPromise();
+    this.products.xboxGames = await this.productService.fetchXboxGames().toPromise();
+    this.products.nintendoGames = await this.productService.fetchNintendoGames().toPromise();
+    console.log(this.products);
+
     setTimeout(() => {
       this.loading = false;
     }, 1000);
@@ -80,21 +103,22 @@ export class HomePageComponent implements OnInit {
 
 
   // ------------------ PREVIOUS PAGE FUNCTION ---------------- // 
-  previousData(categoryId) {
+  async previousData(categoryId) {
     this.loadingChangeId = categoryId;
     // ----- Previous PC games ------
     if (categoryId == '5ffb1da2e043661d30d0833e') {
       if (this.pcCounts.startingNumber != 0) {
-        const startNum = this.pcCounts.startingNumber - 4;
-        const pageNum = this.pcCounts.pageCount - 1;
-        this.productService.fetchPcGames(startNum, pageNum);
+        this.pcCounts.startingNumber = this.pcCounts.startingNumber -4;
+        this.pcCounts.pageCount = this.pcCounts.pageCount -1;
+        this.products.pcGames = await this.productService.fetchPcGames(this.pcCounts.startingNumber, this.pcCounts.pageCount).toPromise();
       }
     }
     // ----- Previous Playstation games ------
     else if (categoryId == '5ffb3f9ef03198001780d3ad') {
       if (this.psCounts.startingNumber != 0) {
-        const start = this.psCounts.startingNumber - 4;
-        this.productService.fetchPsGames(start);
+        this.psCounts.startingNumber = this.psCounts.startingNumber -4;
+        this.psCounts.pageCount = this.psCounts.pageCount -1;
+        this.products.pcGames = await this.productService.fetchPsGames(this.pcCounts.startingNumber, this.pcCounts.pageCount).toPromise();
       }
     }
     // ----- Previous Xbox games ------
@@ -117,19 +141,21 @@ export class HomePageComponent implements OnInit {
   }
 
   // ------------------ NEXT PAGE FUNCTION ---------------- // 
-  nextData(categoryId) {
+  async nextData(categoryId) {
     this.loadingChangeId = categoryId;
     // ----- Fetch More PC games ------
     if (categoryId == '5ffb1da2e043661d30d0833e') {
-      const startNum = this.pcCounts.startingNumber + 4;
-      const pageNum = this.pcCounts.pageCount + 1;
-      this.productService.fetchPcGames(startNum, pageNum);
+      this.pcCounts.startingNumber = this.pcCounts.startingNumber + 4;
+      this.pcCounts.pageCount = this.pcCounts.pageCount + 1;
+      console.log(this.pcCounts);
+      this.products.pcGames = await this.productService.fetchPcGames(this.pcCounts.startingNumber, this.pcCounts.pageCount).toPromise();
+      // this.productService.fetchPcGames(startNum, pageNum);
     }
     // ----- Fetch More Playstation games ------
     else if (categoryId == '5ffb3f9ef03198001780d3ad') {
-      const startNum = this.psCounts.startingNumber + 4;
-      const pageNum = this.psCounts.pageCount + 1;
-      this.productService.fetchPsGames(startNum, pageNum);
+      this.psCounts.startingNumber = this.psCounts.startingNumber -4;
+      this.psCounts.pageCount = this.psCounts.pageCount -1;
+      this.products.pcGames = await this.productService.fetchPsGames(this.pcCounts.startingNumber, this.pcCounts.pageCount).toPromise();
     }
     // ----- Fetch More Xbox games ------
     else if (categoryId == '5ffb3fc9f03198001780d3ae') {
@@ -149,7 +175,7 @@ export class HomePageComponent implements OnInit {
   }
 
   selectedProd(productId) {
-    this.selectedProduct = this.allProducts.find(p => p.id == productId);
+    this.selectedProduct = this.products.all.find(p => p.id == productId);
     this.currentRate = this.selectedProduct.rating;
   }
 
