@@ -80,7 +80,11 @@ export class CheckoutPageComponent implements OnInit {
   }
 
   addToCart(product: Product) {
+    this.loadingProductId = product.id;
     this.cartService.addToCart(product, this.user.id);
+    setTimeout(() => {
+      this.loadingProductId = 0
+    }, 500);
   }
 
   radioButtonToActive(address) {
