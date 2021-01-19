@@ -15,14 +15,14 @@ export class ProductCardComponent implements OnInit {
   @Output() selectedProd = new EventEmitter();
   @Output() addToCart = new EventEmitter();
 
-  user;
-
   constructor(
     private userService : UserService
   ) {}
 
   ngOnInit(): void {
-    this.user = this.userService.getUser();
-    console.log(this.user);
+  }
+
+  get user() {
+    return this.userService.getUser();
   }
 }
