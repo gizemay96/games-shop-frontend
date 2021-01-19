@@ -18,7 +18,8 @@ export class PaymentComponent implements OnInit {
   noAddress: boolean = false;
   noOrder: boolean = false;
   paymentErrors: boolean = false;
-  bougthOrderCount:number;
+  bougthOrderCount: number;
+  invalidFormErrors = false;
 
   // ------------------ FOR FLIP CARD ---------------- //
   creditCartFront: boolean = true;
@@ -56,9 +57,9 @@ export class PaymentComponent implements OnInit {
 
 
   constructor(private cartService: CartService,
-    ) {}
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   showCVC() {
     this.creditCartFront = false;
@@ -69,7 +70,9 @@ export class PaymentComponent implements OnInit {
   }
 
   send() {
-    if (this.paymentForm.valid && !this.DeliveryAddress) {
+    if (!this.paymentForm.valid) {
+      this.invalidFormErrors = true;
+    } else if (this.paymentForm.valid && !this.DeliveryAddress) {
       this.paymentErrors = true;
       this.noAddress = true;
       this.bougthOrderCount = null;

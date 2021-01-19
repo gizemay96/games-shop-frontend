@@ -19,6 +19,7 @@
     (addToCart)="addToCart($event)"
     [data]="products.pcGames"
     [page]="pcCounts.pageCount"
+    [productAdding]="productAdding"
   ></app-product-card>
 
   <!-- ----------- PLAYSTATION GAME LIST -------------- -->
@@ -41,6 +42,7 @@
     (addToCart)="addToCart($event)"
     [data]="products.playstationGames"
     [page]="psCounts.pageCount"
+    [productAdding]="productAdding"
   ></app-product-card>
 
   <!-- ----------- XBOX GAME LIST -------------- -->
@@ -63,6 +65,7 @@
     (addToCart)="addToCart($event)"
     [data]="products.xboxGames"
     [page]="xboxCounts.pageCount"
+    [productAdding]="productAdding"
   ></app-product-card>
 
   <!-- ----------- NINTENDO GAME LIST -------------- -->
@@ -85,6 +88,7 @@
     (addToCart)="addToCart($event)"
     [data]="products.nintendoGames"
     [page]="nintendoCounts.pageCount"
+    [productAdding]="productAdding"
   ></app-product-card>
 </div>
 

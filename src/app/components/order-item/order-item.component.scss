@@ -63,4 +63,19 @@ $color-blue: #4589ff;
       border-radius: 25px 0px;
     }
   }
+
+}
+
+
+.spinner-case {
+  height: 210px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .spinner-grow {
+    width: 5rem !important;
+    height: 5rem !important;
+  }
+
 }

@@ -92,7 +92,7 @@ export class EditAddressModalComponent implements OnInit {
         this.states.push(response.map((a) => a.country_name));
       });
       this.loading = false;
-    }, 1500);
+    }, 1200);
   }
 
   // ------------------ FUNCTIONS ---------------- // 
@@ -109,19 +109,27 @@ export class EditAddressModalComponent implements OnInit {
     }
 
   editData() {
+    this.loading = true;
     if (this.addressForm.valid) {
       this.addressService.editUserAddress(
         this.addressForm.value,
         this.addressForm.get('id').value
       );
-      this.activeModal.close();
+      setTimeout(() => {
+        this.loading = false;
+        this.activeModal.close();
+      }, 600);
     }
   }
 
   addAddress() {
+    this.loading = true;
     if (this.addressForm.valid) {
       this.addressService.addUserAddress(this.addressForm.value);
-      this.activeModal.close();
+      setTimeout(() => {
+        this.loading = false;
+        this.activeModal.close();
+      }, 600);
     } else {
       this.invalidFormErrors = true;
       this.loading = false;

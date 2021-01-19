@@ -15,6 +15,7 @@ export class HomePageComponent implements OnInit {
   currentRate: number;
   loading = false;
   loadingChangeId: any = '1';
+  productAdding = false;
 
   // Products 
   products = {
@@ -79,7 +80,7 @@ export class HomePageComponent implements OnInit {
 
     setTimeout(() => {
       this.loading = false;
-    }, 1000);
+    }, 200);
   }
 
 
@@ -167,6 +168,10 @@ export class HomePageComponent implements OnInit {
   }
 
   addToCart(product) {
-    this.cartService.addToCart(product, this.user.id)
+    this.productAdding = true;
+    this.cartService.addToCart(product, this.user.id);
+    setTimeout(() => {
+      this.productAdding = false;
+    }, 800);
   }
 }

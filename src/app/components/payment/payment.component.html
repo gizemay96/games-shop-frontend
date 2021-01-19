@@ -97,7 +97,7 @@
         />
         <div
           class="errors"
-          *ngIf="cardNameControl.dirty && cardNameControl.errors"
+          *ngIf="(cardNameControl.dirty && cardNameControl.errors) || (cardNameControl.errors && invalidFormErrors)"
         >
           <span *ngIf="cardNameControl.errors.required">
             This Field Is Required !
@@ -123,7 +123,7 @@
         />
         <div
           class="errors"
-          *ngIf="cardNumberControl.dirty && cardNumberControl.errors"
+          *ngIf="(cardNumberControl.dirty && cardNumberControl.errors) || (cardNumberControl.errors && invalidFormErrors)"
         >
           <span *ngIf="cardNumberControl.errors.required">
             This Field Is Required !
@@ -151,7 +151,7 @@
             />
             <div
               class="errors"
-              *ngIf="expDateControl.dirty && expDateControl.errors"
+              *ngIf="(expDateControl.dirty && expDateControl.errors) || (expDateControl.errors && invalidFormErrors)"
             >
               <span *ngIf="expDateControl.errors.required">
                 This Field Is Required !
@@ -176,7 +176,7 @@
               (focus)="showCVC()"
               (blur)="hideCVC()"
             />
-            <div class="errors" *ngIf="cvcControl.dirty && cvcControl.errors">
+            <div class="errors" *ngIf="(cvcControl.dirty && cvcControl.errors) || (cvcControl.errors && invalidFormErrors)">
               <span *ngIf="cvcControl.errors.required">
                 This Field Is Required !
               </span>

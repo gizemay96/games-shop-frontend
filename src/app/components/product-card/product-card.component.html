@@ -2,17 +2,11 @@
   <!-- ---------- PAGINATION BUTTONS AND PAGE NUM -----------  -->
   <div class="buttons-pagination">
     <div class="row justify-content-around">
-      <button
-        class="button-pag fire"
-        (click)="previous.emit(data[0].categories[0].id)"
-      >
+      <button class="button-pag fire" (click)="previous.emit(data[0].categories[0].id)">
         <i class="fas fa-long-arrow-alt-left"></i>
       </button>
       <h5 class="text-light page-number">Page {{ page }}</h5>
-      <button
-        class="button-pag ice"
-        (click)="next.emit(data[0].categories[0].id)"
-      >
+      <button class="button-pag ice" (click)="next.emit(data[0].categories[0].id)">
         <i class="fas fa-long-arrow-alt-right"></i>
       </button>
     </div>
@@ -30,12 +24,8 @@
           <h4 class="price">{{ product.price | currency }}</h4>
         </div>
       </div>
-      <a
-        style="cursor: pointer"
-        data-toggle="modal"
-        data-target="#ProductdetailModal"
-        (click)="selectedProd.emit(product.id)"
-      >
+      <a style="cursor: pointer" data-toggle="modal" data-target="#ProductdetailModal"
+        (click)="selectedProd.emit(product.id)">
         <div class="b-game-card">
           <div class="b-game-card__cover">
             <img *ngIf="product.img.length > 0" [src]="product.img[0].url" alt="" />
@@ -46,17 +36,19 @@
       <!-- ---------- ACTION BUTTONS -----------  -->
       <div class="buttons-action">
         <div class="row justify-content-around">
-          <button
-            (click)="selectedProd.emit(product.id)"
-            type="button"
-            data-toggle="modal"
-            data-target="#ProductdetailModal"
-            class="btn-detail"
-          >
+          <button (click)="selectedProd.emit(product.id)" type="button" data-toggle="modal"
+            data-target="#ProductdetailModal" class="btn-detail">
             <i class="fas fa-info"></i>
           </button>
-          <button [disabled]="!user" [ngClass]="{'disable-blue-btn': !user ? true : false}" (click)="addToCart.emit(product)" class="btn-cart">
-            <i class="fas fa-cart-plus"></i>
+          <button [disabled]="!user || productAdding"
+            [ngClass]="{'disable-blue-btn': (!user || productAdding) ? true : false}" (click)="addToCart.emit(product)"
+            class="btn-cart">
+            <span *ngIf="!productAdding"><i class="fas fa-cart-plus"></i></span>
+            <div *ngIf="productAdding" class="spinner-case">
+              <div class="spinner-grow color-orange" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
           </button>
         </div>
       </div>

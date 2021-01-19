@@ -29,6 +29,7 @@
                   (decrementClick)="removeFromCart(product)"
                   (incrementClick)="addToCart(product)"
                   (deleteProduct)="deleteProduct(product)"
+                  [loadingProductId]="loadingProductId"
                 >
                 </app-order-item>
               </div>

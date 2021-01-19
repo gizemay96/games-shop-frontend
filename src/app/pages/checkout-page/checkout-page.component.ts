@@ -16,6 +16,7 @@ import { Product } from 'src/app/types/product.type';
 export class CheckoutPageComponent implements OnInit {
   selectedAddress: number;
   radioButtonActive: number;
+  loadingProductId;
 
   // ------------------ GETTER METHODS ---------------- //
   get user() {
@@ -71,7 +72,11 @@ export class CheckoutPageComponent implements OnInit {
   // ------------------ FUNCTIONS ---------------- //
 
   removeFromCart(product: Product) {
+    this.loadingProductId = product.id;
     this.cartService.removeFromCart(product, this.user.id);
+    setTimeout(() => {
+      this.loadingProductId = 0
+    }, 600);
   }
 
   addToCart(product: Product) {
@@ -105,14 +110,19 @@ export class CheckoutPageComponent implements OnInit {
       windowClass: 'confirmation-modal'
     });
     modalRef.componentInstance.title =
-      'Are you sure you want to delete product ?';
+    'Are you sure you want to delete product ?';
     modalRef.result.then((response) => {
       if (response === true) {
+        this.loadingProductId = product.id;
         this.cartService.removeProduct(product, this.user.id);
       } else {
         return;
       }
     });
+
+    setTimeout(() => {
+      this.loadingProductId = 0
+    }, 200);
   }
 
   resetCart() {

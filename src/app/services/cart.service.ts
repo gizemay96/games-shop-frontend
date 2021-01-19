@@ -56,11 +56,6 @@ export class CartService {
       });
   }
 
-  fetchXboxGames(s: number = 0) {
-    const request = this.http.get(`${env.productsApiURL}?categories=5ffb3fc9f03198001780d3ae&_start=${s}&_limit=4`);
-    return request.pipe(map((res: any) => res), catchError(() => of(null)));
-  }
-
   addToCart(newProduct: Product, userId: number) {
     const existingOrder = this.userCart.orders.find(
       (order) => order.product === newProduct.id

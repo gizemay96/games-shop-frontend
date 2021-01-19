@@ -10,6 +10,7 @@ export class ProductCardComponent implements OnInit {
   @Input() data;
   @Input() page;
   @Input() dataCount;
+  @Input() productAdding;
   @Output() previous = new EventEmitter();
   @Output() next = new EventEmitter();
   @Output() selectedProd = new EventEmitter();
@@ -25,4 +26,5 @@ export class ProductCardComponent implements OnInit {
   get user() {
     return this.userService.getUser();
   }
+
 }
