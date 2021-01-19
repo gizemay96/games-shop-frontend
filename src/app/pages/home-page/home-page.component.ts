@@ -66,7 +66,6 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProducts();
-    console.log(this.user);
   }
 
   async getProducts() {
@@ -77,7 +76,6 @@ export class HomePageComponent implements OnInit {
     this.products.playstationGames = await this.productService.fetchPsGames().toPromise();
     this.products.xboxGames = await this.productService.fetchXboxGames().toPromise();
     this.products.nintendoGames = await this.productService.fetchNintendoGames().toPromise();
-    console.log(this.products);
 
     setTimeout(() => {
       this.loading = false;

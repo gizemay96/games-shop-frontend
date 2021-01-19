@@ -5,6 +5,7 @@ $color-blue: #4589ff;
 .modal-dialog {
   max-width: 800px;
 }
+
 .modal-content {
   background-color: rgb(35 35 35 / 83%);
   border-radius: 50px;
@@ -50,6 +51,7 @@ $color-blue: #4589ff;
     ::-webkit-scrollbar-thumb:hover {
       background: #b30000;
     }
+
     .title,
     .description {
       padding-right: 5px;
@@ -79,28 +81,42 @@ $color-blue: #4589ff;
   font-size: 1.5rem;
   color: #b0c4de;
 }
+
 .filled {
   color: #1e90ff;
 }
+
 .bad {
   color: #deb0b0;
 }
+
 .filled.bad {
   color: #ff1e1e;
+}
+
+.disable-blue-btn {
+  background-color: transparent;
+  color: #535353;
+  border: 1px solid #484848;
+
+  &:hover {
+    background-color: transparent;
+    border: 1px solid #535353;
+  }
 }
 
 
 
 
 @media screen and (max-width:767px) {
-  .card{
+  .card {
     max-height: 100%;
     padding: 15px;
 
-    .image{
+    .image {
       height: 200px;
 
-      img{
+      img {
         object-fit: contain;
       }
     }

@@ -37,7 +37,7 @@
                 <h1 class="text-light">{{ data.price | currency }}</h1>
               </div>
               <div class="add-cart-btn col-sm-6 text-center">
-                <button (click)="addToCart.emit(data)" class="button btn-orange">
+                <button [disabled]="!user" [ngClass]="{'disable-blue-btn': !user ? true : false}"  (click)="addToCart.emit(data)" class="button btn-orange">
                   Add Cart <i class="fas fa-cart-plus cart-icon"></i>
                 </button>
               </div>
