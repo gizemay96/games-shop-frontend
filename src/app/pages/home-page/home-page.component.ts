@@ -66,6 +66,7 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProducts();
+    console.log(this.user);
   }
 
   async getProducts() {

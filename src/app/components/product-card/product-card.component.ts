@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-product-card',
@@ -14,8 +15,14 @@ export class ProductCardComponent implements OnInit {
   @Output() selectedProd = new EventEmitter();
   @Output() addToCart = new EventEmitter();
 
-  constructor() {}
+  user;
+
+  constructor(
+    private userService : UserService
+  ) {}
 
   ngOnInit(): void {
+    this.user = this.userService.getUser();
+    console.log(this.user);
   }
 }
