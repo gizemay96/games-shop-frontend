@@ -26,10 +26,10 @@ export class HomePageComponent implements OnInit {
   }
 
   pageNumbers = {
-    PcCounts: {pageCount: 1 , startingNumber: 0},
-    PsCounts: {pageCount: 1 , startingNumber: 0},
-    XboxCounts: {pageCount: 1 , startingNumber: 0},
-    NintendoCounts: {pageCount: 1 , startingNumber: 0}
+    PcCounts: { pageCount: 1, startingNumber: 0 },
+    PsCounts: { pageCount: 1, startingNumber: 0 },
+    XboxCounts: { pageCount: 1, startingNumber: 0 },
+    NintendoCounts: { pageCount: 1, startingNumber: 0 }
   }
 
 
@@ -44,24 +44,6 @@ export class HomePageComponent implements OnInit {
   get user() {
     return this.userService.getUser();
   }
-
-  // get allProducts() {
-  //   return this.productService.getProducts();
-  // }
-
-  // get psGames() {
-  //   return this.productService.getPsGames();
-  // }
-  // get xboxGames() {
-  //   return this.productService.getXboxGames();
-  // }
-  // get nintendoGames() {
-  //   return this.productService.getNintendoGames();
-  // }
-  // get pcGames() {
-  //   return this.productService.getPcGames();
-  // }
-  // ---
 
   // ------- GET COUNTS ----------
 
@@ -108,31 +90,33 @@ export class HomePageComponent implements OnInit {
     // ----- Previous PC games ------
     if (categoryId == '5ffb1da2e043661d30d0833e') {
       if (this.pcCounts.startingNumber != 0) {
-        this.pcCounts.startingNumber = this.pcCounts.startingNumber -4;
-        this.pcCounts.pageCount = this.pcCounts.pageCount -1;
-        this.products.pcGames = await this.productService.fetchPcGames(this.pcCounts.startingNumber, this.pcCounts.pageCount).toPromise();
+        this.pcCounts.startingNumber = this.pcCounts.startingNumber - 4;
+        this.products.pcGames = await this.productService.fetchPcGames(this.pcCounts.startingNumber).toPromise();
+        this.pcCounts.pageCount = this.pcCounts.pageCount - 1;
       }
     }
     // ----- Previous Playstation games ------
     else if (categoryId == '5ffb3f9ef03198001780d3ad') {
       if (this.psCounts.startingNumber != 0) {
-        this.psCounts.startingNumber = this.psCounts.startingNumber -4;
-        this.psCounts.pageCount = this.psCounts.pageCount -1;
-        this.products.pcGames = await this.productService.fetchPsGames(this.pcCounts.startingNumber, this.pcCounts.pageCount).toPromise();
+        this.psCounts.startingNumber = this.psCounts.startingNumber - 4;
+        this.products.playstationGames = await this.productService.fetchPsGames(this.psCounts.startingNumber).toPromise();
+        this.psCounts.pageCount = this.psCounts.pageCount - 1;
       }
     }
     // ----- Previous Xbox games ------
     else if (categoryId == '5ffb3fc9f03198001780d3ae') {
       if (this.xboxCounts.startingNumber != 0) {
-        const start = this.xboxCounts.startingNumber - 4;
-        this.productService.fetchXboxGames(start);
+        this.xboxCounts.startingNumber = this.xboxCounts.startingNumber - 4;
+        this.products.xboxGames = await this.productService.fetchXboxGames(this.xboxCounts.startingNumber).toPromise();
+        this.xboxCounts.pageCount = this.xboxCounts.pageCount - 1;
       }
     }
     // ----- Previous Nintendo games ------
     else if (categoryId == '5ffb3fe1f03198001780d3af') {
       if (this.nintendoCounts.startingNumber != 0) {
-        const start = this.nintendoCounts.startingNumber - 4;
-        this.productService.fetchNintendoGames(start);
+        this.nintendoCounts.startingNumber = this.nintendoCounts.startingNumber - 4;
+        this.products.nintendoGames = await this.productService.fetchNintendoGames(this.nintendoCounts.startingNumber).toPromise();
+        this.nintendoCounts.pageCount = this.nintendoCounts.pageCount - 1;
       }
     }
     setTimeout(() => {
@@ -143,35 +127,39 @@ export class HomePageComponent implements OnInit {
   // ------------------ NEXT PAGE FUNCTION ---------------- // 
   async nextData(categoryId) {
     this.loadingChangeId = categoryId;
+
     // ----- Fetch More PC games ------
     if (categoryId == '5ffb1da2e043661d30d0833e') {
       this.pcCounts.startingNumber = this.pcCounts.startingNumber + 4;
+      this.products.pcGames = await this.productService.fetchPcGames(this.pcCounts.startingNumber).toPromise();
       this.pcCounts.pageCount = this.pcCounts.pageCount + 1;
-      console.log(this.pcCounts);
-      this.products.pcGames = await this.productService.fetchPcGames(this.pcCounts.startingNumber, this.pcCounts.pageCount).toPromise();
-      // this.productService.fetchPcGames(startNum, pageNum);
     }
+
     // ----- Fetch More Playstation games ------
     else if (categoryId == '5ffb3f9ef03198001780d3ad') {
-      this.psCounts.startingNumber = this.psCounts.startingNumber -4;
-      this.psCounts.pageCount = this.psCounts.pageCount -1;
-      this.products.pcGames = await this.productService.fetchPsGames(this.pcCounts.startingNumber, this.pcCounts.pageCount).toPromise();
+      this.psCounts.startingNumber = this.psCounts.startingNumber + 4;
+      this.products.playstationGames = await this.productService.fetchPsGames(this.psCounts.startingNumber).toPromise();
+      this.psCounts.pageCount = this.psCounts.pageCount + 1;
     }
+
     // ----- Fetch More Xbox games ------
     else if (categoryId == '5ffb3fc9f03198001780d3ae') {
-      const startNum = this.xboxCounts.startingNumber + 4;
-      const pageNum = this.xboxCounts.pageCount + 1;
-      this.productService.fetchXboxGames(startNum, pageNum);
+      this.xboxCounts.startingNumber = this.xboxCounts.startingNumber + 4;
+      this.products.xboxGames = await this.productService.fetchXboxGames(this.xboxCounts.startingNumber).toPromise();
+      this.xboxCounts.pageCount = this.xboxCounts.pageCount + 1;
     }
+
     // ----- Fetch More Nintendo games ------
     else if (categoryId == '5ffb3fe1f03198001780d3af') {
-      const startNum = this.nintendoCounts.startingNumber + 4;
-      const pageNum = this.nintendoCounts.pageCount + 1;
-      this.productService.fetchNintendoGames(startNum, pageNum);
+      this.nintendoCounts.startingNumber = this.nintendoCounts.startingNumber + 4;
+      this.products.nintendoGames = await this.productService.fetchNintendoGames(this.nintendoCounts.startingNumber).toPromise();
+      this.nintendoCounts.pageCount = this.nintendoCounts.pageCount + 1;
     }
+
     setTimeout(() => {
       this.loadingChangeId = '1';
     }, 600);
+
   }
 
   selectedProd(productId) {
