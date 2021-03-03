@@ -6,16 +6,23 @@ import { environment as env } from '../../environments/environment';
 import { OrderService } from './order.service';
 import { Order } from '../types/order.type';
 import { catchError, map } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { of, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
+
+
 export class CartService {
+  
+  
+  public progressActive: Subject<boolean> = new Subject<boolean>();
   private userCart: Cart;
   private cartProducts: Product[];
+  
+  
   constructor(private http: HttpClient, private orderService: OrderService) { }
-
+  
   fetchUserCart(userId: number) {
     this.http
       .get(`${env.cartsApiURL}?user=${userId}`)
@@ -36,6 +43,7 @@ export class CartService {
           });
       }
     }
+    this.progressActive.next(false);
   }
 
   createCart(userId) {
@@ -57,6 +65,7 @@ export class CartService {
   }
 
   addToCart(newProduct: Product, userId: number) {
+    this.progressActive.next(true);
     const existingOrder = this.userCart.orders.find(
       (order) => order.product === newProduct.id
     );
@@ -120,7 +129,7 @@ export class CartService {
     const existingOrder = this.userCart.orders.find(
       (order) => order.product === product.id
     );
-    
+
     this.orderService.deleteOrder(existingOrder.id).subscribe((response) => {
       this.fetchUserCart(userId);
     });

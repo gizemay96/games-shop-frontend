@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { DetailModalComponent } from 'src/app/components/Modals/detail-modal/detail-modal.component';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
 import { UserService } from 'src/app/services/user.service';
@@ -37,7 +39,8 @@ export class HomePageComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private cartService: CartService,
-    private userService: UserService
+    private userService: UserService,
+    private modalService: NgbModal,
   ) { }
 
   // ------- GET DATA ----------
@@ -164,7 +167,10 @@ export class HomePageComponent implements OnInit {
 
   selectedProd(productId) {
     this.selectedProduct = this.products.all.find(p => p.id == productId);
-    this.currentRate = this.selectedProduct.rating;
+
+    const modalRef = this.modalService.open(DetailModalComponent);
+    modalRef.componentInstance.rating = this.selectedProduct.rating;
+    modalRef.componentInstance.data = this.selectedProduct;
   }
 
   addToCart(product) {

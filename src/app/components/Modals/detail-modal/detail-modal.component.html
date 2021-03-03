@@ -1,30 +1,26 @@
 <!-- // ------------------ PRODUCT DETAIL MODAL ---------------- //  -->
-<div
-  class="modal fade"
-  id="ProductdetailModal"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
+<div class="modal fade" id="ProductdetailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <app-navbar [positionFix]="false"></app-navbar>
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content" style="margin-top: -200px;">
       <div *ngIf="data" class="card">
+        <div class="close-btn">
+          <div class="row justify-content-end">
+            <button class="btn btn-outline-light btn-close" data-dismiss="modal" (click)="close()">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
         <div class="row">
           <div class="image col-md-6">
             <img [src]="data.img[0].url" alt="" />
           </div>
           <div class="body col-md-6">
-            <div class="title">
-              <h3>{{ data.title }}</h3>
+            <div class="header">
+              <h1 class="title">{{ data.title }}</h1>
               <ngb-rating [(rate)]="rating" [readonly]="true">
                 <ng-template let-fill="fill" let-index="index">
-                  <span
-                    class="star"
-                    [class.filled]="fill === 100"
-                    [class.bad]="index < 3"
-                    >&#9733;</span
-                  >
+                  <span class="star" [class.filled]="fill === 100" [class.bad]="index < 3">&#9733;</span>
                 </ng-template>
               </ngb-rating>
               <pre style="color: aliceblue">Rate: <b>{{rating}}</b></pre>
@@ -37,16 +33,23 @@
                 <h1 class="text-light">{{ data.price | currency }}</h1>
               </div>
               <div class="add-cart-btn col-sm-6 text-center">
-                <button [disabled]="!user" [ngClass]="{'disable-blue-btn': !user ? true : false}"  (click)="addToCart.emit(data)" class="button btn-orange">
-                  Add Cart <i class="fas fa-cart-plus cart-icon"></i>
+                <button [disabled]="!user || this.progressActive"
+                 (click)="addToCart()"
+                  class="button btn-orange">
+                  <span *ngIf="!progressActive">
+                    Add Cart <i class="fas fa-cart-plus cart-icon"></i>
+                  </span>
+                  <div *ngIf="progressActive" class="spinner-case">
+                    <div class="spinner-grow color-orange" role="status">
+                      <span class="sr-only">Loading...</span>
+                    </div>
+                  </div>
                 </button>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button> -->
     </div>
   </div>
 </div>
