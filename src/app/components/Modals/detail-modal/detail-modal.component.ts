@@ -29,6 +29,7 @@ export class DetailModalComponent implements OnInit {
     })
 
   }
+  
 
   ngOnInit(): void {
   }

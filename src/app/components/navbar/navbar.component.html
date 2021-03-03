@@ -19,7 +19,7 @@
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          MENU |
+          MENU 
         </button>
         <a
           *ngIf="userCart && userCart.orders"
@@ -58,7 +58,7 @@
       <ng-template #authNav>
         <h4 class="greeting-text d-flex align-items-center">
           Welcome {{ user.username | titlecase }} !
-          <img class="avatar ml-2" [src]="user.avatarUrl" alt="" />
+          <img style="cursor: pointer;" [routerLink]="'/profile'"class="avatar ml-2" [src]="user.avatarUrl" alt="" />
         </h4>
         <div class="d-flex align-items-center mt-3 nav-items-lg">
           <h5>

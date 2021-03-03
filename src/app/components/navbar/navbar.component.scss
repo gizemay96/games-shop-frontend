@@ -9,7 +9,7 @@ $color-blue: #4589ff;
 .toggler-actions {
   display: flex;
   align-items: baseline;
-  padding: 0 15px;
+  padding: 0;
   @media (min-width: 577px) {
     display: none;
   }
