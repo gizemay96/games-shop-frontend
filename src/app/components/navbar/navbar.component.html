@@ -38,6 +38,7 @@
           </div>
         </a>
       </div>
+
       <!-- // ------------------ NAVBAR ITEMS ---------------- //  -->
       <div *ngIf="!user; else authNav" class="navB">
         <div
@@ -54,11 +55,12 @@
           </div>
         </div>
       </div>
+
       <!-- // ------------------ USER GREETING MESSAGE WITH NAV ITEMS  ---------------- //  -->
       <ng-template #authNav>
         <h4 class="greeting-text d-flex align-items-center">
           Welcome {{ user.username | titlecase }} !
-          <img style="cursor: pointer;" [routerLink]="'/profile'"class="avatar ml-2" [src]="user.avatarUrl" alt="" />
+          <img style="cursor: pointer;" routerLink="/profile" class="avatar ml-2" [src]="user.avatarUrl" alt="" />
         </h4>
         <div class="d-flex align-items-center mt-3 nav-items-lg">
           <h5>
@@ -117,6 +119,7 @@
       </ng-template>
     </div>
   </nav>
+  
   <!-- // ------------------ RGB LINE ---------------- //  -->
   <div class="seperator-wrapper">
     <div class="seperator gradient"></div>
