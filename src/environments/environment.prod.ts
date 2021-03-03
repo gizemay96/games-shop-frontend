@@ -1,4 +1,4 @@
-const baseURL = 'http://185.141.33.55:1337';
+const baseURL = 'https://gameshopv2.herokuapp.com';
 
 export const environment = {
   production: true,
