@@ -44,10 +44,16 @@ $color-blue: #4589ff;
       }
     }
 
+    .name{
+      display: block;
+    }
+
     .header-text {
       -webkit-text-stroke: 1px rgba(255, 255, 255, 0.342);
       color: transparent;
-      font-size: 90px;
+      font-size: 75px;
+      line-height: 87px;
+      text-align: right !important;
 
       @media (max-width: 991px) {
         display: none;

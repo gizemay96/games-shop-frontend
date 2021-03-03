@@ -22,7 +22,7 @@
     <form *ngIf="!isLoading" [formGroup]="editForm" (submit)="editData()" autocomplete="off">
       <div class="nameInput">
         <label for="name">User Name</label>
-        <input class="edit-input" type="text" id="name" name="name" formControlName="username" />
+        <input maxlength="25" class="edit-input" type="text" id="name" name="name" formControlName="username" />
         <div class="errors" *ngIf="(usernameErrors.dirty && usernameErrors.errors) || (usernameErrors.errors && invalidFormErrors)">
           <span *ngIf="usernameErrors.errors.required">This Field Is Required !</span>
           <span *ngIf="usernameErrors.errors.minlength">Please enter minimum
