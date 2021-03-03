@@ -63,7 +63,7 @@ export class CheckoutPageComponent implements OnInit {
     private orderService: OrderService,
     private addressService: AddressService,
     private modalService: NgbModal
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     setTimeout(() => this.addressService.fetchUserAddress(), 200);
@@ -84,7 +84,7 @@ export class CheckoutPageComponent implements OnInit {
     this.cartService.addToCart(product, this.user.id);
     setTimeout(() => {
       this.loadingProductId = 0
-    }, 500);
+    }, 900);
   }
 
   radioButtonToActive(address) {
@@ -108,13 +108,13 @@ export class CheckoutPageComponent implements OnInit {
     });
   }
 
-  deleteProduct(product){
+  deleteProduct(product) {
     const modalRef = this.modalService.open(ConfirmationModalComponent, {
       centered: true,
       windowClass: 'confirmation-modal'
     });
     modalRef.componentInstance.title =
-    'Are you sure you want to delete product ?';
+      'Are you sure you want to delete product ?';
     modalRef.result.then((response) => {
       if (response === true) {
         this.loadingProductId = product.id;
