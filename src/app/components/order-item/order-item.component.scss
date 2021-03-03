@@ -47,7 +47,7 @@ $color-blue: #4589ff;
     }
   }
 
-  .btn-delete-product {
+  .btn-delete-product , .btn-delete-product-2 {
     background-color: transparent;
     margin-left: -25px;
     border: 1px solid;
@@ -64,6 +64,22 @@ $color-blue: #4589ff;
     }
   }
 
+}
+
+.btn-delete-product-2{
+  margin-left: 15px !important;
+  @media (min-width: 770px) {
+    display: none;
+  }
+  @media (max-width: 360px) {
+    margin-left: -4px !important;
+  }
+}
+
+.btn-delete-product{
+  @media (max-width: 770px) {
+    display: none;
+  }
 }
 
 
