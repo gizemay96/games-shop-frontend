@@ -1,15 +1,17 @@
 <div [ngClass]="positionFix ? 'fixed-top' : ''">
   <nav class="navbar navbar-expand-sm">
     <div class="container">
-      <!-- // ------------------ LOGO ---------------- //  -->
-      <a class="navbar-brand" routerLink="/"
+     <div class="for-sm-screen">
+        <!-- // ------------------ LOGO ---------------- //  -->
+      <div>
+        <a class="navbar-brand" routerLink="/"
         ><img src="../../../assets/logo.png" alt=""
       /></a>
+      </div>
       <!-- // ------------------ TOGGLER ICON ---------------- //  -->
       <div class="toggler-actions">
         <button
-          (click)="
-            !isOpenToggler ? (isOpenToggler = true) : (isOpenToggler = false)
+          (click)="isOpenToggler = !isOpenToggler
           "
           class="navbar-toggler"
           type="button"
@@ -22,7 +24,7 @@
           MENU 
         </button>
         <a
-          *ngIf="userCart && userCart.orders"
+          *ngIf="user && userCart && userCart.orders"
           class="cart cart-mini mt-2 ml-2"
           routerLink="/checkout"
         >
@@ -38,6 +40,7 @@
           </div>
         </a>
       </div>
+     </div>
 
       <!-- // ------------------ NAVBAR ITEMS ---------------- //  -->
       <div *ngIf="!user; else authNav" class="navB">
