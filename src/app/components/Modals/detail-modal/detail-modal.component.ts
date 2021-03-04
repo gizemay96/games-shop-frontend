@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ActionService } from 'src/app/services/action.service';
 import { CartService } from 'src/app/services/cart.service';
@@ -11,11 +11,16 @@ import { Product } from 'src/app/types/product.type';
   styleUrls: ['./detail-modal.component.scss']
 })
 export class DetailModalComponent implements OnInit {
+  @ViewChild('closeModal') private closeModal: ElementRef;
+public close() {
+        this.closeModal.nativeElement.click();      
+}
 
   @Input() data: Product;
   @Input() rating;
   @Input() name;
   @Input() successAdding: boolean;
+  isModalOpen = false;
 
   progressActive = false;
   constructor(
@@ -42,8 +47,8 @@ export class DetailModalComponent implements OnInit {
     this.cartService.addToCart(this.data, this.user.id);
   }
 
-  close() {
-    this.activeModal.close();
-  }
+  // close() {
+  //   this.activeModal.close();
+  // }
 
 }

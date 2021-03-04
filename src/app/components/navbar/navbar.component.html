@@ -1,53 +1,35 @@
 <div [ngClass]="positionFix ? 'fixed-top' : ''">
   <nav class="navbar navbar-expand-sm">
     <div class="container">
-     <div class="for-sm-screen">
+      <div class="for-sm-screen">
         <!-- // ------------------ LOGO ---------------- //  -->
-      <div>
-        <a class="navbar-brand" routerLink="/"
-        ><img src="../../../assets/logo.png" alt=""
-      /></a>
-      </div>
-      <!-- // ------------------ TOGGLER ICON ---------------- //  -->
-      <div class="toggler-actions">
-        <button
-          (click)="isOpenToggler = !isOpenToggler
-          "
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          MENU 
-        </button>
-        <a
-          *ngIf="user && userCart && userCart.orders"
-          class="cart cart-mini mt-2 ml-2"
-          routerLink="/checkout"
-        >
-          <i class="fas fa-shopping-basket basket-icon"></i>
-          <div class="cart-length">
-            <span
+        <div>
+          <a class="navbar-brand" (click)="closeModal.emit()" routerLink="/"><img src="../../../assets/logo.png"
+              alt="" /></a>
+        </div>
+        <!-- // ------------------ TOGGLER ICON ---------------- //  -->
+        <div class="toggler-actions">
+          <button (click)="isOpenToggler = !isOpenToggler
+          " class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            MENU
+          </button>
+          <a data-toggle="modal" *ngIf="user && userCart && userCart.orders" class="cart cart-mini mt-2 ml-2"
+            routerLink="/checkout">
+            <i class="fas fa-shopping-basket basket-icon"></i>
+            <div class="cart-length">
+              <span class="">
+                {{ cartLength }}
+              </span>
 
-            class=""
-          >
-            {{ cartLength }}
-          </span>
-
-          </div>
-        </a>
+            </div>
+          </a>
+        </div>
       </div>
-     </div>
 
       <!-- // ------------------ NAVBAR ITEMS ---------------- //  -->
       <div *ngIf="!user; else authNav" class="navB">
-        <div
-          class="collapse navbar-collapse justify-content-end"
-          id="navbarNav"
-        >
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
           <div class="d-flex align-items-center nav-items-lg">
             <h5><a class="nav-link" (click)="openLogin()">Login</a></h5>
             <h5><a class="nav-link" (click)="openRegister()">Register</a></h5>
@@ -63,58 +45,37 @@
       <ng-template #authNav>
         <h4 class="greeting-text d-flex align-items-center">
           Welcome {{ user.username | titlecase }} !
-          <img style="cursor: pointer;" routerLink="/profile" class="avatar ml-2" [src]="user.avatarUrl" alt="" />
+          <img style="cursor: pointer;" routerLink="/profile" class="avatar ml-2" (click)="closeModal.emit()"
+            [src]="user.avatarUrl" alt="" />
         </h4>
         <div class="d-flex align-items-center mt-3 nav-items-lg">
           <h5>
-            <a
-              class="nav-link"
-              routerLink="/profile"
-              (click)="isOpenToggler = false"
-              >Profile</a
-            >
+            <a (click)="closeModal.emit()" class="nav-link" routerLink="/profile"
+              (click)="isOpenToggler = false">Profile</a>
           </h5>
           <h5><a class="nav-link logout-text" (click)="logout();isOpenToggler = false">LogOut</a></h5>
-          <a
-            *ngIf="userCart && userCart.orders"
-            class="cart cart-lg ml-2"
-            routerLink="/checkout"
-          >
+          <a (click)="closeModal.emit()" *ngIf="userCart && userCart.orders" class="cart cart-lg ml-2"
+            routerLink="/checkout">
             <i class="fas fa-shopping-basket basket-icon"></i>
-            <span
-              [ngClass]="{
+            <span [ngClass]="{
                 'sm-padding': cartLength < 10,
                 'lg-padding': cartLength > 9
-              }"
-              class="cart-length"
-            >
+              }" class="cart-length">
               {{ cartLength }}
             </span>
           </a>
         </div>
         <div *ngIf="isOpenToggler" class="d-flex align-items-center mt-3">
           <h5>
-            <a
-              class="nav-link"
-              routerLink="/profile"
-              (click)="isOpenToggler = false"
-              >Profile</a
-            >
+            <a class="nav-link" routerLink="/profile" (click)="isOpenToggler = false">Profile</a>
           </h5>
           <h5><a class="nav-link" (click)="logout(); isOpenToggler = false;">LogOut</a></h5>
-          <a
-            *ngIf="userCart && userCart.orders"
-            class="cart cart-lg mt-2 ml-2"
-            routerLink="/checkout"
-          >
+          <a *ngIf="userCart && userCart.orders" class="cart cart-lg mt-2 ml-2" routerLink="/checkout">
             <i class="fas fa-shopping-basket basket-icon"></i>
-            <span
-              [ngClass]="{
+            <span [ngClass]="{
                 'sm-padding': cartLength < 10,
                 'lg-padding': cartLength > 9
-              }"
-              class="cart-length"
-            >
+              }" class="cart-length">
               {{ cartLength }}
             </span>
           </a>
@@ -122,7 +83,7 @@
       </ng-template>
     </div>
   </nav>
-  
+
   <!-- // ------------------ RGB LINE ---------------- //  -->
   <div class="seperator-wrapper">
     <div class="seperator gradient"></div>

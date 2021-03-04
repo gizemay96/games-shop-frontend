@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output , EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/services/auth.service';
@@ -14,6 +14,7 @@ import { RegisterModalComponent } from '../Modals/register-modal/register-modal.
 })
 export class NavbarComponent implements OnInit {
   @Input() positionFix: boolean = true;
+  @Output() closeModal = new EventEmitter();
   isOpenToggler:boolean = false;
 
   // ------------------ GETTER METHODS ---------------- //

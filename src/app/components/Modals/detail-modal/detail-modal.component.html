@@ -1,12 +1,12 @@
 <!-- // ------------------ PRODUCT DETAIL MODAL ---------------- //  -->
 <div class="modal fade" id="ProductdetailModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <app-navbar [positionFix]="false"></app-navbar>
+  <app-navbar (closeModal)="close()" [positionFix]="false"></app-navbar>
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content" style="margin-top: -200px;">
       <div *ngIf="data" class="card">
         <div class="close-btn">
           <div class="row justify-content-end">
-            <button class="btn btn-outline-light btn-close" data-dismiss="modal" (click)="close()">
+            <button #closeModal class="btn btn-outline-light btn-close" data-dismiss="modal" (click)="close()">
               <i class="fas fa-times"></i>
             </button>
           </div>
