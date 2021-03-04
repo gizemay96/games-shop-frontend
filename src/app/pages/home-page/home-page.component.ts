@@ -167,10 +167,7 @@ export class HomePageComponent implements OnInit {
 
   selectedProd(productId) {
     this.selectedProduct = this.products.all.find(p => p.id == productId);
-
-    const modalRef = this.modalService.open(DetailModalComponent);
-    modalRef.componentInstance.rating = this.selectedProduct.rating;
-    modalRef.componentInstance.data = this.selectedProduct;
+    this.currentRate = this.selectedProduct.rating;
   }
 
   addToCart(product) {

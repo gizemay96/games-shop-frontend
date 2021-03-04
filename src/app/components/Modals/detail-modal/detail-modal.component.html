@@ -33,11 +33,14 @@
                 <h1 class="text-light">{{ data.price | currency }}</h1>
               </div>
               <div class="add-cart-btn col-sm-6 text-center">
-                <button [disabled]="!user || this.progressActive"
+                <button [disabled]="!user || this.progressActive" [ngClass]="{'disable-blue-btn': !user ? true : false}"
                  (click)="addToCart()"
                   class="button btn-orange">
-                  <span *ngIf="!progressActive">
+                  <span *ngIf="!progressActive && user">
                     Add Cart <i class="fas fa-cart-plus cart-icon"></i>
+                  </span>
+                  <span *ngIf="!user" style="color: red;">
+                    Please login.
                   </span>
                   <div *ngIf="progressActive" class="spinner-case">
                     <div class="spinner-grow color-orange" role="status">
