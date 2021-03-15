@@ -21,6 +21,7 @@ export class ProfilePageComponent implements OnInit {
   }
 
   selectedAddress: Address;
+  active = 1;
 
   constructor(
     private userService: UserService,

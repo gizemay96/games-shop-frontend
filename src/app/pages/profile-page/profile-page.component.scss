@@ -7,7 +7,7 @@ $color-blue: #4589ff;
   padding: 30px;
   box-shadow: 0px 0px 5px 5px black;
   border-radius: 10px;
-  margin: 100px 0;
+  margin: 20px 0;
 
   @media (max-width: 991px) {
     padding: 0px;
@@ -61,146 +61,15 @@ $color-blue: #4589ff;
     }
   }
 
-  .user-info {
-    margin-bottom: 100px;
-
-    .user-card {
-      padding: 10px;
-      box-shadow: 0px 0px 5px 5px black;
-      border-radius: 5px;
-      color: $gray-text;
-      height: 420px;
-
-      .card-content {
-        margin-top: 35px;
-
-        .user-card-item {
-          margin: 12px 0;
-          display: grid;
-          grid-template-columns: 4fr 7fr;
-          background-color: #191919;
-          border-radius: 0px 15px 0px 15px;
-          padding: 10px 5px 10px 15px;
-
-          @media (max-width: 534px) {
-            display: block !important;
-            margin: 7px 0 !important;
-            padding: 8px 0px 9px 9px !important;
-          }
-
-          p {
-            word-break: break-all;
-            font-size: 18px;
-            margin: 0 0 0 15px;
-
-            @media (max-width: 767px) {
-              margin: 0 0 0 5px;
-              font-size: 16px;
-            }
-          }
-
-          h4 {
-            width: 160px;
-            margin: 0;
-            border-right: 1px solid $color-orange;
-
-            @media (max-width: 534px) {
-              border-right: none;
-              border-bottom: 1px solid $color-orange;
-              margin: 0 5px 0 5px;
-            }
-
-            @media (max-width: 767px) {
-              font-size: 24px;
-            }
-          }
-        }
-      }
-
-      .actions {
-        display: flex;
-        justify-content: flex-end;
-
-        .edit-user-button {
-          margin-top: 25px;
-          padding: 5px 10px;
-        }
-      }
-    }
+  .tab-link{
+    color: #d2721e;
   }
 
-  .addresses {
-    margin-bottom: 30px;
-    color: $gray-text;
-
-    @media (max-width: 767px) {
-      margin-top: 80px;
-    }
-
-    .addresses-card {
-      padding: 10px;
-      border-radius: 5px;
-      box-shadow: 0px 0px 5px 5px black;
-      height: 420px;
-
-      .add-address {
-        transform: translate(0px, -36px);
-
-        .add-address-btn {
-          @media (max-width: 767px) {
-            transform: translate(0px, -59px);
-          }
-
-        }
-      }
-
-      .address-list {
-        padding: 15px;
-
-        .address-card {
-          padding: 6px 10px 1px 10px;
-          margin: 15px 0;
-          background: rgba(31, 31, 31, 0.7);
-          border-radius: 0px 15px 0 15px;
-
-          h5 {
-            max-width: 380px;
-            max-height: 24px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-          }
-
-          p {
-            font-size: 13px;
-            max-width: 380px;
-            max-height: 35px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-          }
-
-          .action-button {
-            background: transparent;
-            border: none;
-            outline: none;
-          }
-
-          .edit-address {
-            color: $gray-text;
-
-            &:hover {
-              color: lighten($color: #28a745, $amount: 15%);
-            }
-          }
-
-          .delete {
-            color: $gray-text;
-
-            &:hover {
-              color: lighten($color: #dc3545, $amount: 10%);
-            }
-          }
-        }
-      }
-    }
+  .active{
+    background-color: #8686863a;
   }
+
+
+
 }
+

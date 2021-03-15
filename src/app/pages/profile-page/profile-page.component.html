@@ -14,92 +14,41 @@
         </div>
       </div>
     </div>
-    <div class="body">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="user-info col-lg-6">
-            <!-- -------------- USER CARD ------------- -->
-            <div class="user-card">
-              <h3 class="card-title text-center">User Card</h3>
-              <div *ngIf="user" class="card-content pl-1">
-                <div class="">
-                  <div class="user-card-item name">
-                    <h4 class="pr-1 header">User Name</h4>
-
-                    <p>{{ user.username}}</p>
-                  </div>
-                  <div class="user-card-item surname">
-                    <h4 class="pr-1 header">Name</h4>
-                    <p>{{ user.name | titlecase }}</p>
-                  </div>
-                  <div class="user-card-item surname">
-                    <h4 class="pr-1 header">Last Name</h4>
-
-                    <p>{{ user.lastName | titlecase }}</p>
-                  </div>
-                </div>
-                <div class="user-card-item email">
-                  <h4 class="pr-1 header">Email</h4>
-
-                  <p>{{ user.email }}</p>
-                </div>
-                <div class="user-card-item phone">
-                  <h4 class="pr-1 header">Phone</h4>
-
-                  <p>{{ user.phone }}</p>
-                </div>
-                <div class="actions">
-                  <button
-                    (click)="openEditProfileModal()"
-                    type="button"
-                    class="edit-user-button btn-orange ml-5"
-                  >
-                    Edit Profile
-                  </button>
-                </div>
-                <!-- <app-edit-profile-modal [user]="user"></app-edit-profile-modal> -->
-              </div>
+    <div class="body" style="min-height: 600px;">
+      <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+        <li [ngbNavItem]="1">
+          <a class="tab-link" ngbNavLink>User Info</a>
+          <ng-template ngbNavContent>
+            <app-user-info
+            [user]="user"
+            [userAddresses]="userAddresses"
+            (openEditProfileModal)="openEditProfileModal()"
+            (openAddAddressModal)="openAddAddressModal()"
+            (openEditAddressModal)="openEditAddressModal($event)"
+            (deleteAddress)="deleteAddress($event)"
+            >
+            </app-user-info>
+          </ng-template>
+        </li>
+        <li [ngbNavItem]="2">
+          <a class="tab-link" ngbNavLink>Previous Orders</a>
+          <ng-template ngbNavContent>
+            <div class="d-flex justify-content-center">
+              <img src="https://media0.giphy.com/media/ZeFG00TVXs54Pw4c8e/giphy.gif" alt="this slowpoke moves"  width=400/>
             </div>
-          </div>
-          <!-- -------------- ADDRESS CARD ------------- -->
-          <div class="addresses col-lg-6">
-            <div class="addresses-card">
-              <h3 class="text-center">Addresses</h3>
-              <div class="add-address">
-                <button (click)="openAddAddressModal()" class="add-address-btn btn-blue" [disabled]="userAddresses.length >= 3">
-                  {{userAddresses.length < 3 ? "Add New" : "FULL"}}
-                </button>
-              </div>
-              <div class="address-list" *ngIf="userAddresses">
-                <div
-                  class="address-card row"
-                  *ngFor="let address of userAddresses"
-                >
-                  <div class="address-card-content col-11">
-                    <h5>{{ address.addressName | titlecase }}</h5>
-                    <p>
-                      {{ address.suite | titlecase }} , {{ address.streetName | titlecase}} ,
-                      {{ address.city | titlecase}} / {{ address.country | titlecase}}
-                    </p>
-                  </div>
-                  <div class="actions col-1 p-0">
-                    <button
-                      (click)="openEditAddressModal(address.id)"
-                      type="button"
-                      class="action-button edit-address mb-2"
-                    >
-                      <i class="fas fa-edit"></i>
-                    </button>
-                    <button (click)="deleteAddress(address)" class="action-button delete">
-                      <i class="fas fa-trash-alt"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
+          </ng-template>
+        </li>
+        <li [ngbNavItem]="3">
+          <a class="tab-link" ngbNavLink>My Coupons</a>
+          <ng-template ngbNavContent>
+            <div class="d-flex justify-content-center">
+              <img src="https://media0.giphy.com/media/ZeFG00TVXs54Pw4c8e/giphy.gif" alt="this slowpoke moves"  width=400/>
             </div>
-          </div>
-        </div>
-      </div>
+          </ng-template>
+        </li>
+      </ul>
+
+      <div [ngbNavOutlet]="nav" class="mt-2"></div>
     </div>
   </div>
 </div>

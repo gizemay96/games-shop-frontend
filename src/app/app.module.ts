@@ -24,6 +24,9 @@ import { LoginModalComponent } from './components/Modals/login-modal/login-modal
 import { RegisterModalComponent } from './components/Modals/register-modal/register-modal.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { UserInfoComponent } from './components/modals/profileTabs/user-info/user-info.component';
+import { PreviousOrdersComponent } from './components/modals/profileTabs/previous-orders/previous-orders.component';
+import { CouponsComponent } from './components/modals/profileTabs/coupons/coupons.component';
 
 
 @NgModule({
@@ -45,6 +48,9 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     ConfirmationModalComponent,
     LoginModalComponent,
     RegisterModalComponent,
+    UserInfoComponent,
+    PreviousOrdersComponent,
+    CouponsComponent,
     
   ],
   imports: [
