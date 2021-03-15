@@ -69,7 +69,17 @@ $color-blue: #4589ff;
     background-color: #8686863a;
   }
 
+  .nav-link:hover{
+    border-color: $color-blue $color-blue #fff0;
+  }
 
+  .nav-link.active{
+    border-color: $color-blue $color-blue #fff0;
+  }
+
+  .nav-tabs{
+    border-bottom: 1px solid #dee2e682;
+  }
 
 }
 
