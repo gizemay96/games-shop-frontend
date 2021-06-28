@@ -1,6 +1,6 @@
 import { User } from './user.type';
 
 export type AuthResponse = {
-    jwt: string,
+    token: string,
     userDetails: User
 }

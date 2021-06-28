@@ -96,7 +96,7 @@ export class RegisterModalComponent implements OnInit {
         .register(registerData)
         .subscribe((response: AuthResponse) => {
           window.localStorage.setItem('user', JSON.stringify(response.userDetails));
-          this.authService.setToken(response.jwt);
+          this.authService.setToken(response.token);
           this.userService.setUser(response.userDetails);
           this.cartService.createCart(response.userDetails.id);
 

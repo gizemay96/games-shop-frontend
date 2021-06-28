@@ -48,10 +48,10 @@ export class UserService {
   getDetails() {
     const token = window.localStorage.getItem('token');
     const httpOptions = {
-      headers: { Authorization: `Bearer ${token}` },
+      headers: { Authorization: token},
     };
     this.http
-      .get(`${env.usersApiURL}/${this.user.id}`, httpOptions)
+      .get(`http://localhost:3000/user/${this.user.id}`, httpOptions)
       .subscribe((response: any) => {
         if (response.avatar) {
           this.user.avatarUrl = `${env.baseApiURL}${response.avatar.url}`;
