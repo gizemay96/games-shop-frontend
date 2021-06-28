@@ -38,22 +38,22 @@
       </div>
     </div>
     <div class="name form-item">
-      <label for="name"></label>
+      <label for="firstName"></label>
       <input
-        formControlName="name"
-        name="name"
+        formControlName="firstName"
+        name="firstName"
         type="text"
-        id="name"
+        id="firstName"
         style="font-family: sans-serif, fontawesome"
-        placeholder="&#xf007; Your Name"
+        placeholder="&#xf007; First Name"
       />
-      <div class="errors" *ngIf="(nameErrors.dirty && nameErrors.errors) || (nameErrors.errors && invalidFormErrors) ">
-        <span *ngIf="nameErrors.errors.required"
+      <div class="errors" *ngIf="(firstNameErrors.dirty && firstNameErrors.errors) || (firstNameErrors.errors && invalidFormErrors) ">
+        <span *ngIf="firstNameErrors.errors.required"
           >This Field Is Required !</span
         >
-        <span *ngIf="nameErrors.errors.minlength"
+        <span *ngIf="firstNameErrors.errors.minlength"
           >Please enter minimum
-          {{ nameErrors.errors.minlength.requiredLength }} character.</span
+          {{ firstNameErrors.errors.minlength.requiredLength }} character.</span
         >
       </div>
     </div>

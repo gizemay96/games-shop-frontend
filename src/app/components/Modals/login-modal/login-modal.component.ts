@@ -16,8 +16,12 @@ export class LoginModalComponent implements OnInit {
   isLoading: boolean = false;
   invalidFormErrors = false;
 
+  serverErrors;
+  errorActive: boolean = false;
+
+
   loginForm = new FormGroup({
-    identifier: new FormControl('', [
+    email: new FormControl('', [
       Validators.required,
       Validators.minLength(3),
     ]),
@@ -37,26 +41,23 @@ export class LoginModalComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  get identifierErrors() {
-    return this.loginForm.controls.identifier;
+  get emailErrors() {
+    return this.loginForm.controls.email;
   }
 
   get passwordErrors() {
     return this.loginForm.controls.password;
   }
 
-  serverErrors;
-  errorActive: boolean = false;
-
   login() {
     if (this.loginForm.valid) {
       this.isLoading = true;
       this.authService.login(this.loginForm.value).subscribe(
         (response: AuthResponse) => {
-          window.localStorage.setItem('user', JSON.stringify(response.user));
+          window.localStorage.setItem('user', JSON.stringify(response.userDetails));
           this.authService.setToken(response.jwt);
-          this.userService.setUser(response.user);
-          this.cartService.fetchUserCart(response.user.id);
+          this.userService.setUser(response.userDetails);
+          this.cartService.fetchUserCart(response.userDetails.id);
 
           this.isLoading = false;
 

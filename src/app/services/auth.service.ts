@@ -7,12 +7,12 @@ import { UserService } from './user.service';
   providedIn: 'root',
 })
 export class AuthService {
-  baseUrl = 'https://gameshopv2.herokuapp.com/auth';
+  baseUrl = 'http://localhost:3000/user';
 
-  constructor(private http: HttpClient, private userService: UserService, private router : Router) {}
+  constructor(private http: HttpClient, private userService: UserService, private router: Router) { }
 
   register(registerData) {
-    return this.http.post(`${this.baseUrl}/local/register`, registerData);
+    return this.http.post(`${this.baseUrl}/signup`, registerData);
   }
 
   logout() {
@@ -27,10 +27,10 @@ export class AuthService {
   }
 
   login(loginForm) {
-    return this.http.post(`${this.baseUrl}/local`, loginForm);
+    return this.http.post(`${this.baseUrl}/login`, loginForm);
   }
 
-  isAuthenticated():boolean {
+  isAuthenticated(): boolean {
     return !!window.localStorage.getItem('token')
   }
 }
