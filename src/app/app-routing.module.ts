@@ -6,9 +6,9 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
 
 
 const routes: Routes = [
-  { path:"" , component:HomePageComponent },
-  { path:"checkout" , component:CheckoutPageComponent },
-  { path:"profile" , component:ProfilePageComponent },
+  { path: "", component: HomePageComponent },
+  { path: "checkout", component: CheckoutPageComponent },
+  { path: "profile", component: ProfilePageComponent },
 ];
 
 @NgModule({
