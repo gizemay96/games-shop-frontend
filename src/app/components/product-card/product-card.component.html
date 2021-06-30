@@ -24,8 +24,8 @@
           <h4 class="price">{{ product.price | currency }}</h4>
         </div>
       </div>
-      <a style="cursor: pointer" data-toggle="modal" data-target="#ProductdetailModal"
-        (click)="selectedProd.emit(product.id)">
+      <a style="cursor: pointer"
+        (click)="selectedProd.emit(product.id); openModal(product)">
         <div class="b-game-card">
           <div class="b-game-card__cover">
             <img *ngIf="product.img.length > 0" [src]="product.img[0].url" alt="" />

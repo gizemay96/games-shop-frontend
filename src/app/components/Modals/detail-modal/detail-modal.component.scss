@@ -2,16 +2,6 @@ $gray-text: #c5c5c5;
 $color-orange: #d2721e;
 $color-blue: #4589ff;
 
-.modal-dialog {
-  max-width: 800px;
-}
-
-.modal-content {
-  background-color: rgb(35 35 35 / 83%);
-  border-radius: 50px;
-  overflow: hidden;
-}
-
 .card {
   background-color: transparent;
   max-height: 500px;
@@ -135,7 +125,7 @@ $color-blue: #4589ff;
 @media screen and (max-width:767px) {
   .card {
     max-height: 100%;
-    padding: 15px;
+    padding: 30px;
 
     .image {
       height: 200px;
@@ -147,3 +137,8 @@ $color-blue: #4589ff;
   }
   
 }
+
+
+
+
+

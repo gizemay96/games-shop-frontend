@@ -1,5 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { UserService } from 'src/app/services/user.service';
+import { DetailModalComponent } from '../Modals/detail-modal/detail-modal.component';
 
 @Component({
   selector: 'app-product-card',
@@ -17,7 +19,8 @@ export class ProductCardComponent implements OnInit {
   @Output() addToCart = new EventEmitter();
 
   constructor(
-    private userService : UserService
+    private userService : UserService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -25,6 +28,13 @@ export class ProductCardComponent implements OnInit {
 
   get user() {
     return this.userService.getUser();
+  }
+
+
+  openModal(product){
+    const data = {data: product , panelClass:"detailProduct",}
+    const dialogRef = this.dialog.open(DetailModalComponent , data)
+    console.log('sdfsdf')
   }
 
 }

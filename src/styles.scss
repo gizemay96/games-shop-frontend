@@ -97,30 +97,55 @@ body {
   }
 }
 
-.confirmation-modal{
-  .modal-content{
+.confirmation-modal {
+  .modal-content {
     background-color: #2d2d2dad !important;
     padding: 30px 50px;
     border-radius: 40px;
     margin-top: -150px;
   }
 }
-.login-modal{
-  .modal-content{
+.login-modal {
+  .modal-content {
     background-color: #000000c4 !important;
     border-radius: 15px;
     margin-top: -40px;
   }
 }
 
-.register-modal{
-  .modal-content{
+.register-modal {
+  .modal-content {
     background-color: #000000f2 !important;
     border-radius: 15px;
     padding: 30px;
   }
 }
 
+.detailProduct {
+  .mat-dialog-container {
+    border-radius: 50px !important;
+    max-width: 800px;
+    background-color: #171717e8;
+    padding: 0;
+    overflow: hidden;
+  }
+  .mat-dialog-content {
+    padding: 0;
+  }
+  .cdk-overlay-pane.my-dialog {
+    position: relative!important;
+  }
+  .close.mat-button {
+    position: absolute;
+    top: 125px;
+    right: 555px;
+    padding: 5px;
+    line-height: 11px;
+    /* min-width: auto; */
+    z-index: 9999999;
+    color: yellow;
+  }
+}
 
 // .number-font{
 //   font-family: 'Nova Square', cursive;
@@ -132,5 +157,11 @@ body {
 /* Importing Bootstrap SCSS file. */
 @import "~bootstrap/scss/bootstrap";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
