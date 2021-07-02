@@ -1,5 +1,4 @@
-$gamefont: "Press Start 2P",
-cursive;
+$gamefont: "Press Start 2P", cursive;
 $color-orange: #d2721e;
 
 .close-btn {
@@ -35,7 +34,8 @@ $color-orange: #d2721e;
     }
 
     .form-item {
-      margin: 0px 0 20px 0;
+      height: 80px;
+      padding: 0;
     }
 
     .login-button {
@@ -45,7 +45,7 @@ $color-orange: #d2721e;
         padding: 11px 0;
         border-radius: 20px;
         font-family: $gamefont;
-        margin-top: 40px;
+        margin-top: 20px;
 
         &:hover {
           animation: tada;
@@ -54,6 +54,20 @@ $color-orange: #d2721e;
           /* don't forget to set a duration! */
         }
       }
+    }
+  }
+
+  @media screen and (max-width: 650px) {
+    .flex-case {
+      flex-direction: column;
+    }
+  }
+
+  .errors {
+    padding: 0px 10px;
+    small {
+      color: brown;
+      font-weight: bold;
     }
   }
 }

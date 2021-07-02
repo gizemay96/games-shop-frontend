@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { CartService } from 'src/app/services/cart.service';
@@ -6,6 +6,7 @@ import { UserService } from 'src/app/services/user.service';
 import { AuthResponse } from 'src/app/types/authResponse.type';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-login-modal',
@@ -32,7 +33,9 @@ export class LoginModalComponent implements OnInit {
     private userService: UserService,
     private cartService: CartService,
     private router: Router,
-    private activeModal: NgbActiveModal
+    private activeModal: NgbActiveModal,
+    public dialogRef: MatDialogRef<LoginModalComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
   ) { }
 
   ngOnInit(): void { }
@@ -63,7 +66,7 @@ export class LoginModalComponent implements OnInit {
           this.loginForm.reset();
 
           this.userService.getDetails();
-          this.activeModal.close();
+          this.dialogRef.close();
           this.router.navigateByUrl('/');
         },
         (error) => {
@@ -81,8 +84,7 @@ export class LoginModalComponent implements OnInit {
 
   close() {
     this.router.navigateByUrl('/');
-    this.activeModal.close();
-
+    this.dialogRef.close();
   }
 
 

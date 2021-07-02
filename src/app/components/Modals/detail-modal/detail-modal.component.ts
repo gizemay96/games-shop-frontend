@@ -10,18 +10,15 @@ import { Product } from 'src/app/types/product.type';
   styleUrls: ['./detail-modal.component.scss']
 })
 export class DetailModalComponent implements OnInit {
-  @ViewChild('closeModal') private closeModal: ElementRef;
-  public close() {
-    this.closeModal.nativeElement.click();
-  }
-
   @Input() rating;
   @Input() name;
   @Input() successAdding: boolean;
-  isModalOpen = false;
 
+  isModalOpen = false;
   progressActive = false;
+
   product;
+  
   constructor(
     private userService: UserService,
     private cartService: CartService,
@@ -32,10 +29,9 @@ export class DetailModalComponent implements OnInit {
     this.cartService.progressActive.subscribe(res => {
       this.progressActive = res;
     })
-    console.log(data)
   }
-  
-  
+
+
   ngOnInit(): void {
     this.product = this.data;
   }

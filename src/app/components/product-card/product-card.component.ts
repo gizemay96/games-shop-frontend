@@ -34,7 +34,6 @@ export class ProductCardComponent implements OnInit {
   openModal(product){
     const data = {data: product , panelClass:"detailProduct",}
     const dialogRef = this.dialog.open(DetailModalComponent , data)
-    console.log('sdfsdf')
   }
 
 }

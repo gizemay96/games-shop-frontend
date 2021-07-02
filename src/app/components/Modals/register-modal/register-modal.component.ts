@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/services/auth.service';
@@ -76,7 +77,9 @@ export class RegisterModalComponent implements OnInit {
     private userService: UserService,
     private cartService: CartService,
     private router: Router,
-    private activeModal: NgbActiveModal
+    private activeModal: NgbActiveModal,
+    public dialogRef: MatDialogRef<RegisterModalComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
   ) { }
 
 
@@ -107,7 +110,7 @@ export class RegisterModalComponent implements OnInit {
           this.cartService.fetchUserCart(response.user.id);
 
           this.router.navigateByUrl('/');
-          this.activeModal.close();
+          this.dialogRef.close();
         },
           (error) => {
             this.serverErrors = error.error.message[0].messages[0].message;
@@ -125,6 +128,6 @@ export class RegisterModalComponent implements OnInit {
 
   close() {
     this.router.navigateByUrl('/');
-    this.activeModal.close();
+    this.dialogRef.close();
   }
 }
