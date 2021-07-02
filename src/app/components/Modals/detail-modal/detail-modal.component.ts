@@ -48,8 +48,8 @@ export class DetailModalComponent implements OnInit {
     this.cartService.addToCart(this.product, this.user.id);
   }
 
-  // close() {
-  //   this.activeModal.close();
-  // }
+  close() {
+    this.dialogRef.close();
+  }
 
 }
