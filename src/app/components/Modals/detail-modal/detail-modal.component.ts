@@ -10,14 +10,14 @@ import { Product } from 'src/app/types/product.type';
   styleUrls: ['./detail-modal.component.scss']
 })
 export class DetailModalComponent implements OnInit {
-  @Input() rating;
-  @Input() name;
   @Input() successAdding: boolean;
-
+  
   isModalOpen = false;
   progressActive = false;
-
+  
+  name;
   product;
+  rating;
   
   constructor(
     private userService: UserService,
@@ -34,6 +34,8 @@ export class DetailModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.product = this.data;
+    this.rating = this.data.rating;
+    this.name = this.data.name;
   }
 
   get user() {
