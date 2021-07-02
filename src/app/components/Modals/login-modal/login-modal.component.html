@@ -13,7 +13,7 @@
         <span> {{ serverErrors }} !</span>
       </div>
       <div class="login-form">
-        <form [formGroup]="loginForm" (submit)="login()" autocomplete="off">
+        <form [formGroup]="loginForm" (submit)="login()">
           <div class="username form-item">
             <label for="identifier"></label>
             <input class="email-input" formControlName="identifier" name="identifier" type="text" id="identifier"
@@ -32,7 +32,7 @@
           </div>
           <div class="password form-item">
             <label for="password"></label>
-            <input formControlName="password" name="password" type="text" id="password"
+            <input formControlName="password" name="password" type="password" id="password"  autocomplete="new-password"
               style="font-family: sans-serif, fontawesome" placeholder="&#xf084; Password" />
             <div class="errors"
               *ngIf="(passwordErrors.dirty && passwordErrors.errors) || (passwordErrors.errors && invalidFormErrors)">
