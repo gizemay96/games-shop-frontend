@@ -21,9 +21,10 @@ body {
 }
 
 .errors {
-  span {
+  padding: 0px 10px;
+  small {
     color: brown;
-    padding-left: 15px;
+    font-weight: bold;
   }
 }
 
@@ -97,34 +98,165 @@ body {
   }
 }
 
-.confirmation-modal{
-  .modal-content{
+.confirmation-modal {
+  .modal-content {
     background-color: #2d2d2dad !important;
     padding: 30px 50px;
     border-radius: 40px;
     margin-top: -150px;
   }
 }
-.login-modal{
-  .modal-content{
+.login-modal {
+  .modal-content {
     background-color: #000000c4 !important;
     border-radius: 15px;
     margin-top: -40px;
   }
 }
 
-.register-modal{
-  .modal-content{
+.register-modal {
+  .modal-content {
     background-color: #000000f2 !important;
     border-radius: 15px;
     padding: 30px;
   }
 }
 
+.detailProduct {
+  .mat-dialog-container {
+    border-radius: 50px !important;
+    max-width: 800px;
+    background-color: #171717e8;
+    padding: 0;
+    overflow: hidden;
+  }
+  .mat-dialog-content {
+    padding-right: 40px;
+    padding: 0;
+  }
+  .cdk-overlay-pane.my-dialog {
+    position: relative !important;
+  }
+  .close.mat-button {
+    position: absolute;
+    top: 125px;
+    right: 555px;
+    padding: 5px;
+    line-height: 11px;
+    /* min-width: auto; */
+    z-index: 9999999;
+    color: yellow;
+  }
+}
 
-// .number-font{
-//   font-family: 'Nova Square', cursive;
-// }
+.loginModal {
+  .mat-dialog-container {
+    border-radius: 50px !important;
+    background-color: #171717e8;
+    @extend .scrollStyle;
+    width: 400px;
+  }
+  .cdk-overlay-pane.my-dialog {
+    position: relative !important;
+  }
+  .close.mat-button {
+    position: absolute;
+    top: 125px;
+    right: 555px;
+    padding: 5px;
+    line-height: 11px;
+    z-index: 9999999;
+    color: yellow;
+  }
+}
+
+.registerModal {
+  .mat-dialog-container {
+    border-radius: 50px !important;
+    background-color: #171717e8;
+    width: 550px;
+    @extend .scrollStyle;
+  }
+
+  .cdk-overlay-pane.my-dialog {
+    position: relative !important;
+  }
+  .close.mat-button {
+    position: absolute;
+    top: 125px;
+    right: 555px;
+    padding: 5px;
+    line-height: 11px;
+    z-index: 9999999;
+    color: yellow;
+  }
+}
+
+.addressModal {
+  .mat-dialog-container {
+    border-radius: 50px !important;
+    background-color: #171717e8;
+    width: 550px;
+    @extend .scrollStyle;
+  }
+
+  .cdk-overlay-pane.my-dialog {
+    position: relative !important;
+  }
+  .close.mat-button {
+    position: absolute;
+    top: 125px;
+    right: 555px;
+    padding: 5px;
+    line-height: 11px;
+    z-index: 9999999;
+    color: yellow;
+  }
+}
+
+.scrollStyle {
+  ::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: $gray-text;
+    border-radius: 10px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #b30000;
+  }
+}
+
+.fixed-top {
+  z-index: 2 !important;
+}
+
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 1px solid #d2721e;
+  -webkit-text-fill-color: #d2721e;
+  -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 
 /* Importing Bootstrap SCSS file. */
 @import "~bootstrap/scss/bootstrap";
@@ -132,5 +264,11 @@ body {
 /* Importing Bootstrap SCSS file. */
 @import "~bootstrap/scss/bootstrap";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

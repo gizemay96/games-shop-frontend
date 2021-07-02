@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output , EventEmitter } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/services/auth.service';
 import { CartService } from 'src/app/services/cart.service';
 import { UserService } from 'src/app/services/user.service';
@@ -37,23 +37,19 @@ export class NavbarComponent implements OnInit {
     private userService: UserService,
     private authService: AuthService,
     private cartService: CartService,
-    private modalService: NgbModal
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {}
 
   openLogin() {
-    this.modalService.open(LoginModalComponent, {
-      centered: true,
-      windowClass: 'login-modal'
-    });
+    const data = {panelClass:"loginModal"}
+    const dialogRef = this.dialog.open(LoginModalComponent , data)
   }
 
   openRegister(){
-    this.modalService.open(RegisterModalComponent, {
-      centered: true,
-      windowClass: 'register-modal'
-    });
+    const data = {panelClass:"registerModal"}
+    const dialogRef = this.dialog.open(RegisterModalComponent , data)
   }
 
   logout() {
