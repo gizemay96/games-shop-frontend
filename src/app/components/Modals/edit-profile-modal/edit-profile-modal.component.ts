@@ -1,5 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from 'src/app/services/user.service';
@@ -12,18 +13,18 @@ import { UserService } from 'src/app/services/user.service';
 export class EditProfileModalComponent implements OnInit {
   
   editForm = new FormGroup({
-    username: new FormControl('', [
+    username: new FormControl(this.data.username ? this.data.username : '', [
       Validators.required,
       Validators.minLength(3),
     ]),
-    name: new FormControl('', [
+    name: new FormControl(this.data.name ? this.data.name : '', [
       Validators.minLength(3),
     ]),
-    lastName: new FormControl('', [
+    lastName: new FormControl(this.data.lastName ? this.data.lastName : '', [
       Validators.minLength(2),
     ]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    phone: new FormControl(''),
+    email: new FormControl(this.data.email ? this.data.email : '', [Validators.required, Validators.email]),
+    phone: new FormControl(this.data.phone ? this.data.phone : ''),
   });
   
   invalidFormErrors = false;
@@ -56,7 +57,9 @@ export class EditProfileModalComponent implements OnInit {
   constructor(
     private userService: UserService,
     private router: Router,
-    public activeModal: NgbActiveModal
+    public activeModal: NgbActiveModal,
+    public dialogRef: MatDialogRef<EditProfileModalComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
   ) {}
 
   ngOnInit(): void {}
@@ -84,6 +87,6 @@ export class EditProfileModalComponent implements OnInit {
   }
 
   closeModal(){
-    this.activeModal.close();
+    this.dialogRef.close();
   }
 }

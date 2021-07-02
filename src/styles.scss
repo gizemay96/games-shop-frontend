@@ -192,6 +192,28 @@ body {
   }
 }
 
+.addressModal {
+  .mat-dialog-container {
+    border-radius: 50px !important;
+    background-color: #171717e8;
+    width: 550px;
+    @extend .scrollStyle;
+  }
+
+  .cdk-overlay-pane.my-dialog {
+    position: relative !important;
+  }
+  .close.mat-button {
+    position: absolute;
+    top: 125px;
+    right: 555px;
+    padding: 5px;
+    line-height: 11px;
+    z-index: 9999999;
+    color: yellow;
+  }
+}
+
 .scrollStyle {
   ::-webkit-scrollbar {
     width: 3px;

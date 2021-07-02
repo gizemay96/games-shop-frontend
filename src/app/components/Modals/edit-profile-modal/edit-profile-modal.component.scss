@@ -32,7 +32,7 @@ $color-blue: #4589ff;
         color: rgba(255, 255, 255, 0.644);
       }
     }
-    label{
+    label {
       color: #c5c5c5;
     }
 
@@ -47,19 +47,30 @@ $color-blue: #4589ff;
     display: flex;
     align-items: center;
     justify-content: center;
-  .spinner-grow {
-    width: 5rem !important;
-    height: 5rem !important;
+    .spinner-grow {
+      width: 5rem !important;
+      height: 5rem !important;
+    }
   }
 
+  .color-orange {
+    color: #d2721e2c !important;
+  }
+
+  .color-blue {
+    color: #4589ff3d !important;
+  }
 }
 
-.color-orange {
-  color: #d2721e2c !important;
-}
+.btn-close {
+  background: transparent;
+  z-index: 9999;
+  border-radius: 50px;
+  position: absolute;
+  margin: -10px 0px 0px -10px;
+  color: white;
 
-.color-blue {
-  color: #4589ff3d !important;
-}
-
+  :hover {
+    background: #181818a6;
+  }
 }
