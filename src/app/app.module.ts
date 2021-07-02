@@ -22,6 +22,7 @@ import { CouponsComponent } from './components/modals/profileTabs/coupons/coupon
 import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { AngularTiltModule } from 'angular-tilt';
 
 
 
@@ -43,6 +44,7 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    AngularTiltModule,
     // Custom Modules
     AppModalsModule,
     AppPartialModule,

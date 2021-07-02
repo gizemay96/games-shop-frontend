@@ -14,6 +14,7 @@ import { ProductCardComponent } from 'src/app/components/product-card/product-ca
 import { ProductTitleComponent } from 'src/app/components/product-title/product-title.component';
 import { OrderItemComponent } from 'src/app/components/order-item/order-item.component';
 import { PaymentComponent } from 'src/app/components/payment/payment.component';
+import { AngularTiltModule } from 'angular-tilt';
 
 
 
@@ -34,7 +35,8 @@ import { PaymentComponent } from 'src/app/components/payment/payment.component';
     // Custom Modules
     AppPipesModule,
     AppMaterialModule,
-    AppBootstrapModule
+    AppBootstrapModule,
+    AngularTiltModule,
   ],
   exports: [
     NavbarComponent,
