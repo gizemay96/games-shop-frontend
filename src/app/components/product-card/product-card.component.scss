@@ -287,28 +287,6 @@ $color-secondary-ice: rgba(29, 96, 240, 1);
     }
   }
 
-  &:hover {
-    &.fire {
-      box-shadow: 0 0 70px transparentize($color-primary-fire, 0.2),
-        0 5px 20px transparentize($color-primary-fire, 0.2),
-        inset 0 1px $color-highlight-fire, inset 0 -1px $color-highlight-fire;
-
-      &:before {
-        box-shadow: inset 0 0 50px 0 $color-highlight-fire;
-      }
-    }
-
-    &.ice {
-      box-shadow: 0 0 70px transparentize($color-primary-ice, 0.2),
-        0 5px 20px transparentize($color-primary-ice, 0.2),
-        inset 0 1px $color-highlight-ice, inset 0 -1px $color-highlight-ice;
-
-      &:before {
-        box-shadow: inset 0 0 50px 0 $color-highlight-ice;
-      }
-    }
-  }
-
   &+& {
     animation-delay: 0.3s;
   }
