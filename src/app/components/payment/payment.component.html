@@ -99,13 +99,13 @@
           class="errors"
           *ngIf="(cardNameControl.dirty && cardNameControl.errors) || (cardNameControl.errors && invalidFormErrors)"
         >
-          <span *ngIf="cardNameControl.errors.required">
+          <small *ngIf="cardNameControl.errors.required">
             This Field Is Required !
-          </span>
-          <span *ngIf="cardNameControl.errors.minlength"
+          </small>
+          <small *ngIf="cardNameControl.errors.minlength"
             >Please enter minimum
             {{ cardNameControl.errors.minlength.requiredLength }}
-            character.</span
+            character.</small
           >
         </div>
       </div>
@@ -125,13 +125,13 @@
           class="errors"
           *ngIf="(cardNumberControl.dirty && cardNumberControl.errors) || (cardNumberControl.errors && invalidFormErrors)"
         >
-          <span *ngIf="cardNumberControl.errors.required">
+          <small *ngIf="cardNumberControl.errors.required">
             This Field Is Required !
-          </span>
-          <span *ngIf="cardNumberControl.errors.minlength"
+          </small>
+          <small *ngIf="cardNumberControl.errors.minlength"
             >Please enter minimum
             {{ cardNumberControl.errors.minlength.requiredLength }}
-            character.</span
+            character.</small
           >
         </div>
       </div>
@@ -153,13 +153,13 @@
               class="errors"
               *ngIf="(expDateControl.dirty && expDateControl.errors) || (expDateControl.errors && invalidFormErrors)"
             >
-              <span *ngIf="expDateControl.errors.required">
+              <small *ngIf="expDateControl.errors.required">
                 This Field Is Required !
-              </span>
-              <span *ngIf="expDateControl.errors.minlength"
+              </small>
+              <small *ngIf="expDateControl.errors.minlength"
                 >Please enter minimum
                 {{ expDateControl.errors.minlength.requiredLength }}
-                character.</span
+                character.</small
               >
             </div>
           </div>
@@ -177,13 +177,13 @@
               (blur)="hideCVC()"
             />
             <div class="errors" *ngIf="(cvcControl.dirty && cvcControl.errors) || (cvcControl.errors && invalidFormErrors)">
-              <span *ngIf="cvcControl.errors.required">
+              <small *ngIf="cvcControl.errors.required">
                 This Field Is Required !
-              </span>
-              <span *ngIf="cvcControl.errors.minlength"
+              </small>
+              <small *ngIf="cvcControl.errors.minlength"
                 >Please enter minimum
                 {{ cvcControl.errors.minlength.requiredLength }}
-                character.</span
+                character.</small
               >
             </div>
           </div>

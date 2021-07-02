@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddressService } from 'src/app/services/address.service';
 import { Observable } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { AutocomplateAddressService } from 'src/app/services/autocomplate-address.service';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-edit-address-modal',
@@ -14,18 +15,18 @@ import { AutocomplateAddressService } from 'src/app/services/autocomplate-addres
 export class EditAddressModalComponent implements OnInit {
   loading;
   invalidFormErrors
-  
+
   // ------------------ ADDRESS FORM ---------------- // 
   addressForm = new FormGroup({
-    addressName: new FormControl('', [Validators.required]),
-    suite: new FormControl('', [Validators.required]),
-    streetName: new FormControl('', [Validators.required]),
-    city: new FormControl('', [Validators.required]),
-    country: new FormControl('', [Validators.required]),
-    id: new FormControl(''),
+    addressName: new FormControl(this.data.addressName ? this.data.addressName : '', [Validators.required]),
+    suite: new FormControl(this.data.suite ? this.data.suite : '', [Validators.required]),
+    streetName: new FormControl(this.data.streetName ? this.data.streetName : '', [Validators.required]),
+    city: new FormControl(this.data.city ? this.data.city : '', [Validators.required]),
+    country: new FormControl(this.data.country ? this.data.country : '', [Validators.required]),
+    id: new FormControl(this.data.id ? this.data.id : ''),
   });
-  
-  
+
+
   // ------------------ GET ERRORS ---------------- // 
   get nameErrors() {
     return this.addressForm.controls.addressName;
@@ -56,8 +57,8 @@ export class EditAddressModalComponent implements OnInit {
         term.length <= 1
           ? []
           : this.states[0]
-              .filter((v) => v.toLowerCase().indexOf(term.toLowerCase()) > -1)
-              .slice(0, 15)
+            .filter((v) => v.toLowerCase().indexOf(term.toLowerCase()) > -1)
+            .slice(0, 15)
       )
     );
 
@@ -69,8 +70,8 @@ export class EditAddressModalComponent implements OnInit {
         term.length <= 1
           ? []
           : this.cities[0]
-              .filter((v) => v.toLowerCase().indexOf(term.toLowerCase()) > -1)
-              .slice(0, 15)
+            .filter((v) => v.toLowerCase().indexOf(term.toLowerCase()) > -1)
+            .slice(0, 15)
       )
     );
 
@@ -78,8 +79,10 @@ export class EditAddressModalComponent implements OnInit {
   constructor(
     public activeModal: NgbActiveModal,
     private addressService: AddressService,
-    private autocomplateAddressService: AutocomplateAddressService
-  ) {}
+    private autocomplateAddressService: AutocomplateAddressService,
+    public dialogRef: MatDialogRef<EditAddressModalComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+  ) { }
 
   ngOnInit(): void {
     this.loading = true;
@@ -87,56 +90,67 @@ export class EditAddressModalComponent implements OnInit {
     this.states = [];
     setTimeout(() => {
       this.autocomplateAddressService
-      .getCountries()
-      .subscribe((response: any) => {
-        this.states.push(response.map((a) => a.country_name));
-      });
+        .getCountries()
+        .subscribe((response: any) => {
+          this.states.push(response.map((a) => a.country_name));
+        });
       this.loading = false;
     }, 1200);
   }
 
   // ------------------ FUNCTIONS ---------------- // 
-  
-    getCities() {
-      if (this.cities) {
-        this.cities = [];
-      }
-      this.autocomplateAddressService
-        .getCities(this.addressForm.get('country').value)
-        .subscribe((response: any) => {
-          this.cities.push(response.map((a) => a.state_name));
-        });
-    }
 
-  editData() {
-    this.loading = true;
-    if (this.addressForm.valid) {
-      this.addressService.editUserAddress(
-        this.addressForm.value,
-        this.addressForm.get('id').value
-      );
-      setTimeout(() => {
-        this.loading = false;
-        this.activeModal.close();
-      }, 600);
+  getCities() {
+    if (this.cities) {
+      this.cities = [];
     }
+    this.autocomplateAddressService
+      .getCities(this.addressForm.get('country').value)
+      .subscribe((response: any) => {
+        this.cities.push(response.map((a) => a.state_name));
+      });
   }
 
-  addAddress() {
-    this.loading = true;
+  saveAddress() {
     if (this.addressForm.valid) {
-      this.addressService.addUserAddress(this.addressForm.value);
-      setTimeout(() => {
-        this.loading = false;
-        this.activeModal.close();
-      }, 600);
+      if (this.addressForm.controls['id'].value) {
+        this.editData();
+      } else {
+        this.addAddress();
+      }
     } else {
       this.invalidFormErrors = true;
       this.loading = false;
     }
+
+
   }
 
-  closeModal(){
-    this.activeModal.close();
+  editData() {
+    this.loading = true;
+
+    this.addressService.editUserAddress(
+      this.addressForm.value,
+      this.addressForm.get('id').value
+    );
+    setTimeout(() => {
+      this.loading = false;
+      this.dialogRef.close();
+    }, 600);
+  }
+
+  addAddress() {
+    this.loading = true;
+
+    this.addressService.addUserAddress(this.addressForm.value);
+    setTimeout(() => {
+      this.loading = false;
+      this.dialogRef.close();
+    }, 600);
+
+  }
+
+  closeModal() {
+    this.dialogRef.close();
   }
 }

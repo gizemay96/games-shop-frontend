@@ -16,28 +16,29 @@
 
   <div class="row">
     <div class="card-case col-md-3 col-6" *ngFor="let product of data">
-      <div *ngIf="product.imgName" class="gameName">
-        <div class="image">
-          <img [src]="product.imgName.url" alt="" />
-        </div>
-        <div class="price-case">
-          <h4 class="price">{{ product.price | currency }}</h4>
-        </div>
-      </div>
-      <a style="cursor: pointer" data-toggle="modal" data-target="#ProductdetailModal"
-        (click)="selectedProd.emit(product.id)">
-        <div class="b-game-card">
-          <div class="b-game-card__cover">
-            <img *ngIf="product.img.length > 0" [src]="product.img[0].url" alt="" />
+      <div aTilt>
+        <div *ngIf="product.imgName" class="gameName">
+          <div class="image">
+            <img [src]="product.imgName.url" alt="" />
+          </div>
+          <div class="price-case">
+            <h4 class="price m-0">{{ product.price | currency }}</h4>
           </div>
         </div>
-      </a>
+        <a style="cursor: pointer" (click)="selectedProd.emit(product.id); openModal(product)">
+          <div class="b-game-card">
+            <div class="b-game-card__cover">
+              <img *ngIf="product.img.length > 0" [src]="product.img[0].url" alt="" />
+            </div>
+          </div>
+        </a>
+      </div>
+
 
       <!-- ---------- ACTION BUTTONS -----------  -->
       <div class="buttons-action">
         <div class="row justify-content-around">
-          <button (click)="selectedProd.emit(product.id)" type="button" data-toggle="modal"
-            data-target="#ProductdetailModal" class="btn-detail">
+          <button (click)="openModal(product)" type="button" class="btn-detail">
             <i class="fas fa-info"></i>
           </button>
           <button [disabled]="!user || productAdding"
@@ -52,6 +53,8 @@
           </button>
         </div>
       </div>
+
+
     </div>
   </div>
 </div>

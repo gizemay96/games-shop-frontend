@@ -1,149 +1,115 @@
-<div class="close-btn">
-  <div class="row justify-content-end">
-    <button class="btn btn-outline-light" (click)="close()">
-      <i class="fas fa-times"></i>
-    </button>
+<div mat-dialog-content class="scrollStyle">
+  <button class="btn btn-outline-light btn-close" (click)="close()">
+    <i class="fas fa-times"></i>
+  </button>
+  <div class="modal-body">
+    <div class="logo-case d-flex justify-content-center">
+      <div class="logo">
+        <img src="../../../assets/logo.png" alt="" />
+      </div>
+    </div>
+    <h4 class="text-center bg-title" style="margin: 20px;">Register</h4>
+    <div *ngIf="errorActive" class="server-errors">
+      <span> {{ serverErrors }} !</span>
+    </div>
+    <div class="register-form">
+      <form [formGroup]="regForm" (submit)="register()" autocomplete="off">
+
+        <div class="d-flex align-items-center flex-case">
+          <!-- UserName Input -->
+          <div class="username form-item col-lg-6 pr-2">
+            <label for="username"></label>
+            <input formControlName="username" name="username" type="text" id="username" maxlength="25"
+              style="font-family: sans-serif, fontawesome" placeholder="&#xf007; User name" />
+            <div class="errors"
+              *ngIf="(usernameErrors.dirty && usernameErrors.errors) || (usernameErrors.errors && invalidFormErrors) ">
+              <small *ngIf="usernameErrors.errors.required">This Field Is Required !</small>
+              <small *ngIf="usernameErrors.errors.minlength">Please enter minimum
+                {{ usernameErrors.errors.minlength.requiredLength }} character.</small>
+            </div>
+          </div>
+
+          <!-- Email Input -->
+          <div class="email form-item col-lg-6">
+            <label for="email"></label>
+            <input formControlName="email" name="email" type="text" id="email"
+              style="font-family: sans-serif, fontawesome" placeholder="&#xf0e0; Email" />
+            <div class="errors"
+              *ngIf="(emailErrors.dirty && emailErrors.errors) || (emailErrors.errors && invalidFormErrors) ">
+              <small *ngIf="emailErrors.errors.required">This Field Is Required !</small>
+              <small *ngIf="emailErrors.errors.email">Please enter valid email.</small>
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="d-flex align-items-center flex-case">
+          <!-- First Name Input -->
+          <div class="name form-item col-lg-6 pr-2">
+            <label for="name"></label>
+            <input formControlName="name" name="name" type="text" id="name" style="font-family: sans-serif, fontawesome"
+              placeholder="&#xf007; Your Name" />
+            <div class="errors"
+              *ngIf="(nameErrors.dirty && nameErrors.errors) || (nameErrors.errors && invalidFormErrors) ">
+              <small *ngIf="nameErrors.errors.required">This Field Is Required !</small>
+              <small *ngIf="nameErrors.errors.minlength">Please enter minimum
+                {{ nameErrors.errors.minlength.requiredLength }} character.</small>
+            </div>
+          </div>
+
+          <!-- Last Name Input -->
+          <div class="lastName form-item col-lg-6">
+            <label for="lastName"></label>
+            <input formControlName="lastName" name="lastName" type="text" id="lastName"
+              style="font-family: sans-serif, fontawesome" placeholder="&#xf007; Last Name" />
+            <div class="errors"
+              *ngIf="(lastNameErrors.dirty && lastNameErrors.errors) || (lastNameErrors.errors && invalidFormErrors) ">
+              <small *ngIf="lastNameErrors.errors.required">This Field Is Required !</small>
+              <small *ngIf="lastNameErrors.errors.minlength">Please enter minimum
+                {{ lastNameErrors.errors.minlength.requiredLength }} character.</small>
+            </div>
+          </div>
+        </div>
+
+
+
+        <!-- Password Input -->
+        <div class="password form-item">
+          <label for="password"></label>
+          <input formControlName="password" name="password" type="password" id="password"
+            style="font-family: sans-serif, fontawesome" placeholder="&#xf084; Password" />
+          <div class="errors"
+            *ngIf="(passwordErrors.dirty && passwordErrors.errors) || (passwordErrors.errors && invalidFormErrors) ">
+            <small *ngIf="passwordErrors.errors.required">This Field Is Required !</small>
+            <small *ngIf="passwordErrors.errors.minlength">Please enter minimum
+              {{ passwordErrors.errors.minlength.requiredLength }} character.</small>
+          </div>
+        </div>
+
+        <!-- Confirm Password Input -->
+        <div class="confirmPass form-item">
+          <label for="confirmPass"></label>
+          <input formControlName="confirmPassword" name="confirmPass" type="password" id="confirmPass"
+            style="font-family: sans-serif, fontawesome" placeholder="&#xf023; Confirm Password" />
+          <div class="errors"
+            *ngIf="(confirmPassErrors.dirty && confirmPassErrors.errors) || ( confirmPassErrors.errors && invalidFormErrors) ">
+            <small *ngIf="confirmPassErrors.errors.required">This Field Is Required !</small>
+            <small *ngIf="confirmPassErrors.errors.minlength">Please enter minimum
+              {{
+              confirmPassErrors.errors.minlength.requiredLength
+              }}
+              character.</small>
+          </div>
+        </div>
+
+        <!-- Login Button -->
+        <div class="login-button">
+          <button type="submit" class="btn btn-block">
+            {{ isLoading ? "Wait Please" : "Join Us" }}
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
-<div class="logo-case d-flex justify-content-center">
-  <div class="logo">
-    <img src="../../../assets/logo.png" alt="" />
-  </div>
-</div>
-<h4 class="text-center bg-title" style="margin: 20px;">Register</h4>
-<div *ngIf="errorActive" class="server-errors">
-  <span> {{ serverErrors }} !</span>
-</div>
-<div class="register-form">
-  <form [formGroup]="regForm" (submit)="register()" autocomplete="off">
-    <div class="username form-item">
-      <label for="username"></label>
-      <input
-        formControlName="username"
-        name="username"
-        type="text"
-        id="username"
-        maxlength="25"
-        style="font-family: sans-serif, fontawesome"
-        placeholder="&#xf007; User name"
-      />
-      <div class="errors" *ngIf="(usernameErrors.dirty && usernameErrors.errors) || (usernameErrors.errors && invalidFormErrors) ">
-        <span *ngIf="usernameErrors.errors.required"
-          >This Field Is Required !</span
-        >
-        <span *ngIf="usernameErrors.errors.minlength"
-          >Please enter minimum
-          {{ usernameErrors.errors.minlength.requiredLength }} character.</span
-        >
-      </div>
-    </div>
-    <div class="name form-item">
-      <label for="name"></label>
-      <input
-        formControlName="name"
-        name="name"
-        type="text"
-        id="name"
-        style="font-family: sans-serif, fontawesome"
-        placeholder="&#xf007; Your Name"
-      />
-      <div class="errors" *ngIf="(nameErrors.dirty && nameErrors.errors) || (nameErrors.errors && invalidFormErrors) ">
-        <span *ngIf="nameErrors.errors.required"
-          >This Field Is Required !</span
-        >
-        <span *ngIf="nameErrors.errors.minlength"
-          >Please enter minimum
-          {{ nameErrors.errors.minlength.requiredLength }} character.</span
-        >
-      </div>
-    </div>
-    <div class="lastName form-item">
-      <label for="lastName"></label>
-      <input
-        formControlName="lastName"
-        name="lastName"
-        type="text"
-        id="lastName"
-        style="font-family: sans-serif, fontawesome"
-        placeholder="&#xf007; Last Name"
-      />
-      <div class="errors" *ngIf="(lastNameErrors.dirty && lastNameErrors.errors) || (lastNameErrors.errors && invalidFormErrors) ">
-        <span *ngIf="lastNameErrors.errors.required"
-          >This Field Is Required !</span
-        >
-        <span *ngIf="lastNameErrors.errors.minlength"
-          >Please enter minimum
-          {{ lastNameErrors.errors.minlength.requiredLength }} character.</span
-        >
-      </div>
-    </div>
-    <div class="email form-item">
-      <label for="email"></label>
-      <input
-        formControlName="email"
-        name="email"
-        type="text"
-        id="email"
-        style="font-family: sans-serif, fontawesome"
-        placeholder="&#xf0e0; Email"
-      />
-      <div class="errors" *ngIf="(emailErrors.dirty && emailErrors.errors) || (emailErrors.errors && invalidFormErrors) ">
-        <span *ngIf="emailErrors.errors.required"
-          >This Field Is Required !</span
-        >
-        <span *ngIf="emailErrors.errors.email">Please enter valid email.</span>
-      </div>
-    </div>
-    <div class="password form-item">
-      <label for="password"></label>
-      <input
-        formControlName="password"
-        name="password"
-        type="password"
-        id="password"
-        style="font-family: sans-serif, fontawesome"
-        placeholder="&#xf084; Password"
-      />
-      <div class="errors" *ngIf="(passwordErrors.dirty && passwordErrors.errors) || (passwordErrors.errors && invalidFormErrors) ">
-        <span *ngIf="passwordErrors.errors.required"
-          >This Field Is Required !</span
-        >
-        <span *ngIf="passwordErrors.errors.minlength"
-          >Please enter minimum
-          {{ passwordErrors.errors.minlength.requiredLength }} character.</span
-        >
-      </div>
-    </div>
-    <div class="confirmPass form-item">
-      <label for="confirmPass"></label>
-      <input
-        formControlName="confirmPassword"
-        name="confirmPass"
-        type="password"
-        id="confirmPass"
-        style="font-family: sans-serif, fontawesome"
-        placeholder="&#xf023; Confirm Password"
-      />
-      <div
-        class="errors"
-        *ngIf="(confirmPassErrors.dirty && confirmPassErrors.errors) || ( confirmPassErrors.errors && invalidFormErrors) "
-      >
-        <span *ngIf="confirmPassErrors.errors.required"
-          >This Field Is Required !</span
-        >
-        <span *ngIf="confirmPassErrors.errors.minlength"
-          >Please enter minimum
-          {{
-            confirmPassErrors.errors.minlength.requiredLength
-          }}
-          character.</span
-        >
-      </div>
-    </div>
-    <div class="login-button">
-      <button type="submit" class="btn btn-block">
-        {{ isLoading ? "Wait Please" : "Join Us" }}
-      </button>
-    </div>
-  </form>
 </div>

@@ -6,6 +6,7 @@ import { EditProfileModalComponent } from 'src/app/components/./Modals/edit-prof
 import { EditAddressModalComponent } from 'src/app/components/Modals/edit-add-address-modal/edit-add-address-modal.component';
 import { Address } from 'src/app/types/address.type';
 import { ConfirmationModalComponent } from 'src/app/components/Modals/confirmation-modal/confirmation-modal.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-profile-page',
@@ -26,46 +27,41 @@ export class ProfilePageComponent implements OnInit {
   constructor(
     private userService: UserService,
     private addressService: AddressService,
-    private config: NgbModalConfig,
-    private modalService: NgbModal
-  ) {}
+    private modalService: NgbModal,
+    public dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
     setTimeout(() => this.addressService.fetchUserAddress(), 100);
   }
 
   openEditProfileModal() {
-    const modalRef = this.modalService.open(EditProfileModalComponent, {
-      centered: true,
-    });
-    modalRef.componentInstance.editForm.patchValue({
-      username: this.user.username,
-      name: this.user.name,
-      lastName: this.user.lastName,
-      email: this.user.email,
-      phone: this.user.phone,
-    });
+    const data = { data: this.user, panelClass: "addressModal", }
+    const dialogRef = this.dialog.open(EditProfileModalComponent, data)
+    // const modalRef = this.modalService.open(EditProfileModalComponent, {
+    //   centered: true,
+    // });
+    // modalRef.componentInstance.editForm.patchValue({
+    //   username: this.user.username,
+    //   name: this.user.name,
+    //   lastName: this.user.lastName,
+    //   email: this.user.email,
+    //   phone: this.user.phone,
+    // });
   }
 
   openEditAddressModal(addressId) {
     this.selectedAddress = this.userAddresses.find(
       (address) => address.id === addressId
     );
-    const modalRef = this.modalService.open(EditAddressModalComponent, {
-      centered: true,
-    });
-    modalRef.componentInstance.addressForm.patchValue({
-      addressName: this.selectedAddress.addressName,
-      suite: this.selectedAddress.suite,
-      streetName: this.selectedAddress.streetName,
-      city: this.selectedAddress.city,
-      country: this.selectedAddress.country,
-      id: this.selectedAddress.id,
-    });
+
+    const data = { data: this.selectedAddress, panelClass: "addressModal", }
+    const dialogRef = this.dialog.open(EditAddressModalComponent, data)
   }
 
   openAddAddressModal() {
-    this.modalService.open(EditAddressModalComponent, { centered: true });
+    const data = { data: {}, panelClass: "addressModal", }
+    const dialogRef = this.dialog.open(EditAddressModalComponent, data)
   }
 
   deleteAddress(address) {

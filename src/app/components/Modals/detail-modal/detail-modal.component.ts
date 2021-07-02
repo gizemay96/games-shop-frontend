@@ -1,6 +1,5 @@
-import { Component, Input, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ActionService } from 'src/app/services/action.service';
+import { Component, Input, OnInit, Output, EventEmitter, ViewChild, ElementRef, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CartService } from 'src/app/services/cart.service';
 import { UserService } from 'src/app/services/user.service';
 import { Product } from 'src/app/types/product.type';
@@ -11,32 +10,32 @@ import { Product } from 'src/app/types/product.type';
   styleUrls: ['./detail-modal.component.scss']
 })
 export class DetailModalComponent implements OnInit {
-  @ViewChild('closeModal') private closeModal: ElementRef;
-public close() {
-        this.closeModal.nativeElement.click();      
-}
-
-  @Input() data: Product;
-  @Input() rating;
-  @Input() name;
   @Input() successAdding: boolean;
+  
   isModalOpen = false;
-
   progressActive = false;
+  
+  name;
+  product;
+  rating;
+  
   constructor(
     private userService: UserService,
-    private activeModal: NgbActiveModal,
-    private cartService: CartService
+    private cartService: CartService,
+    public dialogRef: MatDialogRef<DetailModalComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: Product,
   ) {
 
     this.cartService.progressActive.subscribe(res => {
       this.progressActive = res;
     })
-
   }
-  
+
 
   ngOnInit(): void {
+    this.product = this.data;
+    this.rating = this.data.rating;
+    this.name = this.data.name;
   }
 
   get user() {
@@ -44,11 +43,11 @@ public close() {
   }
 
   addToCart() {
-    this.cartService.addToCart(this.data, this.user.id);
+    this.cartService.addToCart(this.product, this.user.id);
   }
 
-  // close() {
-  //   this.activeModal.close();
-  // }
+  close() {
+    this.dialogRef.close();
+  }
 
 }

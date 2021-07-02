@@ -166,14 +166,6 @@ body {
     width: 100%;
     height: 95%;
     overflow: hidden;
-    background-image: linear-gradient(120deg, #000000 0%, #000000 100%);
-    background-size: cover;
-    perspective-origin: 50% 50%;
-    transform-style: preserve-3d;
-    transform-origin: top center;
-    will-change: transform;
-    transform: skewX(0.001deg);
-    transition: transform 0.35s ease-in-out;
 
     img {
       opacity: 0.8;
@@ -212,28 +204,6 @@ body {
     }
   }
 
-  // Shadows
-
-  &::before {
-    display: block;
-    content: "";
-    position: absolute;
-    top: 5%;
-    left: 5%;
-    width: 90%;
-    height: 90%;
-    background: rgba($c_0, 0.5);
-    box-shadow: 0 6px 12px 12px rgba($c_0, 0.4);
-    will-change: opacity;
-    transform-origin: top center;
-    transform: skewX(0.001deg);
-    transition: transform 0.35s ease-in-out, opacity 0.5s ease-in-out;
-  }
-
-  &:hover::before {
-    opacity: 0.6;
-    transform: rotateX(7deg) translateY(-6px) scale(1.05);
-  }
 }
 
 // -----------------------------    PRODUCT CARD -----------------------------
@@ -314,28 +284,6 @@ $color-secondary-ice: rgba(29, 96, 240, 1);
 
     &:before {
       box-shadow: inset 0 0 5px 0 $color-highlight-ice;
-    }
-  }
-
-  &:hover {
-    &.fire {
-      box-shadow: 0 0 70px transparentize($color-primary-fire, 0.2),
-        0 5px 20px transparentize($color-primary-fire, 0.2),
-        inset 0 1px $color-highlight-fire, inset 0 -1px $color-highlight-fire;
-
-      &:before {
-        box-shadow: inset 0 0 50px 0 $color-highlight-fire;
-      }
-    }
-
-    &.ice {
-      box-shadow: 0 0 70px transparentize($color-primary-ice, 0.2),
-        0 5px 20px transparentize($color-primary-ice, 0.2),
-        inset 0 1px $color-highlight-ice, inset 0 -1px $color-highlight-ice;
-
-      &:before {
-        box-shadow: inset 0 0 50px 0 $color-highlight-ice;
-      }
     }
   }
 
