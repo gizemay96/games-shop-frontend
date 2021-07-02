@@ -1,11 +1,7 @@
-<!-- <div class="close-btn">
-  <div class="row justify-content-end">
-    <button class="btn btn-outline-light" (click)="close()">
-      <i class="fas fa-times"></i>
-    </button>
-  </div>
-</div> -->
 <div mat-dialog-content>
+  <button class="btn btn-outline-light btn-close" (click)="close()">
+    <i class="fas fa-times"></i>
+  </button>
     <div class="modal-body">
       <div class="logo-case d-flex justify-content-center">
         <div class="logo">
@@ -24,30 +20,30 @@
               style="font-family: sans-serif, fontawesome" placeholder="&#xf007; Username" />
             <div class="errors"
               *ngIf="(identifierErrors.dirty && identifierErrors.errors) || (identifierErrors.errors && invalidFormErrors)">
-              <span *ngIf="identifierErrors.errors.required">
+              <small *ngIf="identifierErrors.errors.required">
                 This Field Is Required !
-              </span>
-              <span *ngIf="identifierErrors.errors.minlength">Please enter minimum
+              </small>
+              <small *ngIf="identifierErrors.errors.minlength">Please enter minimum
                 {{
                 identifierErrors.errors.minlength.requiredLength
                 }}
-                character.</span>
+                character.</small>
             </div>
           </div>
           <div class="password form-item">
             <label for="password"></label>
-            <input formControlName="password" name="password" type="password" id="password"
+            <input formControlName="password" name="password" type="text" id="password"
               style="font-family: sans-serif, fontawesome" placeholder="&#xf084; Password" />
             <div class="errors"
               *ngIf="(passwordErrors.dirty && passwordErrors.errors) || (passwordErrors.errors && invalidFormErrors)">
-              <span *ngIf="passwordErrors.errors.required">
+              <small *ngIf="passwordErrors.errors.required">
                 This Field Is Required !
-              </span>
-              <span *ngIf="passwordErrors.errors.minlength">Please enter minimum
+              </small>
+              <small *ngIf="passwordErrors.errors.minlength">Please enter minimum
                 {{
                 passwordErrors.errors.minlength.requiredLength
                 }}
-                character.</span>
+                character.</small>
             </div>
           </div>
           <div class="login-button">

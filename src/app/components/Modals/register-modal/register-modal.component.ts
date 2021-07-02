@@ -108,8 +108,6 @@ export class RegisterModalComponent implements OnInit {
           this.isLoading = false;
           this.userService.getDetails();
           this.cartService.fetchUserCart(response.user.id);
-
-          this.router.navigateByUrl('/');
           this.dialogRef.close();
         },
           (error) => {
@@ -127,7 +125,6 @@ export class RegisterModalComponent implements OnInit {
   }
 
   close() {
-    this.router.navigateByUrl('/');
     this.dialogRef.close();
   }
 }

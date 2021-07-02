@@ -1,4 +1,7 @@
 <div mat-dialog-content class="scrollStyle">
+  <button class="btn btn-outline-light btn-close" (click)="close()">
+    <i class="fas fa-times"></i>
+  </button>
   <div class="modal-body">
     <div class="logo-case d-flex justify-content-center">
       <div class="logo">
@@ -74,7 +77,7 @@
         <!-- Password Input -->
         <div class="password form-item">
           <label for="password"></label>
-          <input formControlName="password" name="password" type="password" id="password"
+          <input formControlName="password" name="password" type="text" id="password"
             style="font-family: sans-serif, fontawesome" placeholder="&#xf084; Password" />
           <div class="errors"
             *ngIf="(passwordErrors.dirty && passwordErrors.errors) || (passwordErrors.errors && invalidFormErrors) ">
@@ -87,7 +90,7 @@
         <!-- Confirm Password Input -->
         <div class="confirmPass form-item">
           <label for="confirmPass"></label>
-          <input formControlName="confirmPassword" name="confirmPass" type="password" id="confirmPass"
+          <input formControlName="confirmPassword" name="confirmPass" type="text" id="confirmPass"
             style="font-family: sans-serif, fontawesome" placeholder="&#xf023; Confirm Password" />
           <div class="errors"
             *ngIf="(confirmPassErrors.dirty && confirmPassErrors.errors) || ( confirmPassErrors.errors && invalidFormErrors) ">

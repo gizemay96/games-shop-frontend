@@ -18,11 +18,11 @@ export class LoginModalComponent implements OnInit {
   invalidFormErrors = false;
 
   loginForm = new FormGroup({
-    identifier: new FormControl('', [
+    identifier: new FormControl(null, [
       Validators.required,
       Validators.minLength(3),
     ]),
-    password: new FormControl('', [
+    password: new FormControl(null, [
       Validators.required,
       Validators.minLength(6),
     ]),
@@ -67,7 +67,6 @@ export class LoginModalComponent implements OnInit {
 
           this.userService.getDetails();
           this.dialogRef.close();
-          this.router.navigateByUrl('/');
         },
         (error) => {
           this.serverErrors = error.error.message[0].messages[0].message;
@@ -83,7 +82,6 @@ export class LoginModalComponent implements OnInit {
 
 
   close() {
-    this.router.navigateByUrl('/');
     this.dialogRef.close();
   }
 

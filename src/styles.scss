@@ -21,9 +21,10 @@ body {
 }
 
 .errors {
-  span {
+  padding: 0px 10px;
+  small {
     color: brown;
-    padding-left: 15px;
+    font-weight: bold;
   }
 }
 
@@ -213,6 +214,11 @@ body {
     background: #b30000;
   }
 }
+
+.fixed-top {
+  z-index: 2 !important;
+}
+
 
 /* Importing Bootstrap SCSS file. */
 @import "~bootstrap/scss/bootstrap";
